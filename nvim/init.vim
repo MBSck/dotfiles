@@ -1,4 +1,4 @@
-") GENERAL ------------------------------------------------------------- {{{
+" GENERAL ------------------------------------------------------------- {{{
 " Enable filetype detection. Vim will try to autodetect the file
 filetype off
 
@@ -85,7 +85,7 @@ set completeopt-=preview  " Disable the preview window
 call plug#begin('~/.local/share/nvim/plugged')
 
 " Visual Plugins
-Plug 'lifepillar/vim-gruvbox8'					  " Better gruvbox Better gruvbox
+Plug 'morhetz/gruvbox'					  	  " Better gruvbox Better gruvbox
 Plug 'Yggdroot/indentLine'					  " Better visual support for indentation
 Plug 'vim-airline/vim-airline'                                    " More support for the powerline
 Plug 'vim-airline/vim-airline-themes'                             " Themes for the vim airline
@@ -151,7 +151,7 @@ let g:gruvbox_italicize_comments=1
 let g:gruvbox_italicize_strings=1
 let g:gruvbox_filetype_hi_groups=0
 let g:gruvbox_plugin_hi_groups=0
-colorscheme gruvbox8_hard
+colorscheme gruvbox
 
 " Vim-airline theme
 let g:airline_theme='angr'
@@ -487,17 +487,21 @@ require("toggleterm").setup {
 -- Variables
 local Terminal = require("toggleterm.terminal").Terminal
 local terminal_only = Terminal:new()
-local python = Terminal:new({ cmd = "python3 %" })
-local pytest = Terminal:new({ cmd = "pytest %" })
-local lazygit = Terminal:new({ cmd = "lazygit", dir = "git_dir", direction = "float", float_opts = { border = "double", },
--- function to run on opening the terminal
-on_open = function(term)
-vim.cmd("startinsert!")
-vim.api.nvim_buf_set_keymap(term.bufnr, "n", "q", "<cmd>close<CR>", {noremap = true, silent = true})
-end,
--- function to run on closing the terminal
-on_close = function(term)
-vim.cmd("Closing terminal")
+local python = Terminal:new({ cmd = "python3 "..vim.fn.expand("%, t") })
+local pytest = Terminal:new({ cmd = "pytest "..vim.fn.expand("%, t") })
+local lazygit = Terminal:new({
+	cmd = "lazygit",
+	dir = "git_dir",
+	direction = "float",
+	float_opts = { border = "double", },
+	-- function to run on opening the terminal
+	on_open = function(term)
+		vim.cmd("startinsert!")
+		vim.api.nvim_buf_set_keymap(term.bufnr, "n", "q", "<cmd>close<CR>", {noremap = true, silent = true})
+	end,
+	-- function to run on closing the terminal
+	on_close = function(term)
+	vim.cmd("Closing terminal")
 end,
 })
 
@@ -522,8 +526,8 @@ function _terminal_toggle()
 end
 
 -- Set keymappings for the new commands
-vim.api.nvim_set_keymap("n", "<F4>", "<cmd>lua _pytest_toggle()<CR>", {noremap = true, silent = true})
-vim.api.nvim_set_keymap("n", "<F5>", "<cmd>lua _python_toggle()<CR>", {noremap = true, silent = true})
+vim.api.nvim_set_keymap("n", "<F4>", ":w<CR><cmd>lua _pytest_toggle()<CR>", {noremap = true, silent = true})
+vim.api.nvim_set_keymap("n", "<F5>", ":w <CR><cmd>lua _python_toggle()<CR>", {noremap = true, silent = true})
 vim.api.nvim_set_keymap("n", "<F7>", "<cmd>lua _lazygit_toggle()<CR>", {noremap = true, silent = true})
 vim.api.nvim_set_keymap("n", "<F9>", "<cmd>lua _terminal_toggle()<CR>", {noremap = true, silent = true})
 EOF
