@@ -359,6 +359,10 @@ inoremap <silent> jj <esc>
 nnoremap o o<esc>
 nnoremap O O<esc>
 
+" EasyAlign mappings for visual and motion/text-object mode
+xnoremap <Plug>(EasyAlign)
+nnoremap <Plug>(EasyAlign)
+
 " Shortcut for faster save and quit
 nnoremap <silent> <leader>w :update<CR>
 
