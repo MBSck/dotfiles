@@ -97,9 +97,9 @@ Plug 'yuttie/comfortable-motion.vim'				  " Simulates comfortable scroll motion
 
 " Navigation Plugins
 Plug 'preservim/nerdtree'  |					  " File system explorer for vim
-Plug 'Xuyuanp/nerdtree-git-plugin' | 		  " NERDTree git implementation
-Plug 'tiagofumo/vim-nerdtree-syntax-highlight' |   " NERDTree Syntax highlight
-Plug 'ryanoasis/vim-devicons'            " Icon support for vim, needs either terminal support for nerd-font or setting it in vimrc (nerd-font install mandatory)
+Plug 'Xuyuanp/nerdtree-git-plugin' | 		  		  " NERDTree git implementation
+Plug 'tiagofumo/vim-nerdtree-syntax-highlight' |   		  " NERDTree Syntax highlight
+Plug 'ryanoasis/vim-devicons'            			  " Icon support for vim, needs either terminal support for nerd-font or setting it in vimrc (nerd-font install mandatory)
 Plug 'junegunn/fzf.vim'                                           " Fuzzy file finder
 Plug 'junegunn/fzf', {'do':{ -> fzf#install()}}                   " Updates the FZF
 
@@ -115,15 +115,15 @@ Plug 'jiangmiao/auto-pairs' 					  " Autopairs brackets
 Plug 'tmhedberg/SimpylFold'                                       " Better folding for coding
 Plug 'scrooloose/nerdcommenter' 				  " Autocomment function that is language specific
 Plug 'akinsho/toggleterm.nvim', { 'tag' : 'v2.*' } 		  " Makes the term window in nvim toggleable
+Plug 'prabirshrestha/vim-lsp'					  " Vim language server for completion and more
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }	  " Autocomplete for multiple languages (need to be installed)
-Plug 'zchee/deoplete-jedi', { 'for': 'python' }		  	  " Deoplete plugin for python
+Plug 'lighttiger2505/deoplete-vim-lsp'				  " Language server support for deoplete
 Plug 'Shougo/neco-vim', { 'for': 'vim' }			  " Deoplete plugin for vim
-
-Plug 'davidhalter/jedi-vim', { 'for': 'python' } 		  " Jump to class or function definitions
+Plug 'puremourning/vimspector'					  " Debugger for VIM
+Plug 'Vimjas/vim-python-pep8-indent'				  " Automatic indent for python Pep8
 
 " File Support Plugins
 Plug 'airblade/vim-gitgutter'					  " Git sidline support for vim
-Plug 'cespare/vim-toml'                                           " Toml support for vim
 
 call plug#end()
 " }}}
@@ -355,13 +355,16 @@ let g:fzf_colors =
 "}}}
 
 " REMAPS ------------------------------------------------------------- {{{
+" Remap the <esc> as well as the new line functionality
 inoremap <silent> jj <esc>
 nnoremap o o<esc>
 nnoremap O O<esc>
 
-" EasyAlign mappings for visual and motion/text-object mode
-xnoremap <Plug>(EasyAlign)
-nnoremap <Plug>(EasyAlign)
+" Remap the window resize
+nnoremap + <C-W>+
+nnoremap - <C-W>-
+nnoremap <leader>+ <C-W>>
+nnoremap <leader>- <C-W><
 
 " Shortcut for faster save and quit
 nnoremap <silent> <leader>w :update<CR>
@@ -488,10 +491,14 @@ require("toggleterm").setup {
 	shade_terminals = true,
 	}
 
--- Variables
+-- Local variables
+local python_package_cmd = "python3 -m "..vim.fn.fnamemodify(vim.fn.fnamemodify(vim.fn.getcwd(), ":h"), ":t").."."..vim.fn.fnamemodify(vim.fn.getcwd(), ":t").."."..vim.fn.expand("%:t:r")
+
+-- Terminal variables
 local Terminal = require("toggleterm.terminal").Terminal
 local terminal_only = Terminal:new()
 local python = Terminal:new({ cmd = "python3 "..vim.fn.expand("%, t") })
+local python_package = Terminal:new({ cmd = python_package_cmd })
 local pytest = Terminal:new({ cmd = "pytest "..vim.fn.expand("%, t") })
 local lazygit = Terminal:new({
 	cmd = "lazygit",
@@ -505,13 +512,18 @@ local lazygit = Terminal:new({
 	end,
 	-- function to run on closing the terminal
 	on_close = function(term)
-	vim.cmd("Closing terminal")
-end,
+		vim.cmd("Closing terminal")
+	end,
 })
 
 -- Create a function to open a neovim terminal in a small split window and run python
 function _python_toggle()
 	python:toggle()
+end
+
+-- Create a function to open a neovim terminal in a small split window and run a python module in a package
+function _python_package_toggle()
+	python_package:toggle()
 end
 
 -- Create a function to open a neovim terminal in a small split window and run pytest
@@ -532,7 +544,60 @@ end
 -- Set keymappings for the new commands
 vim.api.nvim_set_keymap("n", "<F4>", ":w<CR><cmd>lua _pytest_toggle()<CR>", {noremap = true, silent = true})
 vim.api.nvim_set_keymap("n", "<F5>", ":w <CR><cmd>lua _python_toggle()<CR>", {noremap = true, silent = true})
+vim.api.nvim_set_keymap("n", "<leader><F5>", ":w <CR><cmd>lua _python_package_toggle()<CR>", {noremap = true, silent = true})
 vim.api.nvim_set_keymap("n", "<F7>", "<cmd>lua _lazygit_toggle()<CR>", {noremap = true, silent = true})
 vim.api.nvim_set_keymap("n", "<F9>", "<cmd>lua _terminal_toggle()<CR>", {noremap = true, silent = true})
 EOF
-" }}}NextHunk
+" }}}
+
+" AUTOCOMPLETION ------------------------------------------------------------- {{{
+" WARNING: For this to work "python-language-server[all]" must be pip installed
+
+" settings for pyls
+if executable('pyls')
+    " pip install python-language-server
+    au User lsp_setup call lsp#register_server({
+        \ 'name': 'pyls',
+        \ 'cmd': {server_info->['pyls']},
+        \ 'allowlist': ['python'],
+        \ })
+endif
+
+function! s:on_lsp_buffer_enabled() abort
+    " use omnifunc if you are fine with it.
+    " setlocal omnifunc=lsp#complete
+    if exists('+tagfunc') | setlocal tagfunc=lsp#tagfunc | endif
+    " some mappings to use, tweak as you wish.
+    nmap <buffer> gd <plug>(lsp-definition)
+    nmap <buffer> gr <plug>(lsp-references)
+    nmap <buffer> gi <plug>(lsp-implementation)
+    nmap <buffer> gt <plug>(lsp-type-definition)
+    nmap <buffer> <leader>rn <plug>(lsp-rename)
+    nmap <buffer> [g <Plug>(lsp-previous-diagnostic)
+    nmap <buffer> ]g <Plug>(lsp-next-diagnostic)
+    nmap <buffer> K <plug>(lsp-hover)
+endfunction
+
+augroup lsp_install
+    au!
+    " call s:on_lsp_buffer_enabled only for languages that has the server registered.
+    autocmd User lsp_buffer_enabled call s:on_lsp_buffer_enabled()
+augroup END
+
+" whether to enable diagnostics for vim-lsp (we may want to use ALE for other
+" plugins for that.
+let g:lsp_diagnostics_enabled = 0
+
+" Do not use virtual text, they are far too obtrusive.
+let g:lsp_virtual_text_enabled = 0
+
+" echo a diagnostic message at cursor position
+let g:lsp_diagnostics_echo_cursor = 0
+
+" show diagnostic in floating window
+let g:lsp_diagnostics_float_cursor = 1
+
+" whether to enable highlight a symbol and its references
+let g:lsp_highlight_references_enabled = 1
+let g:lsp_preview_max_width = 80
+" }}}
