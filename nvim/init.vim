@@ -5,14 +5,18 @@ filetype off
 " Load an indent file for the detected filetype
 filetype indent on
 
+" Remove issues with backup
+set nobackup
+set nowritebackup
+
+" Set updatetime so the user experience is better
+set updatetime=300
+
 " UTF-8 support
 set encoding=utf8
 
 " Spell checking in UK-English
 set spell spelllang=en_gb
-
-" Set a nerdfont for vim
-set guifont=DroidSansMono\ Nerd\ Font\ 11
 
 " Access system keyboard
 set clipboard=unnamed
@@ -20,41 +24,11 @@ set clipboard=unnamed
 " Set the mapleader
 let mapleader=","
 
-" Makes autocomplete window go away after completion
-autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | pclose | endif
-
-" Autocomplete cycle through with <tab>
-inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
-
-" Enable autocomplet)e of deoplete
-let g:deoplete#enable_at_startup = 1
-
-" Ale Airline implementation
-let g:airline#extensions#ale#enabled = 1
-
-" Use Airline Fonts
-let g:airline_powerline_fonts = 1
-
 " Sets the linters for Ale
 let g:ale_linters={'python': ['pylint'],}
 
 " Set autfold for (.vim)-files to level 0
 autocmd FileType vim setlocal foldlevel=0
-
-" Whether to show doc string in deoplete
-let g:deoplete#sources#jedi#show_docstring = 0
-
-" For large package, set autocomplete wait time longer for deoplete
-let g:deoplete#sources#jedi#server_timeout = 50
-
-" Ignore jedi errors during completion
-let g:deoplete#sources#jedi#ignore_errors = 1
-
-" Disable autocompletion, because I use deoplete for auto-completion
-let g:jedi#completions_enabled = 0
-
-" Whether to show function call signature
-let g:jedi#show_call_signatures = '0'
 
 " Edit and reload init.vim quickly
 nnoremap <silent> <leader>ev :edit $MYVIMRC<cr>
@@ -63,12 +37,6 @@ nnoremap <silent> <leader>sv :silent update $MYVIMRC <bar> source $MYVIMRC <bar>
 
 " Minimum lines to keep above and below cursor when scrolling
 set scrolloff=3
-
-" Use mouse to select and resize windows, etc.
-if has('mouse')
-    set mouse=nv  " Enable mouse in several mode
-    set mousemodel=popup  " Set the behaviour of mouse
-endif
 
 " Ask for confirmation when handling unsaved or read-only files
 set confirm
@@ -115,15 +83,11 @@ Plug 'jiangmiao/auto-pairs' 					  " Autopairs brackets
 Plug 'tmhedberg/SimpylFold'                                       " Better folding for coding
 Plug 'scrooloose/nerdcommenter' 				  " Autocomment function that is language specific
 Plug 'akinsho/toggleterm.nvim', { 'tag' : 'v2.*' } 		  " Makes the term window in nvim toggleable
-Plug 'prabirshrestha/vim-lsp'					  " Vim language server for completion and more
-Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }	  " Autocomplete for multiple languages (need to be installed)
-Plug 'lighttiger2505/deoplete-vim-lsp'				  " Language server support for deoplete
-Plug 'Shougo/neco-vim', { 'for': 'vim' }			  " Deoplete plugin for vim
 Plug 'puremourning/vimspector'					  " Debugger for VIM
 Plug 'Vimjas/vim-python-pep8-indent'				  " Automatic indent for python Pep8
 
 " File Support Plugins
-Plug 'airblade/vim-gitgutter'					  " Git sidline support for vim
+Plug 'airblade/vim-gitgutter'					  " Git sideline support for vim
 
 call plug#end()
 " }}}
@@ -153,11 +117,17 @@ let g:gruvbox_filetype_hi_groups=0
 let g:gruvbox_plugin_hi_groups=0
 colorscheme gruvbox
 
+" Set a nerdfont for vim
+set guifont=DroidSansMono\ Nerd\ Font\ 11
+
 " Vim-airline theme
 let g:airline_theme='angr'
 
-" Add powerline support to airline
-let g:airline_powerline_fonts=1
+" Ale Airline implementation
+let g:airline#extensions#ale#enabled = 1
+
+" Use Airline Fonts
+let g:airline_powerline_fonts = 1
 
 " Highlight cursor
 set cursorline      " Highlights current line
@@ -191,9 +161,6 @@ let g:airline#extensions#tabline#buffer_nr_show = 1
 
 " Speed up airline
 let g:airline_highlighting_cache = 1
-
-" Update sign column every quarter second for vimgutter
-set updatetime=250
 " }}}
 
 " SEARCH ------------------------------------------------------------- {{{
@@ -552,52 +519,4 @@ EOF
 
 " AUTOCOMPLETION ------------------------------------------------------------- {{{
 " WARNING: For this to work "python-language-server[all]" must be pip installed
-
-" settings for pyls
-if executable('pyls')
-    " pip install python-language-server
-    au User lsp_setup call lsp#register_server({
-        \ 'name': 'pyls',
-        \ 'cmd': {server_info->['pyls']},
-        \ 'allowlist': ['python'],
-        \ })
-endif
-
-function! s:on_lsp_buffer_enabled() abort
-    " use omnifunc if you are fine with it.
-    " setlocal omnifunc=lsp#complete
-    if exists('+tagfunc') | setlocal tagfunc=lsp#tagfunc | endif
-    " some mappings to use, tweak as you wish.
-    nmap <buffer> gd <plug>(lsp-definition)
-    nmap <buffer> gr <plug>(lsp-references)
-    nmap <buffer> gi <plug>(lsp-implementation)
-    nmap <buffer> gt <plug>(lsp-type-definition)
-    nmap <buffer> <leader>rn <plug>(lsp-rename)
-    nmap <buffer> [g <Plug>(lsp-previous-diagnostic)
-    nmap <buffer> ]g <Plug>(lsp-next-diagnostic)
-    nmap <buffer> K <plug>(lsp-hover)
-endfunction
-
-augroup lsp_install
-    au!
-    " call s:on_lsp_buffer_enabled only for languages that has the server registered.
-    autocmd User lsp_buffer_enabled call s:on_lsp_buffer_enabled()
-augroup END
-
-" whether to enable diagnostics for vim-lsp (we may want to use ALE for other
-" plugins for that.
-let g:lsp_diagnostics_enabled = 0
-
-" Do not use virtual text, they are far too obtrusive.
-let g:lsp_virtual_text_enabled = 0
-
-" echo a diagnostic message at cursor position
-let g:lsp_diagnostics_echo_cursor = 0
-
-" show diagnostic in floating window
-let g:lsp_diagnostics_float_cursor = 1
-
-" whether to enable highlight a symbol and its references
-let g:lsp_highlight_references_enabled = 1
-let g:lsp_preview_max_width = 80
 " }}}
