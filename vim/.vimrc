@@ -1,3 +1,8 @@
+" This vim-theme is written for servers and the like, which don't have
+" termcolors and maybe an older version of vim (not nvim).
+
+" Tries to enable as much comfort as possible...
+
 " GENERAL ------------------------------------------------------------- {{{
 " Disable compatibility with vi which can cause unexpected issues
 set nocompatible
@@ -5,14 +10,30 @@ set nocompatible
 " Enable filetype detection. Vim will try to autodetect the file
 filetype off
 
+" Remove issues with backup
+set nobackup
+set nowritebackup
+
 " Load an indent file for the detected filetype
 filetype indent on
+
+" Set updatetime so the user experience is better
+set updatetime=300
 
 " UTF-8 support
 set encoding=utf-8
 
 " Access system keyboard
 set clipboard=unnamed
+
+" Sets the linters for Ale
+let g:ale_linters={'python': ['pylint'],}
+
+" Speed up airline
+let g:airline_highlighting_cache = 1
+
+" Set autfold for (.vim)-files to level 0
+autocmd FileType vim setlocal foldlevel=0
 
 " Set the mapleader
 let mapleader=","
@@ -25,14 +46,22 @@ if version >= 703
     set undoreload=10000
 endif
 
-" Use homebrew's clangd
-let g:ycm_clangd_binary_path = trim(system('brew --prefix llvm')).'/bin/clangd'
-
-" Makes autocomplete window go away after completion
-let g:ycm_autoclose_preview_window_after_completion=1
-
 " Spell checking in UK-English
 set spell spelllang=en_gb
+
+" Edit and reload init.vim quickly
+nnoremap <silent> <leader>ev :edit $MYVIMRC<cr>
+nnoremap <silent> <leader>sv :silent update $MYVIMRC <bar> source $MYVIMRC <bar>
+    \ echomsg "Vim config successfully reloaded!"<cr>
+
+" Minimum lines to keep above and below cursor when scrolling
+set scrolloff=3
+
+" Ask for confirmation when handling unsaved or read-only files
+set confirm
+
+" Persistent undo even after you close a file and re-open it
+set undofile
 " }}}
 
 " PLUGINS ------------------------------------------------------------- {{{
@@ -43,35 +72,26 @@ call vundle#begin()
 " Let Vundle manage itself
 Plugin 'VundleVim/Vundle.vim'
 
-" Plugins need to be added here
-Plugin 'ayu-theme/ayu-vim'                                          " Ayu colorscheme for vim
-Plugin 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}     " Powerline
+" Visual Plugins
+Plugin 'morhetz/gruvbox' 				    	    " Colorscheme
+Plugin 'mhinz/vim-startify'    					    " A fancy start screen for vim
+Plugin 'machakann/vim-highlightedyank' 				    " Highlights the code yanking of vim
+Plugin 'Yggdroot/indentLine' 					    " Better visual support for indentation
+Plugin 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}     " Powerline support
 Plugin 'vim-airline/vim-airline'                                    " More support for the powerline
 Plugin 'vim-airline/vim-airline-themes'                             " Themes for the vim airline
-Plugin 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}       " Treesitter parsing support for python
 
+" Navigation Plugins
 Plugin 'preservim/nerdtree'                                         " File system explorer for vim
-
-Plugin 'tpope/vim-fugitive'                                         " Git support for vim
-Plugin 'cespare/vim-toml'                                           " Toml support for vim
-
-Plugin 'Valloric/YouCompleteMe'                                     " Autocomplete for many languages
-Plugin 'ervandew/supertab'                                          " Makes <Tab> do inserting
 Plugin 'dense-analysis/ale'                                         " Syntax checker various languages
 Plugin 'tmhedberg/SimpylFold'                                       " Better folding for coding
-Plugin 'junegunn/vim-easy-align'                                    " Makes easy align possible
 Plugin 'junegunn/fzf.vim'                                           " Fuzzy file finder
-Plugin 'junegunn/fzf', {'do':{ -> fzf#install()}}                   " Updates the FZF
-Plugin 'bronson/vim-trailing-whitespace'                            " Quickly removes trailing whitespace
-Plugin 'LucHermitte/vim-refactor'                                   " Refactoring for programming languages
 
+" Utility Plugin
+Plugin 'tpope/vim-fugitive'                                         " Git support for vim
+Plugin 'bronson/vim-trailing-whitespace'                            " Quickly removes trailing whitespace
 Plugin 'vim-scripts/indentpython.vim'                               " Indent checks for python
 Plugin 'nvie/vim-flake8'                                            " Pep8 support for python
-
-" Plugin 'sheerun/vim-polyglot'                                       " Language support for vim, syntax support
-
-Plugin 'vim-scripts/a.vim'                                          " Switches quickly between files and headers
-Plugin 'vim-scripts/argtextobj.vim'                                 " Provides text-object a argument
 
 " Calls the plugins
 call vundle#end()
@@ -87,17 +107,29 @@ filetype plugin indent on
 set lazyredraw  " Redraw only when we need to, e.g., not with macros
 set showmatch   " Highlight matching [{()}]
 
-" Set truecolorsupport
-set termguicolors
-
 " Powerline fonts
 let g:airline_powerline_fonts = 1
 
-" Enable dark version
-let ayucolor='dark'
+" Ale Airline implementation
+let g:airline#extensions#ale#enabled = 1
+
+" Do not show mode on command line since vim-airline can show it
+set noshowmode
+
+" Background color
+set background=dark
 
 " Set colorscheme
-colorscheme ayu
+let g:gruvbox_bold=1
+let g:gruvbox_italics=1
+let g:gruvbox_italicize_comments=1
+let g:gruvbox_italicize_strings=1
+let g:gruvbox_filetype_hi_groups=0
+let g:gruvbox_plugin_hi_groups=0"
+colorscheme gruvbox
+
+" Set a nerdfont for vim
+set guifont=DroidSansMono\ Nerd\ Font\ 11
 
 " Highlight cursor
 set cursorline      " Highlights current line
@@ -209,7 +241,14 @@ let g:SimpylFold_docstring_preview=1
 "}}}
 
 " REMAPS ------------------------------------------------------------- {{{
-inoremap jj <esc>
+" Shortcut for faster save and quit
+ nnoremap <silent> <leader>w :update<CR>
+"
+" Saves the file if modified and quit
+nnoremap <silent> <leader>q :x<CR>
+
+" Remap the <esc> as well as the new line functionality
+inoremap <silent> jj <esc>
 nnoremap o o<esc>
 nnoremap O O<esc>
 
@@ -239,9 +278,6 @@ nnoremap <f3> :NERDTreeToggle<CR>
 
 " Fix Whitespace mapping
 nnoremap <F6> :FixWhitespace<CR>
-
-" YouCompleteMe mapping for goto definition
-map <leader>g :YouCompleter GoToDefinitionElseDeclaration<CR>
 
 " Easier tab handling
 nnoremap <leader>tn :tabnew<cr>
@@ -282,18 +318,6 @@ nnoremap <leader>b :buffers<CR>:buffer<Space>
 nnoremap <leader>bd :bdelete<CR>
 nnoremap <leader>bn :bnext<CR>
 nnoremap <leader>bp :bprev<CR>
-" }}}
-
-" VIMSCRIPTS ------------------------------------------------------------- {{{
-" Adds virtulenv support for python
-" py << EOF
-" import os
-" import sys
-" if 'VIRTUAL_ENV' in os.environ:
-"     project_base_dir = os.environ['VIRTUAL_ENV']
-"     activate_this = os.path.join(project_base_dir, 'bin/activate_this.py')
-"     execfile(activate_this, dict(__file__=activate_this))
-" EOF
 " }}}
 
 " STATUS LINE ------------------------------------------------------------- {{{
