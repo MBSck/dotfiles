@@ -75,20 +75,26 @@ Plugin 'VundleVim/Vundle.vim'
 " Visual Plugins
 Plugin 'morhetz/gruvbox' 				    	    " Colorscheme
 Plugin 'mhinz/vim-startify'    					    " A fancy start screen for vim
-Plugin 'machakann/vim-highlightedyank' 				    " Highlights the code yanking of vim
 Plugin 'Yggdroot/indentLine' 					    " Better visual support for indentation
 Plugin 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}     " Powerline support
 Plugin 'vim-airline/vim-airline'                                    " More support for the powerline
 Plugin 'vim-airline/vim-airline-themes'                             " Themes for the vim airline
+Plugin 'machakann/vim-highlightedyank' 				    " Highlights the code yanking of vim
 
 " Navigation Plugins
-Plugin 'preservim/nerdtree'                                         " File system explorer for vim
-Plugin 'dense-analysis/ale'                                         " Syntax checker various languages
+Plugin 'preservim/nerdtree'  |					    " File system explorer for vim
+Plugin 'Xuyuanp/nerdtree-git-plugin' | 		  		    " NERDTree git implementation
+Plugin 'tiagofumo/vim-nerdtree-syntax-highlight' |   		    " NERDTree Syntax highlight
 Plugin 'tmhedberg/SimpylFold'                                       " Better folding for coding
 Plugin 'junegunn/fzf.vim'                                           " Fuzzy file finder
 
+" Linting
+Plugin 'dense-analysis/ale'					    " Syntax checking/linting for vim
+
 " Utility Plugin
-Plugin 'tpope/vim-fugitive'                                         " Git support for vim
+Plugin 'airblade/vim-gitgutter'					    " Git sideline support for vim
+Plugin 'jiangmiao/auto-pairs' 					    " Autopairs brackets
+Plugin 'scrooloose/nerdcommenter' 				    " Autocomment function that is language specific
 Plugin 'bronson/vim-trailing-whitespace'                            " Quickly removes trailing whitespace
 Plugin 'vim-scripts/indentpython.vim'                               " Indent checks for python
 Plugin 'nvie/vim-flake8'                                            " Pep8 support for python
@@ -131,9 +137,18 @@ colorscheme gruvbox
 " Set a nerdfont for vim
 set guifont=DroidSansMono\ Nerd\ Font\ 11
 
-" Highlight cursor
-set cursorline      " Highlights current line
-set cursorcolumn    " Highlights current column
+" Display cursorline and cursorcolumn ONLY in active window.
+augroup cursor_off
+	autocmd!
+	autocmd WinLeave * set nocursorline nocursorcolumn
+	autocmd WinEnter * set cursorline cursorcolumn
+augroup END
+
+" set highlight duration time to 1000 ms, i.e., 1 second
+let g:highlightedyank_highlight_duration = 1000
+
+" Show buffer number for easier switching between buffer,
+let g:airline#extensions#tabline#buffer_nr_show = 1
 
 " Sets 80 column so line skip can be seen
 if (exists('+colorcolumn'))
@@ -197,14 +212,21 @@ set wildmode=list:longest
 " Make wildmenu ignore files not meant for vim editing
 set wildignore=*.docx,*.jpg,*.png,*.gif,*.pdf,*.pyc,*.exe,*.flv,*.img,.xlsx
 
-" Let NERDtree ignore certain files and directories
-let NERDTreeIgnore=['\.git$','\.jpg$','\.mp4$','\.ogg$','\.iso$','\.pdf$','\.pyc$','\.odt$','\.png$','\.gif$','\.db$']
+" NERDTree settings
+ let g:NERDTreeKeepTreeInNewTab=1
+ let g:NERDTreeShowHidden=1
 
+" NERDTree highlighting settings
+let g:NERDTreeFileExtensionHighlightFullName = 1
+let g:NERDTreeExactMatchHighlightFullName = 1
+let g:NERDTreePatternMatchHighlightFullName = 1
+
+" Changes the symbols for NERDTree
 let g:NERDTreeDirArrowExpandable = '▸'
 let g:NERDTreeDirArrowCollapsible = '▾'
 
-autocmd StdinReadPre * let s:std_in=1
-autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
+" Disable bookmark and 'press ? for help' text
+let NERDTreeMinimalUI=1
 " }}}
 
 " NAVIGATION ------------------------------------------------------------- {{{
@@ -243,7 +265,7 @@ let g:SimpylFold_docstring_preview=1
 " REMAPS ------------------------------------------------------------- {{{
 " Shortcut for faster save and quit
  nnoremap <silent> <leader>w :update<CR>
-"
+
 " Saves the file if modified and quit
 nnoremap <silent> <leader>q :x<CR>
 
@@ -269,12 +291,12 @@ nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
 
 " FZF mapping
-nnoremap <f2> :FZF<CR>
+nnoremap <F2> :FZF<CR>
 nnoremap <silent> <C-f> :Files<CR>
 nnoremap <silent> <Leader>f :Rg<CR>
 
 " NERDTree mappings
-nnoremap <f3> :NERDTreeToggle<CR>
+nnoremap <F3> :NERDTreeToggle<CR>
 
 " Fix Whitespace mapping
 nnoremap <F6> :FixWhitespace<CR>
