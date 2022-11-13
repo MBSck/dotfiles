@@ -24,9 +24,6 @@ set clipboard=unnamed
 " Set the mapleader
 let mapleader=","
 
-" Sets the linters for Ale
-let g:ale_linters={'python': ['pylint'],}
-
 " Set autfold for (.vim)-files to level 0
 autocmd FileType vim setlocal foldlevel=0
 
@@ -43,10 +40,6 @@ set confirm
 
 " Persistent undo even after you close a file and re-open it
 set undofile
-"
-" Completion behaviour
-set completeopt+=menuone  " Show menu even if there is only one item
-set completeopt-=preview  " Disable the preview window
 " }}}
 
 " PLUGINS ------------------------------------------------------------- {{{
@@ -71,24 +64,19 @@ Plug 'ryanoasis/vim-devicons'            			  " Icon support for vim, needs eith
 Plug 'junegunn/fzf.vim'                                           " Fuzzy file finder
 Plug 'junegunn/fzf', {'do':{ -> fzf#install()}}                   " Updates the FZF
 
-" Vim Utility Plugins
-Plug 'bronson/vim-trailing-whitespace'                            " Quickly removes trailing whitespace
-Plug 'junegunn/vim-easy-align'                                    " Makes easy align possible
-
 " Linting
 Plug 'dense-analysis/ale'					  " Syntax checking/linting for vim
 
 " Code Utility Plugins
+Plug 'bronson/vim-trailing-whitespace'                            " Quickly removes trailing whitespace
+Plug 'airblade/vim-gitgutter'					  " Git sideline support for vim
 Plug 'jiangmiao/auto-pairs' 					  " Autopairs brackets
 Plug 'tmhedberg/SimpylFold'                                       " Better folding for coding
 Plug 'scrooloose/nerdcommenter' 				  " Autocomment function that is language specific
 Plug 'akinsho/toggleterm.nvim', { 'tag' : 'v2.*' } 		  " Makes the term window in nvim toggleable
-Plug 'neoclide/coc.nvim', {'branch': 'release'}			  " Conquer Autocomplete
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'puremourning/vimspector'					  " Debugger for VIM
 Plug 'Vimjas/vim-python-pep8-indent'				  " Automatic indent for python Pep8
-
-" File Support Plugins
-Plug 'airblade/vim-gitgutter'					  " Git sideline support for vim
 
 call plug#end()
 " }}}
@@ -241,10 +229,7 @@ set wildignore=*.docx,*.jpg,*.png,*.gif,*.pdf,*.pyc,*.exe,*.flv,*.img,.xlsx
 let NERDTreeIgnore=['\.git$','\.jpg$','\.mp4$','\.ogg$','\.iso$','\.pdf$','\.pyc$','\.odt$','\.png$','\.gif$','\.db$']
 
 " NERDTree toggle and keep cursor in current window
-nnoremap <f3> :NERDTreeToggle<CR>:wincmd p<CR>
-
-" Reveal currently edited file in the NerdTreeWindow
-nnoremap <f4> :NerdTreeFind<CR>
+nnoremap <F3> :NERDTreeToggle<CR>:wincmd p<CR>
 
 " Automatically opens NERDTree when opening vim and moves the cursor to the
 " open buffer
@@ -351,9 +336,6 @@ nnoremap k gk
 " Yank from cursor to the end of line
 nnoremap Y y$
 
-" Easy align interactive
-vnoremap <silent> <Enter> :EasyAlign<CR>
-
 " Split navigation
 nnoremap <C-J> <C-W><C-J>
 nnoremap <C-K> <C-W><C-K>
@@ -366,11 +348,11 @@ nnoremap <silent> <C-f> :Files<CR>
 nnoremap <silent> <Leader>f :Rg<CR>
 
 " Fix Whitespace mapping
-nnoremap <F6> :FixWhitespace<CR>
+nnoremap <F7> :FixWhitespace<CR>
 
 " Easier tab handling
 nnoremap <leader>tn :tabnew<cr>
-nnoremap <leader>t<leader> :tabnext
+nnoremap <leader>t<leader> :tabnext<cr>
 nnoremap <leader>tm :tabmove
 nnoremap <leader>tc :tabclose<cr>
 nnoremap <leader>to :tabonly<cr>
@@ -447,6 +429,10 @@ EOF
 " }}}
 
 " TERMINAL ------------------------------------------------------------- {{{
+" Exit terminal insert mode
+tnoremap <leader>j <C-\><C-n>
+nnoremap <leader>tt :tab new<CR>:tab term<CR>
+"
 " Setup toggleterm in lua
 lua << EOF
 require("toggleterm").setup {
@@ -467,6 +453,7 @@ local Terminal = require("toggleterm.terminal").Terminal
 local terminal_only = Terminal:new()
 local python = Terminal:new({ cmd = "python3 "..vim.fn.expand("%, t") })
 local python_package = Terminal:new({ cmd = python_package_cmd })
+local rust_cargo_run = Terminal:new({ cmd = "cargo run"})
 local pytest = Terminal:new({ cmd = "pytest "..vim.fn.expand("%, t") })
 local lazygit = Terminal:new({
 	cmd = "lazygit",
@@ -499,6 +486,11 @@ function _pytest_toggle()
 	pytest:toggle()
 end
 
+-- Create a function to open a neovim terminal in a small split window and run pytest
+function _rust_cargo_run_toggle()
+	rust_cargo_run:toggle()
+end
+
 -- Simply opens a toggle Terminal
 function _lazygit_toggle()
 	lazygit:toggle()
@@ -513,13 +505,15 @@ end
 vim.api.nvim_set_keymap("n", "<F4>", ":w<CR><cmd>lua _pytest_toggle()<CR>", {noremap = true, silent = true})
 vim.api.nvim_set_keymap("n", "<F5>", ":w <CR><cmd>lua _python_toggle()<CR>", {noremap = true, silent = true})
 vim.api.nvim_set_keymap("n", "<leader><F5>", ":w <CR><cmd>lua _python_package_toggle()<CR>", {noremap = true, silent = true})
-vim.api.nvim_set_keymap("n", "<F7>", "<cmd>lua _lazygit_toggle()<CR>", {noremap = true, silent = true})
+vim.api.nvim_set_keymap("n", "<F6>", ":w <CR><cmd>lua  _rust_cargo_run_toggle()<CR>", {noremap = true, silent = true})
+vim.api.nvim_set_keymap("n", "<F8>", "<cmd>lua _lazygit_toggle()<CR>", {noremap = true, silent = true})
 vim.api.nvim_set_keymap("n", "<F9>", "<cmd>lua _terminal_toggle()<CR>", {noremap = true, silent = true})
 EOF
 " }}}
 
 " AUTOCOMPLETION ------------------------------------------------------------- {{{
 " REMINDER: Install the language packages with Coc
+" REMINDER: Manually install the servers for the language
 
 " Use tab for trigger completion with characters ahead and navigate.
 " NOTE: There's always complete item selected by default, you may want to enable
