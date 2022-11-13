@@ -97,7 +97,6 @@ Plugin 'jiangmiao/auto-pairs' 					    " Autopairs brackets
 Plugin 'scrooloose/nerdcommenter' 				    " Autocomment function that is language specific
 Plugin 'bronson/vim-trailing-whitespace'                            " Quickly removes trailing whitespace
 Plugin 'vim-scripts/indentpython.vim'                               " Indent checks for python
-Plugin 'nvie/vim-flake8'                                            " Pep8 support for python
 
 " Calls the plugins
 call vundle#end()
@@ -299,7 +298,7 @@ nnoremap <silent> <Leader>f :Rg<CR>
 nnoremap <F3> :NERDTreeToggle<CR>
 
 " Fix Whitespace mapping
-nnoremap <F6> :FixWhitespace<CR>
+nnoremap <F7> :FixWhitespace<CR>
 
 " Easier tab handling
 nnoremap <leader>tn :tabnew<cr>
