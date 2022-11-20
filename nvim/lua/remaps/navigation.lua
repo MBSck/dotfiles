@@ -1,4 +1,4 @@
-local nnoremap = require("keymap").nnoremap
+local nnoremap = require("remaps.keymap").nnoremap
 
 -- Move by visual line
 nnoremap("j", "gj")

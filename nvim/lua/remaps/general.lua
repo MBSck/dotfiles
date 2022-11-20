@@ -1,5 +1,5 @@
-local nnoremap = require("keymap").nnoremap
-local inoremap = require("keymap").inoremap
+local nnoremap = require("remaps.keymap").nnoremap
+local inoremap = require("remaps.keymap").inoremap
 
 -- Insert mode remaps
 -- Exit insert mode remap
