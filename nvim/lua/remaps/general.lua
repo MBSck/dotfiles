@@ -20,3 +20,8 @@ nnoremap("<leader>q", ":x<cr>", { silent = true })
 nnoremap("o", "o<esc>")
 nnoremap("O", "O<esc>")
 
+-- Disable arrow keys
+nnoremap("<up>", "<nop>")
+nnoremap("<down>", "<nop>")
+nnoremap("<right>", "<nop>")
+nnoremap("<left>", "<nop>")
