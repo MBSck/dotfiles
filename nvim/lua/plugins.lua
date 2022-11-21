@@ -7,7 +7,7 @@ return require("packer").startup(function (use)
 	use 'wbthomason/packer.nvim'
 
 	-- Visual plugins
-	use 'morhetz/gruvbox' -- Better gruvbox Better gruvbox
+    use 'folke/tokyonight.nvim' -- Colorscheme
 	use 'Yggdroot/indentLine' -- Better visual support for indentation
 	use 'vim-airline/vim-airline' -- More support for the powerline
 	use 'vim-airline/vim-airline-themes' -- Themes for the vim-airline
