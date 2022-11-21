@@ -9,6 +9,7 @@ return require("packer").startup(function (use)
 	-- Visual plugins
     use 'folke/tokyonight.nvim' -- Colorscheme
 	use 'Yggdroot/indentLine' -- Better visual support for indentation
+    use 'kyazdani42/nvim-web-devicons' -- Icon support
     use {'nvim-lualine/lualine.nvim',
         requires = {'kyazdani42/nvim-web-devicons'}, opt = true} -- Lualine
     use 'akinsho/bufferline.nvim' -- Bufferline
