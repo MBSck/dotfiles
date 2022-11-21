@@ -6,3 +6,4 @@ vim.opt.splitright = true
 vim.opt.foldlevelstart=10   -- Opens most fold by default
 vim.opt.foldlevel=99
 vim.opt.foldnestmax=10      -- 10 nested fold max shown from start
+vim.opt.foldmethod = "indent"

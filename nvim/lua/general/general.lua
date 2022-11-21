@@ -1,3 +1,9 @@
+-- Set encoding to utf-8
+vim.cmd("set encoding=utf-8")
+
+-- Set language support
+vim.cmd("set spelllang=en_gb")
+
 -- Avoid server issues (coc) with backup-files
 vim.opt.backup = false
 vim.opt.writebackup = false
@@ -19,14 +25,22 @@ vim.g.do_filetype_lua = false
 -- delays and poor user experience.
 vim.opt.updatetime = 50
 
---vim.opt.errorbells = false
-
+-- General undo settings
 vim.opt.scrolloff = 3
 vim.opt.wrap = false
-
 vim.opt.swapfile = false
-vim.opt.backup = false
 vim.opt.undodir = os.getenv("HOME").."/.vim/undodir"
 vim.opt.undofile = true
 
+-- Leader
 vim.g.mapleader = ","
+
+-- File settings
+vim.opt.tabstop = 4
+vim.opt.softtabstop = 4
+vim.opt.shiftwidth = 4
+vim.opt.textwidth = 90
+vim.opt.expandtab = true
+vim.opt.smartindent = true
+vim.opt.autoindent = true
+vim.opt.fileformat = "unix"
