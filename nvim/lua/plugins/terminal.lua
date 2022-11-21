@@ -1,3 +1,5 @@
+local nnoremap = require("remaps.keymap").nnoremap
+
 require("toggleterm").setup {
 	start_in_insert = true,
 	insert_mappings = true,
@@ -35,22 +37,22 @@ local lazygit = Terminal:new({
 })
 
 -- Create a function to open a neovim terminal in a small split window and run python
-function python_toggle()
+function _python_toggle()
 	python:toggle()
 end
 
 -- Create a function to open a neovim terminal in a small split window and run a python module in a package
-function python_package_toggle()
+function _python_package_toggle()
 	python_package:toggle()
 end
 
 -- Create a function to open a neovim terminal in a small split window and run pytest
-function pytest_toggle()
+function _pytest_toggle()
 	pytest:toggle()
 end
 
 -- Create a function to open a neovim terminal in a small split window and run pytest
-function rust_cargo_run_toggle()
+function _rust_cargo_run_toggle()
 	rust_cargo_run:toggle()
 end
 
@@ -64,3 +66,9 @@ function _terminal_toggle()
 	terminal_only:toggle()
 end
 
+nnoremap("<f4>", ":w<CR><cmd>lua _pytest_toggle()<CR>", { silent = true })
+nnoremap("<f5>", ":w <CR><cmd>lua _python_toggle()<CR>", { silent = true })
+nnoremap("<leader><f5>", ":w <CR><cmd>lua _python_package_toggle()<CR>", { silent = true })
+nnoremap("<f6>", ":w <CR><cmd>lua  _rust_cargo_run_toggle()<CR>", { silent = true })
+nnoremap("<f8>", "<cmd>lua _lazygit_toggle()<CR>", { silent = true })
+nnoremap("<f9>", "<cmd>lua _terminal_toggle()<CR>", { silent = true })

@@ -1,3 +1,13 @@
+-- Avoid server issues (coc) with backup-files
+vim.opt.backup = false
+vim.opt.writebackup = false
+
+-- Having longer update-time leads to delays
+vim.opt.updatetime = 300
+
+-- Always show signalcolumn, otherwise it would shift text if diagnostics come up
+-- vim.opt.signalcolumn = "yes"
+
 -- Disable netrw at the very start of the init.lua
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
