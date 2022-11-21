@@ -9,8 +9,9 @@ return require("packer").startup(function (use)
 	-- Visual plugins
     use 'folke/tokyonight.nvim' -- Colorscheme
 	use 'Yggdroot/indentLine' -- Better visual support for indentation
-	use 'vim-airline/vim-airline' -- More support for the powerline
-	use 'vim-airline/vim-airline-themes' -- Themes for the vim-airline
+    use {'nvim-lualine/lualine.nvim',
+        requires = {'kyazdani42/nvim-web-devicons'}, opt = true} -- Lualine
+    use 'akinsho/bufferline.nvim' -- Bufferline
 	use 'nvim-treesitter/nvim-treesitter' -- Treesitter parsing support
 	use 'machakann/vim-highlightedyank' -- Highlights the code yanking
 	use 'mhinz/vim-startify' -- A fancy start screen
@@ -21,7 +22,6 @@ return require("packer").startup(function (use)
 	use 'preservim/nerdtree' -- File system explorer
 	use 'Xuyuanp/nerdtree-git-plugin' -- NERDTree git implementation
 	use 'tiagofumo/vim-nerdtree-syntax-highlight' -- NERDTree Syntax highlight
-	use 'ryanoasis/vim-devicons' -- Icon support, needs Nerd-font installed
 	use 'junegunn/fzf.vim' -- Fuzzy file finder
 	use {'junegunn/fzf', run = ":call fzf#install()"} -- Updates the FZF
 
