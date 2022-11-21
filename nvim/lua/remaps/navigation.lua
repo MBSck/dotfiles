@@ -48,6 +48,6 @@ nnoremap("<leader>b0", ":buffer0<cr>")
 -- Fast buffer switching
 nnoremap("<leader>b", ":buffers<cr>:buffer<space>")
 nnoremap("<leader>bd", ":bdelete<cr>")
-nnoremap("<leader>hn", ":bnext<cr>")
+nnoremap("<leader>bn", ":bnext<cr>")
 nnoremap("<leader>bp", ":bprev<cr>")
 
