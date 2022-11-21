@@ -41,5 +41,4 @@ return require("packer").startup(function (use)
 		require("toggleterm").setup()
 	end} -- Toggelable term window
     use 'puremourning/vimspector' -- Debugger for VIM
-	use 'Vimjas/vim-python-pep8-indent' -- Automatic indent for python Pep8
 end)

@@ -25,3 +25,5 @@ nnoremap("<up>", "<nop>")
 nnoremap("<down>", "<nop>")
 nnoremap("<right>", "<nop>")
 nnoremap("<left>", "<nop>")
+
+-- Add space after and before

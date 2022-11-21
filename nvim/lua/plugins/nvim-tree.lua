@@ -22,5 +22,7 @@ require("nvim-tree").setup({
   },
 })
 
-nnoremap("<f3>", ":NvimTreeToggle<cr>")
+-- Automatically closes NvimTree if it is the last window in a tab
+vim.cmd("autocmd BufEnter * ++nested if winnr('$') == 1 && bufname() == 'NvimTree_' . tabpagenr() | quit | endif")
 
+nnoremap("<f3>", ":NvimTreeToggle<cr>")
