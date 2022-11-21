@@ -10,8 +10,8 @@ return require("packer").startup(function (use)
     use 'folke/tokyonight.nvim' -- Colorscheme
 	use 'Yggdroot/indentLine' -- Better visual support for indentation
     use 'kyazdani42/nvim-web-devicons' -- Icon support
-    use {'nvim-lualine/lualine.nvim',
-        requires = {'kyazdani42/nvim-web-devicons'}, opt = true} -- Lualine
+    use { 'nvim-lualine/lualine.nvim',
+        requires = { 'kyazdani42/nvim-web-devicons', opt = true }} -- Lualine
     use 'akinsho/bufferline.nvim' -- Bufferline
 	use 'nvim-treesitter/nvim-treesitter' -- Treesitter parsing support
 	use 'machakann/vim-highlightedyank' -- Highlights the code yanking
