@@ -17,4 +17,4 @@ vim.opt.colorcolumn = "90"
 vim.cmd("colorscheme tokyonight")
 
 -- No-showmode on command line as lualine can show it
-vim.opt.noshowmode = true
+vim.cmd("set noshowmode")
