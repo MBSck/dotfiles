@@ -5,12 +5,7 @@ require("file_explorers")
 require("file_types")
 
 -- Plugin configurations
-require("plugins.packer")
-require("plugins.terminal")
---require("plugins.lualine")
+require("plugins")
 
 -- Remap configurations
-require("remaps.keymap")
-require("remaps.general")
-require("remaps.navigation")
-require("remaps.plugins")
+require("remaps")
