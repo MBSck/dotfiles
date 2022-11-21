@@ -1,5 +1,6 @@
 require("plugins.packer")
 require("plugins.coc")
+require("plugins.fzf")
 require("plugins.treesitter")
 require("plugins.lualine")
 require("plugins.bufferline")

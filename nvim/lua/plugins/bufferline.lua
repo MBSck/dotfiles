@@ -41,7 +41,7 @@ require('bufferline').setup {
             {
                 filetype = "NvimTree",
                 text = "File Explorer",
-                text_align = "center",
+                text_align = "left",
                 separator = true
             }
         },
