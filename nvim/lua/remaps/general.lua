@@ -1,5 +1,6 @@
 local nnoremap = require("remaps.keymap").nnoremap
 local inoremap = require("remaps.keymap").inoremap
+local tnoremap = require("remaps.keymap").tnoremap
 
 -- Insert mode remaps
 -- Exit insert mode remap
@@ -26,4 +27,10 @@ nnoremap("<down>", "<nop>")
 nnoremap("<right>", "<nop>")
 nnoremap("<left>", "<nop>")
 
--- Add space after and before
+-- TODO: Add this -- Add space after and before
+
+-- Opens a new tab with a terminal
+nnoremap("<leader>tt", ":tab new <cr>:tab term<cr>")
+
+-- Exit terminal insert mode
+tnoremap("<leader>j", "<c-\\><c-n>")

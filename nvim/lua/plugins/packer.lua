@@ -32,6 +32,7 @@ return require("packer").startup(function (use)
 	use 'airblade/vim-gitgutter' -- Git sideline support
 
 	-- Code Utility Plugins
+    use 'vim-scripts/indentpython.vim' -- Better python indents
 	use 'cryopie/vim-tabular' -- Tabular alignment
 	use 'bronson/vim-trailing-whitespace' -- Quickly removes trailing Whitespace
 	use 'jiangmiao/auto-pairs' -- Autopairs brackets
