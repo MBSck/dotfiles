@@ -1,5 +1,8 @@
 local nnoremap = require("remaps.keymap").nnoremap
 
+-- Simple folding
+nnoremap("<space>", "za")
+
 -- Move by visual line
 nnoremap("j", "gj")
 nnoremap("k", "gk")

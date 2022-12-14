@@ -23,6 +23,9 @@ function ContextSetup(show_all_context)
                 "loop_expression",
                 "impl_item",
             },
+            python = {
+                "class",
+            }
         },
     })
 end
