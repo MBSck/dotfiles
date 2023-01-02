@@ -11,6 +11,9 @@ vim.opt.writebackup = false
 -- Having longer update-time leads to delays
 vim.opt.updatetime = 300
 
+-- Set clipboard
+vim.cmd("set clipboard=unnamed")
+
 -- Always show signalcolumn, otherwise it would shift text if diagnostics come up
 -- vim.opt.signalcolumn = "yes"
 

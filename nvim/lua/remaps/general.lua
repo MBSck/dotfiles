@@ -1,6 +1,7 @@
 local nnoremap = require("remaps.keymap").nnoremap
 local inoremap = require("remaps.keymap").inoremap
 local tnoremap = require("remaps.keymap").tnoremap
+local vnoremap = require("remaps.keymap").vnoremap
 
 -- Insert mode remaps
 -- Exit insert mode remap
@@ -34,3 +35,6 @@ nnoremap("<leader>tt", ":tab new <cr>:tab term<cr>")
 
 -- Exit terminal insert mode
 tnoremap("<leader>j", "<c-\\><c-n>")
+
+-- Copy and pasting from without vim
+ vnoremap("<C-c>", "+yi")
