@@ -1,6 +1,0 @@
-{
-	"pyright.testing.provider": "pytest",
-	"rust-analyzer.server.path": "/usr/local/bin/rust-analyzer",
-    "diagnostic.virtualText": false,
-    "diagnostic.checkCurrentLine": true
-}
