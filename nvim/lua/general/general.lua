@@ -4,7 +4,7 @@ vim.cmd("set encoding=utf-8")
 -- Set language support
 vim.cmd("set spelllang=en_gb")
 
--- Avoid server issues (coc) with backup-files
+-- Avoid language server issues with backup-files
 vim.opt.backup = false
 vim.opt.writebackup = false
 
@@ -15,7 +15,7 @@ vim.opt.updatetime = 300
 vim.cmd("set clipboard=unnamed")
 
 -- Always show signalcolumn, otherwise it would shift text if diagnostics come up
--- vim.opt.signalcolumn = "yes"
+vim.opt.signcolumn = "yes"
 
 -- Disable netrw at the very start of the init.lua
 vim.g.loaded_netrw = 1

@@ -63,18 +63,22 @@ return require("packer").startup(function (use)
     use 'scrooloose/nerdcommenter' -- Autocomment function that is language specific
     use 'tmhedberg/SimpylFold' -- Better folding for coding
     use 'bronson/vim-trailing-whitespace' -- Quickly removes trailing Whitespace
+    use 'mbbill/undotree' -- Undotree
+
+    -- Terminals
     use {"akinsho/toggleterm.nvim", tag = 'v2.*', config = function()
         require("toggleterm").setup()
     end} -- Toggelable term window
-    use 'mbbill/undotree' -- Undotree
 
+    -- Markdown support
     use({
         "iamcco/markdown-preview.nvim",
         run = function() vim.fn["mkdp#util#install"]() end,
     }) -- Markdown preview. Install without yarn or npm
 
     -- Debugging
-    use 'mfussenegger/nvim-dap' -- Debugger
-    use 'rcarriga/nvim-dap-ui' -- Better interface for debugger
-    use 'theHamsta/nvim-dap-virtual-text' -- Virtual text for debugger
+    use { "puremourning/vimspector"} -- Graphical debugger
+    --use 'mfussenegger/nvim-dap' -- Debugger
+    --use 'rcarriga/nvim-dap-ui' -- Better interface for debugger
+    --use 'theHamsta/nvim-dap-virtual-text' -- Virtual text for debugger
 end)
