@@ -47,3 +47,10 @@ vim.opt.expandtab = true
 vim.opt.smartindent = true
 vim.opt.autoindent = true
 vim.opt.fileformat = "unix"
+
+-- Disblae python support and enable python3 support for neovim
+vim.g.loaded_python_provider = 0
+vim.g.python3_host_prog = "/Users/scheuck/.pyenv/shims/python3"
+
+-- Set python3 version to standard version for evaluation within nvim
+vim.cmd("set pyxversion=3")
