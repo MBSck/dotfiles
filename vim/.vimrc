@@ -1,7 +1,7 @@
 " This vim-theme is written for servers and the like, which don't have
 " termcolors and maybe an older version of vim (not nvim).
 
-" Tries to enable as much comfort as possible...
+" Tries to provide as much comfort as possible...
 
 " GENERAL ------------------------------------------------------------- {{{
 " Disable compatibility with vi which can cause unexpected issues
@@ -263,7 +263,7 @@ let g:SimpylFold_docstring_preview=1
 
 " REMAPS ------------------------------------------------------------- {{{
 " Shortcut for faster save and quit
- nnoremap <silent> <leader>w :update<CR>
+nnoremap <silent> <leader>w :update<CR>
 
 " Saves the file if modified and quit
 nnoremap <silent> <leader>q :x<CR>
@@ -273,6 +273,17 @@ inoremap <silent> jj <esc>
 nnoremap o o<esc>
 nnoremap O O<esc>
 
+" Keeps cursor at the same position when appending lines
+nnoremap J mzJ`z
+
+" Centres cursor in the middle of the screen when moving
+nnoremap <C-d> <C-d>zz
+nnoremap <C-u> <C-u>zz
+
+" Centres cursor on the searched term
+nnoremap n nzzzv
+nnoremap N Nzzzv
+
 " Move vertically by visual line
 nnoremap j gj
 nnoremap k gk
@@ -280,8 +291,14 @@ nnoremap k gk
 " Yank from cursor to the end of line
 nnoremap Y y$
 
-" Easy align interactive
-vnoremap <silent> <Enter> :EasyAlign<CR>
+" Yank to system clipboard
+nnoremap <leader>y \"+y
+nnoremap <leader>y \"+y
+nnoremap <leader>Y \"+Y
+
+" Delete without pasting it into the buffer
+nnoremap <leader>d \"_d
+nnoremap <leader>d \"_d
 
 " Split navigation
 nnoremap <C-J> <C-W><C-J>
