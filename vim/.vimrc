@@ -62,6 +62,10 @@ set confirm
 
 " Persistent undo even after you close a file and re-open it
 set undofile
+
+" Sets the vertical split to right and the horizontal to below
+set splitright
+set splitbelow
 " }}}
 
 " PLUGINS ------------------------------------------------------------- {{{
