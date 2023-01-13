@@ -69,6 +69,3 @@ vnoremap("<leader>d", "\"_d")
 
 -- Replaces the word selected
 nnoremap("<leader>s", ":%s/\\<<C-r><C-w>\\>/<C-r><C-w>/gI<Left><Left><Left>")
---
--- Makes open buffer executable
-nnoremap("<leader>x", "<cmd>!chmod +x %<CR>", { silent = true })
