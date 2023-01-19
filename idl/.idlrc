@@ -1,0 +1,14 @@
+;; Eight bit or 24 bit color?  Set up the color use and report it
+;; This stuff is from Liam Gumley
+   if !version.os_family eq 'unix' then device, true_color=24
+
+
+;; for working on linux workstations in Amsterdam:
+  window, /free, /pixmap, colors=-10
+  wdelete, !d.window
+  device, decomposed=1, retain=2
+
+;; Axis styles and bigger fonts
+!x.style=1
+!y.style=2
+

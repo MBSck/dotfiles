@@ -5,14 +5,14 @@ if type rg &> /dev/null; then
 fi
 
 # Configure .pyenv
-export PATH="/home/scheuck/.pyenv/bin:$PATH"
+export PATH="$HOME/.pyenv/bin:$PATH"
 eval "$(pyenv init -)"
 eval "$(pyenv virtualenv-init -)"
 
 export PYENV_VIRTUALENV_DISABLE_PROMPT=1
 
 # Add paths
-export PATH="/Users/scheuck/.local/bin:$PATH"
+export PATH="$HOME/.local/bin:$PATH"
 
 # Implement adb
 if [ -d "$HOME/adb-fastboot/platform-tools" ] ; then
@@ -32,21 +32,3 @@ export IDL_PATH=$IDL_PATH:/Users/scheuck/Code/idl/idl_emcee/pro
 export IDL_PATH=$IDL_PATH:/Users/scheuck/Code/idl/itools:/Users/scheuck/Code/idl/itools/components:/Users/scheuck/Code/idl/itools/framework:/Users/scheuck/Code/idl/itools/iu_widgets:idl/itools/extra
 export IDL_STARTUP=/Users/scheuck/.idlrc
 
-# Make aliases for programs
-alias vi='nvim'
-alias vim='nvim'
-alias py3='python3'
-alias pip3='python3 -m pip'
-alias pytest='python -m pytest'
-alias fv='open -a ring
-
-# Execution shortcuts
-alias astro="ssh -X scheuck astro-node11.mpia.de"
-
-# General Path shortcuts
-alias gdata=""
-alias gcode=""
-alias gdown=""
-alias gdocs=""
-alias gpics=""
-alias gpics=""

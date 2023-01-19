@@ -1,18 +1,151 @@
+# Configuration for Alacritty, the GPU enhanced terminal emulator.
+
+# Set environment variables
+env:
+  TERM: xterm-256color
+
+# If this is `true`, the cursor is temporarily hidden when typing.
+hide_when_typing: true
+
+custom_cursor_colors: true
+
+background_opactiy: 1
+
+# Font configuration
 font:
+  # Normal (roman) font face
   normal:
-    family: monospace
+    family: JetBrainsMono Nerd Font
     style: Regular
 
+  # Bold font face
   bold:
-    family: monospace
+    family: JetBrainsMono Nerd Font
     style: Bold
 
+  # Italic font face
   italic:
-    family: monospace
+    family: JetBrainsMono Nerd Font
     style: Italic
 
+  # Bold italic font face
   bold_italic:
-    family: monospace
+    family: JetBrainsMono Nerd Font
     style: Bold Italic
 
-  size: 16
+  # Point size
+  size: 17.5
+
+    # Offset
+    # offset:
+    #   x: 0
+    #   y: 0
+
+    # Glyph offset
+    # glyph_offset:
+    #   x: 0
+    #   y: 0
+
+# Color configuration
+colors:
+  name: Invisibone
+  author: Baskerville
+  primary:
+    background: "#232323"
+    foreground: "#A0A0A0"
+  cursor:
+    text:   '0xf1c1c1'
+    cursor: '0xff2600'
+  normal:
+    black: "#303030"
+    red: "#D370A3"
+    green: "#6D9E3F"
+    yellow: "#B58858"
+    blue: "#6095C5"
+    magenta: "#AC7BDE"
+    cyan: "#3BA275"
+    white: "#CFCFCF"
+  bright:
+    black: "#686868"
+    red: "#FFA7DA"
+    green: "#A3D572"
+    yellow: "#EFBD8B"
+    blue: "#98CBFE"
+    magenta: "#E5B0FF"
+    cyan: "#75DAA9"
+    white: "#FFFFFF"
+
+cursor:
+  # Cursor style
+  #
+  # Values for 'style':
+  #   - ▇ Block
+  #   - _ Underline
+  #   - | Beam
+  style: Block
+
+  blinking: off
+  blink-interval: 750
+
+  # If this is `true`, the cursor will be rendered as a hollow box when the
+  # window is not focused.
+  unfocused_hollow: true
+
+scrolling:
+  history: 10000
+  multiplier: 3
+
+# Live config reload (changes require restart)
+live_config_reload: true
+
+debug:
+  # Should display the render timer
+  render_timer: false
+
+  # Keep the log file after quitting Alacritty.
+  persistent_logging: false
+
+  # Log level
+  #
+  # Values for `log_level`:
+  #   - OFF
+  #   - ERROR
+  #   - WARN
+  #   - INFO
+  #   - DEBUG
+  #   - TRACE
+  log_level: OFF
+
+  # Print all received window events.
+  print_events: false
+
+  # Record all characters and escape sequences as test data.
+  ref_test: false
+
+# Shell
+#
+# You can set shell.program to the path of your favorite shell, e.g. /bin/fish.
+# Entries in shell.args are passed unmodified as arguments to the shell.
+shell:
+  program: /usr/local/bin/zsh
+  args:
+    - --login
+    #- --command=tmux
+
+# Bindings are always filled by default, but will be replaced when a new
+# binding with the same triggers is defined. To unset a default binding, it can
+# be mapped to the `None` action.
+key_bindings:
+  # Enable German MacOS-keybindings
+  - { key: 28, mods: Alt, chars: "{" }
+  - { key: 25, mods: Alt, chars: "}" }
+  - { key: 37, mods: Alt, chars: "@" }
+  - { key: 26, mods: Alt|Shift, chars: "\\" }
+  - { key: 26, mods: Alt, chars: "|" }
+  - { key: 45, mods: Alt, chars: "~" }
+  - { key: 23, mods: Alt, chars: "[" }
+  - { key: 22, mods: Alt, chars: "]" }
+  # Start new alacritty instance in same terminal
+  - { key: N, mods: command, action: SpawnNewInstance }
+  # Set tmux action-key
+theme: Invisibone
