@@ -11,9 +11,6 @@ alias pip3="python3 -m pip"
 alias pytest="python -m pytest"
 alias fv="open -a ring"
 
-# Execution shortcuts
-alias astro="ssh -X scheuck@astro-node1.mpia.de"
-
 # Configuration shortcuts
 alias zshrc="nvim ~/.zshrc"
 alias aliases="nvim ${DOT}/terminal/zsh/aliases.zsh"

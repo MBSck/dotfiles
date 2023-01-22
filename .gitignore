@@ -1,2 +1,5 @@
+# General files to ignore
+.DS_STORE
+
 # Folders to ignore
 nvim/plugin/
