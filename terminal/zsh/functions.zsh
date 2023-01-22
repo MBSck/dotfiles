@@ -1,3 +1,4 @@
+# FUNCTIONS
 # Makes a nohup-python3 with two arguments and if the second one is not specified then the
 # name is chosen by default
 function nhpy ()

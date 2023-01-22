@@ -1,7 +1,9 @@
+# ALIASES
 # Some Helpful path variables
 CODE="${HOME}/Code"
 DATA="${HOME}/Data"
 DOT="${CODE}/dotfiles"
+TERMINAL="${DOT}/terminal/"
 
 # Make aliases for programs
 alias vi="nvim"
@@ -11,14 +13,12 @@ alias pip3="python3 -m pip"
 alias pytest="python -m pytest"
 alias fv="open -a ring"
 
-# Configuration shortcuts
-alias zshrc="nvim ~/.zshrc"
-alias aliases="nvim ${DOT}/terminal/zsh/aliases.zsh"
-alias pathrc="nvim ${DOT}/terminal/zsh/paths.zsh"
-alias commandrc="nvim ${DOT}/terminal/zsh/commands.zsh"
+# Configuration path shortcuts
 alias nvimrc="cd ${DOT}/nvim/"
-alias tmuxrc="nvim ${DOT}/terminal/tmux/.tmux.conf"
-alias alacritty="nvim ${DOT}/terminal/alacritty/alacritty.yml"
+alias zshrc="cd ${TERMINAL}/zsh/"
+alias bashrc="cd ${TERMINAL}/bash/"
+alias tmuxrc="cd ${TERMINAL}/tmux/"
+alias alacrittyrc="cd ${TERMINAL}/alacritty/"
 
 # Source aliases
 alias loadzsh="source ~/.zshrc"

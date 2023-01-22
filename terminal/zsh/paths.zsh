@@ -1,3 +1,4 @@
+# PATHS
 # For ripgrep
 if type rg &> /dev/null; then
   export FZF_DEFAULT_COMMAND='rg --files'
@@ -31,4 +32,3 @@ export IDL_PATH=$IDL_PATH:/Users/scheuck/Code/idl/extra_idl_routines
 export IDL_PATH=$IDL_PATH:/Users/scheuck/Code/idl/idl_emcee/pro
 export IDL_PATH=$IDL_PATH:/Users/scheuck/Code/idl/itools:/Users/scheuck/Code/idl/itools/components:/Users/scheuck/Code/idl/itools/framework:/Users/scheuck/Code/idl/itools/iu_widgets:idl/itools/extra
 export IDL_STARTUP=/Users/scheuck/.idlrc
-
