@@ -341,14 +341,17 @@ key_bindings:
   - { key: S,     mods: Command|Control, chars: "\x06\x67" } # Rename session
   - { key: R,     mods: Command,       chars: "\x06\x72" } # Reloads tmux.conf
   - { key: R,     mods: Command|Shift, chars: "\x06\x12" } # Restors Tmux session
-  - { key: H,     mods: Command,       chars: "\x06\x68" } # Move Left
+  # FIXME: Does not work!
+  #- { key: H,     mods: Command,       chars: "\x06\x68" } # Move Left
   - { key: J,     mods: Command,       chars: "\x06\x6a" } # Move Down
-  - { key: K,     mods: Command,       chars: "\x06\x6b" } # Move Up
+  # FIXME: Does not work!
+  #- { key: K,     mods: Command,       chars: "\x06\x6b" } # Move Up
   - { key: L,     mods: Command,       chars: "\x06\x6c" } # Move Right
-  - { key: H,     mods: Command|Shift, chars: "\x06\x08" } # Expand Left
-  - { key: J,     mods: Command|Shift, chars: "\x06\x6a" } # Expand Down
-  - { key: K,     mods: Command|Shift, chars: "\x06\x4a" } # Expand Up
-  - { key: L,     mods: Command|Shift, chars: "\x06\x4b" } # Expand Right
+  # FIXME: Does not work!
+  #- { key: H,     mods: Command|Shift, chars: "\x06\x48" } # Expand Left
+  #- { key: J,     mods: Command|Shift, chars: "\x06\x4a" } # Expand Down
+  #- { key: K,     mods: Command|Shift, chars: "\x06\x4b" } # Expand Up
+  #- { key: L,     mods: Command|Shift, chars: "\x06\x4c" } # Expand Right
   - { key: N,     mods: Command|Shift, chars: "\x06\x6e" } # Rename Window
   - { key: Key1,  mods: Command,       chars: "\x06\x31" } # First Tab
   - { key: Key2,  mods: Command,       chars: "\x06\x32" } # Second Tab
