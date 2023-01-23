@@ -1,14 +1,7 @@
-# Configuration for Alacritty, the GPU enhanced terminal emulator.
+# Configuration for ALACRITTY, the GPU enhanced terminal emulator.
 
-# Live config reload (changes require restart)
-live_config_reload: true
-
-# The transparant background color
-background_opactiy: 1
-
-# Display tabs using this many cells
-tabspaces: 4
-
+# ------------------------------------------------------------------------------
+# GENERAL
 # Set environment variables
 env:
   TERM: xterm-256color
@@ -27,15 +20,17 @@ shell:
   args:
     - -u # force UTF-8 in tmux
 
-# Window configuration
-window:
-  dynamic_resize: true
-  startup_mode: Maximized
-  decorations: full
-  resizable: true
-  vsync: true
-  show_cursor: false
+# Live config reload (changes require restart)
+live_config_reload: true
 
+# The transparant background color
+background_opactiy: 1
+
+# Display tabs using this many cells
+tabspaces: 4
+
+# ------------------------------------------------------------------------------
+# VISUAL
 # Font configuration
 font:
   # Normal (roman) font face
@@ -59,7 +54,7 @@ font:
     style: Bold Italic
 
   # Point size
-  size: 17.5
+  size: 16
 
     # Offset
     # offset:
@@ -70,10 +65,6 @@ font:
     # glyph_offset:
     #   x: 0
     #   y: 0
-
-
-# Enable custom cursor colors
-custom_cursor_colors: true
 
 # Color configuration
 colors:
@@ -105,6 +96,18 @@ colors:
     cyan: "#75DAA9"
     white: "#FFFFFF"
 
+# Window configuration
+window:
+  dynamic_resize: true
+  startup_mode: Maximized
+  decorations: full
+  resizable: true
+  vsync: true
+  show_cursor: false
+
+# Enable custom cursor colors
+custom_cursor_colors: true
+
 # If this is `true`, the cursor is temporarily hidden when typing.
 hide_when_typing: true
 
@@ -122,7 +125,8 @@ cursor:
   # window is not focused.
   unfocused_hollow: true
 
-# History
+# ------------------------------------------------------------------------------
+# HISTORY
 scrolling:
   # Maximum number of lines in the scrollback buffer.
   # Specifying '0' will disable scrolling.
@@ -135,7 +139,9 @@ scrolling:
   # Scroll to the bottom when new text is written to the terminal.
   auto_scroll: false
 
-# Debug configuration
+
+# ------------------------------------------------------------------------------
+# DEBUG
 debug:
   # Should display the render timer
   render_timer: false
@@ -160,6 +166,8 @@ debug:
   # Record all characters and escape sequences as test data.
   ref_test: false
 
+# ------------------------------------------------------------------------------
+# URL
 url:
   # URL launcher
   #
@@ -182,8 +190,8 @@ url:
   # on them. The available modifiers are documented in the key binding section.
   modifiers: None
 
-
-# Key bindings
+# ------------------------------------------------------------------------------
+# KEY BINDINGS
 #
 # Key bindings are specified as a list of objects. For example, this is the
 # default paste binding:
@@ -319,6 +327,38 @@ key_bindings:
   - { key: C,        mods: Control|Shift, mode: Vi|~Search,  action: ReceiveChar }
   - { key: C,        mods: Command,       mode: Vi|~Search,  action: ReceiveChar }
   - { key: Insert,   mods: Shift,                            action: ReceiveChar }
+
+  # ITerm like command bindings
+  # For MacOS the 'hide-app' function 'cmd+h' needs to be disabled if used as combination.
+  # Use Karabiner for custom-key configuration
+  - { key: T,     mods: Command,       chars: "\x06\x63" } # New tab
+  - { key: W,     mods: Command,       chars: "\x06\x78" } # Kills window
+  - { key: C,     mods: Command,       chars: "\x06\x5b" } # Enter vim (-copy) mode
+  - { key: V,     mods: Command,       chars: "\x06\x5d" } # Paste buffer
+  - { key: D,     mods: Command,       chars: "\x06\x76" } # Splits horizontally
+  - { key: S,     mods: Command,       chars: "\x06\x73" } # Splits vertically
+  - { key: S,     mods: Command|Shift, chars: "\x06\x13" } # Saves Tmux session
+  - { key: S,     mods: Command|Control, chars: "\x06\x67" } # Rename session
+  - { key: R,     mods: Command,       chars: "\x06\x72" } # Reloads tmux.conf
+  - { key: R,     mods: Command|Shift, chars: "\x06\x12" } # Restors Tmux session
+  - { key: H,     mods: Command,       chars: "\x06\x68" } # Move Left
+  - { key: J,     mods: Command,       chars: "\x06\x6a" } # Move Down
+  - { key: K,     mods: Command,       chars: "\x06\x6b" } # Move Up
+  - { key: L,     mods: Command,       chars: "\x06\x6c" } # Move Right
+  - { key: H,     mods: Command|Shift, chars: "\x06\x08" } # Expand Left
+  - { key: J,     mods: Command|Shift, chars: "\x06\x6a" } # Expand Down
+  - { key: K,     mods: Command|Shift, chars: "\x06\x4a" } # Expand Up
+  - { key: L,     mods: Command|Shift, chars: "\x06\x4b" } # Expand Right
+  - { key: N,     mods: Command|Shift, chars: "\x06\x6e" } # Rename Window
+  - { key: Key1,  mods: Command,       chars: "\x06\x31" } # First Tab
+  - { key: Key2,  mods: Command,       chars: "\x06\x32" } # Second Tab
+  - { key: Key3,  mods: Command,       chars: "\x06\x33" } # Third Tab
+  - { key: Key4,  mods: Command,       chars: "\x06\x34" } # Fourth Tab
+  - { key: Key5,  mods: Command,       chars: "\x06\x35" } # Fifth Tab
+  - { key: Key6,  mods: Command,       chars: "\x06\x36" } # Sixth Tab
+  - { key: Key7,  mods: Command,       chars: "\x06\x37" } # Seventh Tab
+  - { key: Key8,  mods: Command,       chars: "\x06\x38" } # Eight Tab
+  - { key: Key9,  mods: Command,       chars: "\x06\x39" } # Ninth Tab
 
 # Mouse bindings. Frees up the right click for tmux
 mouse_bindings:
