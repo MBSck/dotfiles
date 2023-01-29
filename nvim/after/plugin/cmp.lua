@@ -8,10 +8,10 @@ local luasnip = require("luasnip")
 
 cmp.setup({
     sources = {
-        { name = "path" },                          -- Autcomplets file paths
+        { name = "path", keyword_length = 4},       -- Autcomplets file paths
         { name = "nvim_lsp", keyword_length = 3},   -- Shows suggestions based on the language server
-        { name = "luasnip", keyword_length = 3},    -- Shows available snippets
-        { name = "buffer", keyword_length = 2},     -- Suggests words found in the current buffer
+        { name = "luasnip", keyword_length = 2},    -- Shows available snippets
+        { name = "buffer", keyword_length = 3},     -- Suggests words found in the current buffer
     },
     window = {
         --completion = cmp.config.window.bordered(),
@@ -86,7 +86,10 @@ cmp.setup({
     },
     snippet = {
         expand = function(args)
-            require("luasnip").lsp_expand(args.body) -- For `luasnip` users.
+            if not luasnip then
+                return
+            end
+            luasnip.lsp_expand(args.body)
         end,
     },
 })

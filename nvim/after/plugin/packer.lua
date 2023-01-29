@@ -1,5 +1,4 @@
 -- This file can be loaded by calling `lua require("plugins")` from your init.lua
-
 -- Only required if you have packer configured as `opt`
 
 return require("packer").startup(function (use)
@@ -46,31 +45,30 @@ return require("packer").startup(function (use)
     use {'WhoIsSethDaniel/mason-tool-installer.nvim'}
 
     -- Autocompletion
-    use {'hrsh7th/nvim-cmp'}
-    use {'hrsh7th/cmp-buffer'}
-    use {'hrsh7th/cmp-path'}
-    use {'saadparwaiz1/cmp_luasnip'}
-    use {'hrsh7th/cmp-nvim-lsp'}
-    use {'hrsh7th/cmp-nvim-lua'}
-            -- Autocompletion
+    use {
+        'hrsh7th/nvim-cmp',
+        function() require('config.cmp') end,
+    }
+    use {'hrsh7th/cmp-path'}            -- Autocompletion for Path
+    use {'hrsh7th/cmp-buffer'}          -- Autocompletion for Buffer
+    use {'hrsh7th/cmp-cmdline'}         -- Autocompletion for cmdline
+    use {'hrsh7th/cmp-nvim-lsp'}        -- Autocompletion for LSP
+    use {'hrsh7th/cmp-nvim-lua'}        -- Autcompletion for lua
 
     -- Snippets
-    use {'L3MON4D3/LuaSnip'}
-    use {'rafamadriz/friendly-snippets'}
+    use {'saadparwaiz1/cmp_luasnip'}    -- Autocompletion for luasnip
+    use {
+        'L3MON4D3/LuaSnip',
+        after = 'nvim-cmp',
+        config = function() require('config.snippets') end,
+    }
+    use {'rafamadriz/friendly-snippets'}    -- Collection of user-defined snippets
 
     -- Git support
     use 'airblade/vim-gitgutter' -- Git sideline support
 
     -- Github copilot like tool
-    use {
-      'Exafunction/codeium.vim',
-      config = function ()
-        -- Change '<C-g>' here to any keycode you like.
-        vim.keymap.set('i', '<C-g>', function ()
-          return vim.fn['codeium#Accept']()
-        end, { expr = true })
-      end
-    }
+    use {'Exafunction/codeium.vim'}
 
     -- Code Utility Plugins
     use {

@@ -1,8 +1,8 @@
 -- Set encoding to utf-8
-vim.cmd("set encoding=utf-8")
+vim.opt.encoding = "utf-8"
 
 -- Set language support
-vim.cmd("set spelllang=en_gb")
+vim.opt.spelllang = "en_gb"
 
 -- Avoid language server issues with backup-files
 vim.opt.backup = false
@@ -12,7 +12,7 @@ vim.opt.writebackup = false
 vim.opt.updatetime = 300
 
 -- Set clipboard
-vim.cmd("set clipboard=unnamed")
+vim.opt.clipboard = "unnamed"
 
 -- Always show signalcolumn, otherwise it would shift text if diagnostics come up
 vim.opt.signcolumn = "yes"
@@ -35,8 +35,10 @@ vim.opt.swapfile = false
 vim.opt.undodir = os.getenv("HOME").."/.vim/undodir"
 vim.opt.undofile = true
 
--- Leader
+-- Leaders
 vim.g.mapleader = ","
+vim.g.maplocalleader = ";"
+vim.g.mapgloballeader = ":"
 
 -- File settings
 vim.opt.tabstop = 4
@@ -53,4 +55,5 @@ vim.g.loaded_python_provider = 0
 vim.g.python3_host_prog = "/Users/scheuck/.pyenv/shims/python3"
 
 -- Set python3 version to standard version for evaluation within nvim
-vim.cmd("set pyxversion=3")
+vim.opt.pyxversion=3
+
