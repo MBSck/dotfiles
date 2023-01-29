@@ -1,7 +1,6 @@
 local nnoremap = require("remaps.keymap").nnoremap
 local inoremap = require("remaps.keymap").inoremap
 
-
 require("mason").setup({
     ui = {
         icons = {
@@ -29,7 +28,6 @@ require("mason-tool-installer").setup({
     -- Default: false
     auto_update = false,
 
-
     -- automatically install / update on startup. If set to false nothing
     -- will happen on startup. You can use :MasonToolsInstall or
     -- :MasonToolsUpdate to install tools and check for updates.
@@ -50,6 +48,8 @@ require("mason-tool-installer").setup({
     -- Default: nil
     debounce_hours = 5, -- at least 5 hours between attempts to install/update
 })
+
+-- Notify lsp of the autocompletion capability
 local lsp_capabilities = require("cmp_nvim_lsp").lsp_capabilities
 
 -- LSP Keybindings
@@ -70,6 +70,7 @@ local lsp_attach = function(client, bufnr)
     nnoremap("<leader>ca", function() vim.lsp.buf.code_action() end, opts)
     nnoremap("<leader>rn", function() vim.lsp.buf.rename() end, opts)
     nnoremap("<leader>f", function() vim.lsp.buf.format { async = true } end, opts)
+end
 
 local lspconfig = require("lspconfig")
 require("mason-lspconfig").setup_handlers({
@@ -79,6 +80,36 @@ require("mason-lspconfig").setup_handlers({
             capabilities = lsp_capabilities,
         })
     end,
+})
+
+-- This sets the icons for the LSP
+local sign = function(opts)
+  vim.fn.sign_define(opts.name, {
+    texthl = opts.name,
+    text = opts.text,
+    numhl = ''
+  })
+end
+
+-- LSP icons
+sign({name = 'DiagnosticSignError', text = '✘'})
+sign({name = 'DiagnosticSignWarn', text = '▲'})
+sign({name = 'DiagnosticSignHint', text = '⚑'})
+sign({name = 'DiagnosticSignInfo', text = ''})
+
+-- Diagnostics Options
+vim.diagnostic.config({
+    virtual_text = true,                    -- Show diagnistic messages via virtual text
+    signs = true,                           -- Show a sign next to the line with a diagnostic
+    severity_sort = true,                   -- Order diagnostics by severity
+    update_in_insert = false,               -- Update diagnostics while editing in insert mode
+    underline = true,                       -- Use an underline to show a diagnostic location
+    float = {                               -- Show diagnostic messages in floating windows
+        border = 'rounded',
+        source = 'always',
+        header = '',
+        prefix = '',
+    },
 })
 
 -- If the server behave weirdly exchange the lsp-config to this
