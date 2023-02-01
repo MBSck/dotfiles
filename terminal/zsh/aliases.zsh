@@ -15,10 +15,13 @@ alias fv="open -a ring"
 
 # Configuration path shortcuts
 alias nvimrc="cd ${DOT}/nvim/"
-alias zshrc="cd ${TERMINAL}/zsh/"
-alias bashrc="cd ${TERMINAL}/bash/"
+alias zsh="cd ${TERMINAL}/zsh/"
 alias tmuxrc="cd ${TERMINAL}/tmux/"
-alias alacrittyrc="cd ${TERMINAL}/alacritty/"
+
+# Directly edit configuration files
+alias zshrc="nvim ${HOME}/.zshrc"
+alias bashrc="nvim ${HOME}/.bashrc"
+alias alacrittyrc="nvim ${TERMINAL}/alacritty/alacritty.yml"
 
 # Source aliases
 alias loadzsh="source ~/.zshrc"
@@ -38,6 +41,7 @@ alias dot="cd ${DOT}"
 alias matadrs="cd ${CODE}/matadrs; pyenv activate matadrs"
 alias p2obp="cd ${CODE}/p2obp; pyenv activate p2obp"
 alias model="cd ${CODE}/modelling; pyenv activate modelling"
+alias oimodel="cd ${CODE}/modelling/oimodeler; pyenv activate oimodeler"
 alias tidbits="cd ${CODE}/tidbits; pyenv activate tidbits"
 
 # Fast interactions

@@ -318,27 +318,30 @@ key_bindings:
   - { key: B,        mods: Control|Shift, mode: ~Search,     action: ReceiveChar }
   - { key: B,        mods: Command,       mode: ~Search,     action: ReceiveChar }
   # copy/paste
-  - { key: Paste,                                            action: ReceiveChar }
-  - { key: Copy,                                             action: ReceiveChar }
-  - { key: V,        mods: Control|Shift, mode: ~Vi,         action: ReceiveChar }
-  - { key: V,        mods: Command,                          action: ReceiveChar }
-  - { key: C,        mods: Control|Shift,                    action: ReceiveChar }
-  - { key: C,        mods: Command,                          action: ReceiveChar }
-  - { key: C,        mods: Control|Shift, mode: Vi|~Search,  action: ReceiveChar }
-  - { key: C,        mods: Command,       mode: Vi|~Search,  action: ReceiveChar }
+  #- { key: Paste,                                            action: ReceiveChar }
+  #- { key: Copy,                                             action: ReceiveChar }
+  #- { key: V,        mods: Control|Shift, mode: ~Vi,         action: ReceiveChar }
+  #- { key: V,        mods: Command,                          action: ReceiveChar }
+  #- { key: C,        mods: Control|Shift,                    action: ReceiveChar }
+  #- { key: C,        mods: Command,                          action: ReceiveChar }
+  #- { key: C,        mods: Control|Shift, mode: Vi|~Search,  action: ReceiveChar }
+  #- { key: C,        mods: Command,       mode: Vi|~Search,  action: ReceiveChar }
   - { key: Insert,   mods: Shift,                            action: ReceiveChar }
 
   # ITerm like command bindings
   # For MacOS the 'hide-app' function 'cmd+h' needs to be disabled if used as combination.
   # Use Karabiner for custom-key configuration
-  - { key: T,     mods: Command,       chars: "\x06\x63" } # New tab
-  - { key: W,     mods: Command,       chars: "\x06\x78" } # Kills window
-  - { key: C,     mods: Command,       chars: "\x06\x5b" } # Enter vim (-copy) mode
-  - { key: V,     mods: Command,       chars: "\x06\x5d" } # Paste buffer
+  # TODO: Add searching with F
+  - { key: T,     mods: Command,       chars: "\x06\x63" } # New Rab
+  - { key: T,     mods: Command|Shift, chars: "\x06\x6c" } # Rename Tab
+  - { key: W,     mods: Command,       chars: "\x06\x78" } # Kills Pane or Tab
+  - { key: W,     mods: Command|Shift, chars: "\x06\x71" } # Kills Session
+  - { key: E,     mods: Command,       chars: "\x06\x65" } # Select Session
   - { key: D,     mods: Command,       chars: "\x06\x76" } # Splits horizontally
   - { key: S,     mods: Command,       chars: "\x06\x73" } # Splits vertically
   - { key: S,     mods: Command|Shift, chars: "\x06\x13" } # Saves Tmux session
   - { key: S,     mods: Command|Control, chars: "\x06\x67" } # Rename session
+  - { key: S,     mods: Command|Alt,   chars: "\x06\x6e" } # Create new session
   - { key: R,     mods: Command,       chars: "\x06\x72" } # Reloads tmux.conf
   - { key: R,     mods: Command|Shift, chars: "\x06\x12" } # Restors Tmux session
   # FIXME: Does not work!
@@ -352,7 +355,6 @@ key_bindings:
   #- { key: J,     mods: Command|Shift, chars: "\x06\x4a" } # Expand Down
   #- { key: K,     mods: Command|Shift, chars: "\x06\x4b" } # Expand Up
   #- { key: L,     mods: Command|Shift, chars: "\x06\x4c" } # Expand Right
-  - { key: N,     mods: Command|Shift, chars: "\x06\x6e" } # Rename Window
   - { key: Key1,  mods: Command,       chars: "\x06\x31" } # First Tab
   - { key: Key2,  mods: Command,       chars: "\x06\x32" } # Second Tab
   - { key: Key3,  mods: Command,       chars: "\x06\x33" } # Third Tab
