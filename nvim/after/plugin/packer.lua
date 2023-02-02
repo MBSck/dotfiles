@@ -1,7 +1,7 @@
--- This file can be loaded by calling `lua require("plugins")` from your init.lua
 -- Only required if you have packer configured as `opt`
+vim.cmd[[packadd packer.nvim]]
 
-return require("packer").startup(function (use)
+return require('packer').startup(function(use)
     -- Packer package manager - Can manage itself
     use 'wbthomason/packer.nvim'
 
@@ -9,20 +9,19 @@ return require("packer").startup(function (use)
     use 'ThePrimeagen/vim-be-good'
 
     -- Visual plugins
-    use 'folke/tokyonight.nvim' -- Colorscheme
-    use 'Yggdroot/indentLine' -- Better visual support for indentation
-    use 'kyazdani42/nvim-web-devicons' -- Icon support
-    use { 'nvim-lualine/lualine.nvim',
-    requires = { 'kyazdani42/nvim-web-devicons', opt = true }} -- Lualine
-    use 'akinsho/bufferline.nvim' -- Bufferline
+    use 'folke/tokyonight.nvim'                        -- Colorscheme
+    use 'Yggdroot/indentLine'                          -- Better visual support for indentation
+    use 'kyazdani42/nvim-web-devicons'                 -- Icon support
+    use 'nvim-lualine/lualine.nvim'                    -- Lualine
+    use 'akinsho/bufferline.nvim'                      -- Bufferline
     use ('nvim-treesitter/nvim-treesitter', {
         run = ":TSUpdate"
     }) -- Treesitter parsing support
-    use 'nvim-treesitter/nvim-treesitter-context' -- Shows function being worked on
-    use 'machakann/vim-highlightedyank' -- Highlights the code yanking
-    use 'glepnir/dashboard-nvim' -- A fancy dashboard for nvim
-    use 'itchyny/vim-highlighturl' -- URL highlighting
-    use 'yuttie/comfortable-motion.vim' -- Simulates comfortable scroll motion
+    use 'nvim-treesitter/nvim-treesitter-context'      -- Shows function being worked on
+    use 'machakann/vim-highlightedyank'                -- Highlights the code yanking
+    use 'glepnir/dashboard-nvim'                       -- A fancy dashboard for nvim
+    use 'itchyny/vim-highlighturl'                     -- URL highlighting
+    use 'yuttie/comfortable-motion.vim'                -- Simulates comfortable scroll motion
     use {
         "nvim-zh/colorful-winsep.nvim",
         config = function ()
@@ -31,7 +30,7 @@ return require("packer").startup(function (use)
     } -- Colorful window separation to see what window is active
 
     -- Navigation plugins
-    use {'nvim-tree/nvim-tree.lua',
+    use{'nvim-tree/nvim-tree.lua',
     requires = {'kyazdani42/nvim-web-devicons'}} -- File Explorer
     use {
         'nvim-telescope/telescope.nvim', tag = '0.1.0',
@@ -39,51 +38,49 @@ return require("packer").startup(function (use)
     }
 
     -- LSP support
-    use {'neovim/nvim-lspconfig'}
-    use {'williamboman/mason.nvim'}
-    use {'williamboman/mason-lspconfig.nvim'}
-    use {'WhoIsSethDaniel/mason-tool-installer.nvim'}
+    use 'neovim/nvim-lspconfig'
+    use 'williamboman/mason.nvim'
+    use 'williamboman/mason-lspconfig.nvim'
+    use 'WhoIsSethDaniel/mason-tool-installer.nvim'
+
+    -- Snippets
+    use({
+        "L3MON4D3/LuaSnip",
+        -- follow latest release.
+        tag = "v<CurrentMajor>.*",
+        -- install jsregexp (optional!:).
+        run = "make install_jsregexp"
+    })
+    use 'rafamadriz/friendly-snippets'     -- Collection of user-defined snippets
 
     -- Autocompletion
     use {
         'hrsh7th/nvim-cmp',
         function() require('config.cmp') end,
     }
-    use {'hrsh7th/cmp-path'}            -- Autocompletion for Path
-    use {'hrsh7th/cmp-buffer'}          -- Autocompletion for Buffer
-    use {'hrsh7th/cmp-cmdline'}         -- Autocompletion for cmdline
-    use {'hrsh7th/cmp-nvim-lsp'}        -- Autocompletion for LSP
-    use {'hrsh7th/cmp-nvim-lua'}        -- Autcompletion for lua
-
-    -- Snippets
-    use {'saadparwaiz1/cmp_luasnip'}    -- Autocompletion for luasnip
-    use {
-        'L3MON4D3/LuaSnip',
-        after = 'nvim-cmp',
-        config = function() require('config.snippets') end,
-    }
-    use {'rafamadriz/friendly-snippets'}    -- Collection of user-defined snippets
+    use 'hrsh7th/cmp-path'            -- Autocompletion for Path
+    use 'hrsh7th/cmp-buffer'          -- Autocompletion for Buffer
+    use 'hrsh7th/cmp-cmdline'         -- Autocompletion for cmdline
+    use 'hrsh7th/cmp-nvim-lsp'        -- Autocompletion for LSP
+    use 'hrsh7th/cmp-nvim-lua'        -- Autcompletion for lua
+    use 'saadparwaiz1/cmp_luasnip'    -- Autocompletion for luasnip
 
     -- Git support
     use 'airblade/vim-gitgutter' -- Git sideline support
 
     -- Github copilot like tool
-    use {'Exafunction/codeium.vim'}
+    use 'Exafunction/codeium.vim'
 
     -- Code Utility Plugins
     use {
         "windwp/nvim-autopairs",
         config = function() require("nvim-autopairs").setup {} end
-    } -- Autopairs brackets
-    use 'scrooloose/nerdcommenter' -- Autocomment function that is language specific
-    use 'tmhedberg/SimpylFold' -- Better folding for coding
-    use 'bronson/vim-trailing-whitespace' -- Quickly removes trailing Whitespace
-    use 'mbbill/undotree' -- Undotree
-
-    -- Terminals
-    use {"akinsho/toggleterm.nvim", tag = 'v2.*', config = function()
-        require("toggleterm").setup()
-    end} -- Toggelable term window
+    }                                          -- Autopairs brackets
+    use 'scrooloose/nerdcommenter'             -- Autocomment function that is language specific
+    use 'tmhedberg/SimpylFold'                 -- Better folding for coding
+    use 'bronson/vim-trailing-whitespace'      -- Quickly removes trailing Whitespace
+    use 'mbbill/undotree'                      -- Undotree
+    use 'akinsho/toggleterm.nvim'              -- Toggleterm
 
     -- Markdown support
     use({
@@ -107,10 +104,4 @@ return require("packer").startup(function (use)
         end,
         ft = 'tex'
     }
-
-    -- Debugging
-    use { "puremourning/vimspector"} -- Graphical debugger
-    --use 'mfussenegger/nvim-dap' -- Debugger
-    --use 'rcarriga/nvim-dap-ui' -- Better interface for debugger
-    --use 'theHamsta/nvim-dap-virtual-text' -- Virtual text for debugger
 end)

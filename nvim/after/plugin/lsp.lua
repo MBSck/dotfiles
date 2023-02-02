@@ -50,7 +50,7 @@ require("mason-tool-installer").setup({
 })
 
 -- Notify lsp of the autocompletion capability
-local lsp_capabilities = require("cmp_nvim_lsp").lsp_capabilities
+-- local lsp_capabilities = require("cmp_nvim_lsp").lsp_capabilities
 
 -- LSP Keybindings
 local lsp_attach = function(client, bufnr)
