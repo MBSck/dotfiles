@@ -16,12 +16,11 @@ alias fv="open -a ring"
 # Configuration path shortcuts
 alias nvimrc="cd ${DOT}/nvim/"
 alias zsh="cd ${TERMINAL}/zsh/"
-alias tmuxrc="cd ${TERMINAL}/tmux/"
+alias kittyrc="cd ${TERMINAL}/kitty/"
 
 # Directly edit configuration files
 alias zshrc="nvim ${HOME}/.zshrc"
 alias bashrc="nvim ${HOME}/.bashrc"
-alias alacrittyrc="nvim ${TERMINAL}/alacritty/alacritty.yml"
 
 # Source aliases
 alias loadzsh="source ~/.zshrc"
