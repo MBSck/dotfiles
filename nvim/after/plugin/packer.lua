@@ -1,8 +1,8 @@
 -- Only required if you have packer configured as `opt`
-vim.cmd[[packadd packer.nvim]]
+vim.cmd [[packadd packer.nvim]]
 
 return require('packer').startup(function(use)
-    -- Packer package manager - Can manage itself
+    -- Let packer manage packer
     use 'wbthomason/packer.nvim'
 
     -- Learning plugin for vim. From PRIMAGEAN
@@ -14,9 +14,10 @@ return require('packer').startup(function(use)
     use 'kyazdani42/nvim-web-devicons'                 -- Icon support
     use 'nvim-lualine/lualine.nvim'                    -- Lualine
     use 'akinsho/bufferline.nvim'                      -- Bufferline
-    use ('nvim-treesitter/nvim-treesitter', {
+    use {
+        'nvim-treesitter/nvim-treesitter',
         run = ":TSUpdate"
-    }) -- Treesitter parsing support
+    } -- Treesitter parsing support
     use 'nvim-treesitter/nvim-treesitter-context'      -- Shows function being worked on
     use 'machakann/vim-highlightedyank'                -- Highlights the code yanking
     use 'glepnir/dashboard-nvim'                       -- A fancy dashboard for nvim
@@ -30,11 +31,13 @@ return require('packer').startup(function(use)
     } -- Colorful window separation to see what window is active
 
     -- Navigation plugins
-    use{'nvim-tree/nvim-tree.lua',
-    requires = {'kyazdani42/nvim-web-devicons'}} -- File Explorer
+    use {
+        'nvim-tree/nvim-tree.lua',
+        requires = 'kyazdani42/nvim-web-devicons'
+    } -- File Explorer
     use {
         'nvim-telescope/telescope.nvim', tag = '0.1.0',
-        requires = { {'nvim-lua/plenary.nvim'} }
+        requires = 'nvim-lua/plenary.nvim'
     }
 
     -- LSP support
@@ -44,20 +47,17 @@ return require('packer').startup(function(use)
     use 'WhoIsSethDaniel/mason-tool-installer.nvim'
 
     -- Snippets
-    use({
+    use {
         "L3MON4D3/LuaSnip",
         -- follow latest release.
         tag = "v<CurrentMajor>.*",
         -- install jsregexp (optional!:).
         run = "make install_jsregexp"
-    })
+    }
     use 'rafamadriz/friendly-snippets'     -- Collection of user-defined snippets
 
     -- Autocompletion
-    use {
-        'hrsh7th/nvim-cmp',
-        function() require('config.cmp') end,
-    }
+    use 'hrsh7th/nvim-cmp'            -- Autocompletion
     use 'hrsh7th/cmp-path'            -- Autocompletion for Path
     use 'hrsh7th/cmp-buffer'          -- Autocompletion for Buffer
     use 'hrsh7th/cmp-cmdline'         -- Autocompletion for cmdline
@@ -83,10 +83,10 @@ return require('packer').startup(function(use)
     use 'akinsho/toggleterm.nvim'              -- Toggleterm
 
     -- Markdown support
-    use({
+    use {
         "iamcco/markdown-preview.nvim",
         run = function() vim.fn["mkdp#util#install"]() end,
-    }) -- Markdown preview. Install without yarn or npm
+    } -- Markdown preview. Install without yarn or npm
 
     -- Latex support
     use {
