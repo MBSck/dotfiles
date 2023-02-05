@@ -18,7 +18,6 @@ return require('packer').startup(function(use)
         'nvim-treesitter/nvim-treesitter',
         run = ":TSUpdate"
     } -- Treesitter parsing support
-    use 'nvim-treesitter/nvim-treesitter-context'      -- Shows function being worked on
     use 'machakann/vim-highlightedyank'                -- Highlights the code yanking
     use 'glepnir/dashboard-nvim'                       -- A fancy dashboard for nvim
     use 'itchyny/vim-highlighturl'                     -- URL highlighting
@@ -39,6 +38,18 @@ return require('packer').startup(function(use)
         'nvim-telescope/telescope.nvim', tag = '0.1.0',
         requires = 'nvim-lua/plenary.nvim'
     }
+    use({
+      "utilyre/barbecue.nvim",
+      tag = "*",
+      requires = {
+        "SmiteshP/nvim-navic",
+        "nvim-tree/nvim-web-devicons", -- optional dependency
+      },
+      after = "nvim-web-devicons", -- keep this if you're using NvChad
+      config = function()
+        require("barbecue").setup()
+      end,
+    }) -- Shows where one is at the top of the file
 
     -- LSP support
     use 'neovim/nvim-lspconfig'
@@ -80,7 +91,9 @@ return require('packer').startup(function(use)
     use 'tmhedberg/SimpylFold'                 -- Better folding for coding
     use 'bronson/vim-trailing-whitespace'      -- Quickly removes trailing Whitespace
     use 'mbbill/undotree'                      -- Undotree
-    use 'akinsho/toggleterm.nvim'              -- Toggleterm
+    use {"akinsho/toggleterm.nvim", tag = '*', config = function()
+        require("toggleterm").setup()
+    end}                                       -- Toggleterm
 
     -- Markdown support
     use {

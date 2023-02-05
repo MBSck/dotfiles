@@ -36,10 +36,6 @@ cmp.setup({
         end,
     },
     mapping = cmp.mapping.preset.insert {
-        -- Autocompletion mapping
-        ["<C-p>"] = cmp.mapping.scroll_docs(-4),                    -- Scrolls up in docs
-        ["<C-n>"] = cmp.mapping.scroll_docs(4),                     -- Scrolls down in docs
-
         -- Toggle autocompletion if in word, else move down one word
         ['<Tab>'] = cmp.mapping(function(fallback)
             local col = vim.fn.col('.') - 1

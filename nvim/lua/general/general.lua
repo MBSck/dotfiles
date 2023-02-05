@@ -21,8 +21,8 @@ vim.opt.signcolumn = "yes"
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
 
--- Enable filetype -> Vim will try to detect the filetype
-vim.g.do_filetype_lua = false
+-- Enable filetype -> Neovim will try to detect the filetype
+vim.g.do_filetype_lua = true
 
 -- Having longer updatetime (default is 4000 ms = 4 s) leads to noticeable
 -- delays and poor user experience.
