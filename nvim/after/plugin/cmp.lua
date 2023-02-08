@@ -2,7 +2,7 @@ require("luasnip.loaders.from_vscode").lazy_load()
 
 local cmp = require("cmp")
 local luasnip = require("luasnip")
-local icon = require("config.icons")
+local icons = require("config.icons")
 
 --local select_opts = {"behavior" = cmp.SelectBehavior.Select}
 --
@@ -27,10 +27,10 @@ cmp.setup({
         },
         format = function(entry, item)
             local menu_icon = {
-                nvim_lsp = icon.cpm_lsp,
-                luasnip = icon.cmp_snippets,
-                buffer = icon.cmp_buffer,
-                path = icon.cmp_path,
+                nvim_lsp = icons.cpm_lsp,
+                luasnip = icons.cmp_snippets,
+                buffer = icons.cmp_buffer,
+                path = icons.cmp_path,
             }
         item.menu = menu_icon[entry.source.name]
         return item
