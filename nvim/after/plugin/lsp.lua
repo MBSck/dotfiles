@@ -2,6 +2,7 @@ local nnoremap = require("remaps.keymap").nnoremap
 local inoremap = require("remaps.keymap").inoremap
 
 local icons = require("config.icons")
+local sign = require("config.signs").sign
 
 require("mason").setup({
     ui = {
@@ -12,6 +13,12 @@ require("mason").setup({
         }
     }
 })
+
+-- LSP icons
+sign({name = 'DiagnosticSignError', text = icons.lsp_error})
+sign({name = 'DiagnosticSignWarn', text = icons.lsp_warn})
+sign({name = 'DiagnosticSignHint', text = icons.lsp_hint})
+sign({name = 'DiagnosticSignInfo', text = icons.lsp_info})
 
 require("mason-tool-installer").setup({
     -- List of tools to be ensured installed
@@ -83,21 +90,6 @@ require("mason-lspconfig").setup_handlers({
         })
     end,
 })
-
--- This sets the icons for the LSP
-local sign = function(opts)
-  vim.fn.sign_define(opts.name, {
-    texthl = opts.name,
-    text = opts.text,
-    numhl = ''
-  })
-end
-
--- LSP icons
-sign({name = 'DiagnosticSignError', text = icons.lsp_error})
-sign({name = 'DiagnosticSignWarn', text = icons.lsp_warn})
-sign({name = 'DiagnosticSignHint', text = icons.lsp_hint})
-sign({name = 'DiagnosticSignInfo', text = icons.lsp_info})
 
 -- Diagnostics Options
 vim.diagnostic.config({

@@ -1,7 +1,10 @@
 local icons = require("config.icons")
+local sign = require("config.signs").sign
 
-vim.g.gitgutter_sign_added = icons.git_add
-vim.g.gitgutter_sign_modified = icons.git_modify
-vim.g.gitgutter_sign_removed = icons.git_remove
---vim.g.gitgutter_sign_removed_first_line = ''
---vim.g.gitgutter_sign_modified_removed = ''
+sign({name = 'GitGutterLineAdded', text = icons.git_add})
+sign({name = 'GitGutterLineModified', text = icons.git_modify})
+sign({name = 'GitGutterLineRemoved', text = icons.git_remove})
+
+--GitGutterLineRemovedFirstLine
+--GitGutterLineRemovedAboveAndBelow
+--GitGutterLineModifiedRemoved
