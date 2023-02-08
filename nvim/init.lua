@@ -10,5 +10,8 @@
 -- General settings
 require("general")
 
+-- Configuration setting
+require("config")
+
 -- Remap settings
 require("remaps")
