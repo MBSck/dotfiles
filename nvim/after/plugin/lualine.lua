@@ -1,9 +1,17 @@
+local icons = require("config.icons")
+
 require('lualine').setup {
   options = {
     icons_enabled = true,
     theme = 'tokyonight',
-    component_separators = { left = '', right = ''},
-    section_separators = { left = '', right = ''},
+    component_separators = {
+        left = icons.lualine.component.left,
+        right = icons.lualine.component.right
+    },
+    section_separators = {
+        left = icons.lualine.section.left,
+        right = icons.lualine.section.right
+    },
     disabled_filetypes = {
       statusline = {},
       winbar = {},

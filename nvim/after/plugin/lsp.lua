@@ -7,18 +7,18 @@ local sign = require("config.signs").sign
 require("mason").setup({
     ui = {
         icons = {
-            package_installed = icons.mason_install,
-            package_pending = icons.mason_pending,
-            package_uninstalled = icons.mason_uninstall
+            package_installed = icons.mason.install,
+            package_pending = icons.mason.pending,
+            package_uninstalled = icons.mason.uninstall
         }
     }
 })
 
 -- LSP icons
-sign({name = 'DiagnosticSignError', text = icons.lsp_error})
-sign({name = 'DiagnosticSignWarn', text = icons.lsp_warn})
-sign({name = 'DiagnosticSignHint', text = icons.lsp_hint})
-sign({name = 'DiagnosticSignInfo', text = icons.lsp_info})
+sign({name = 'DiagnosticSignError', text = icons.lsp.error})
+sign({name = 'DiagnosticSignWarn', text = icons.lsp.warn})
+sign({name = 'DiagnosticSignHint', text = icons.lsp.hint})
+sign({name = 'DiagnosticSignInfo', text = icons.lsp.info})
 
 require("mason-tool-installer").setup({
     -- List of tools to be ensured installed

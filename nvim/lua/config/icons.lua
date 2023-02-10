@@ -1,16 +1,43 @@
-return {
-    cmp_lsp = 'ƒ',
-    cmp_snippets = '⋗',
-    cmp_buffer = 'Ω',
-    cmp_path = '🖫',
-    lsp_error = "",
-    lsp_warn = "",
-    lsp_hint = "⚑",
-    lsp_info = "",
-    mason_install = "✓",
-    mason_pending = "➜",
-    mason_uninstall = "✗",
-    git_add = '',
-    git_modify = '',
-    git_remove = ''
+local icons = {}
+
+icons.cmp = {
+    lsp = 'ƒ',
+    snippets = '⋗',
+    buffer = 'Ω',
+    path = '🖫',
 }
+
+icons.lsp = {
+    error = "",
+    warn = "",
+    hint = "⚑",
+    info = "",
+}
+
+icons.mason = {
+    install = "✓",
+    pending = "➜",
+    uninstall = "✗",
+}
+
+icons.git = {
+    add = '',
+    modify = '',
+    remove = ''
+}
+
+icons.lualine = {
+    component = {
+        left = '',
+        right = ''
+    },
+    section = {
+        left = '',
+        right = ''},
+}
+
+icons.bufferline = {
+    indicator = '',
+}
+
+return icons

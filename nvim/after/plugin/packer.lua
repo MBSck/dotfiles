@@ -38,18 +38,11 @@ return require('packer').startup(function(use)
         'nvim-telescope/telescope.nvim', tag = '0.1.0',
         requires = 'nvim-lua/plenary.nvim'
     }
-    use({
-      "utilyre/barbecue.nvim",
-      tag = "*",
-      requires = {
-        "SmiteshP/nvim-navic",
-        "nvim-tree/nvim-web-devicons", -- optional dependency
-      },
-      after = "nvim-web-devicons", -- keep this if you're using NvChad
-      config = function()
-        require("barbecue").setup()
-      end,
-    }) -- Shows where one is at the top of the file
+    use {
+      'stevearc/aerial.nvim',
+      config = function() require('aerial').setup() end
+    }
+     -- Shows where one is at the top of the file
 
     -- LSP support
     use 'neovim/nvim-lspconfig'

@@ -27,10 +27,10 @@ cmp.setup({
         },
         format = function(entry, item)
             local menu_icon = {
-                nvim_lsp = icons.cpm_lsp,
-                luasnip = icons.cmp_snippets,
-                buffer = icons.cmp_buffer,
-                path = icons.cmp_path,
+                nvim_lsp = icons.cmp.lsp,
+                luasnip = icons.cmp.snippets,
+                buffer = icons.cmp.buffer,
+                path = icons.cmp.path,
             }
         item.menu = menu_icon[entry.source.name]
         return item
