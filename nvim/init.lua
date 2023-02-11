@@ -7,11 +7,11 @@
 -- "vim.v" predefined vim variable
 -- "vim.env" environment variable
 
--- General settings
-require("general")
-
 -- Configuration setting
 require("config")
+
+-- General settings
+require("general")
 
 -- Remap settings
 require("remaps")

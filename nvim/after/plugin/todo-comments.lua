@@ -1,7 +1,6 @@
 local nnoremap = require("remaps.keymap").nnoremap
 local icons = require("config.icons")
 
-
 require("todo-comments").setup({
   signs = true, -- show icons in the signs column
   sign_priority = 8, -- sign priority
