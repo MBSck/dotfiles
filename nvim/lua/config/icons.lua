@@ -10,13 +10,50 @@ M.cmp = {
     snippets = '⋗',
     buffer = 'Ω',
     path = '🖫',
+    kinds = {
+        Array = " ",
+        Boolean = " ",
+        Class = " ",
+        Color = " ",
+        Constant = " ",
+        Constructor = " ",
+        Copilot = " ",
+        Enum = " ",
+        EnumMember = " ",
+        Event = " ",
+        Field = " ",
+        File = " ",
+        Folder = " ",
+        Function = " ",
+        Interface = " ",
+        Key = " ",
+        Keyword = " ",
+        Method = " ",
+        Module = " ",
+        Namespace = " ",
+        Null = "ﳠ ",
+        Number = " ",
+        Object = " ",
+        Operator = " ",
+        Package = " ",
+        Property = " ",
+        Reference = " ",
+        Snippet = " ",
+        String = " ",
+        Struct = " ",
+        Text = " ",
+        TypeParameter = " ",
+        Unit = " ",
+        Value = " ",
+        Variable = " ",
+    }
 }
 
 M.lsp = {
-    error = "",
-    warn = "",
-    hint = "⚑",
-    info = "",
+    Error = "",
+    Warn = "",
+    Hint = "⚑",
+    Info = "",
 }
 
 M.mason = {
@@ -27,8 +64,12 @@ M.mason = {
 
 M.git = {
     add = '',
-    modify = '',
-    remove = ''
+    change = '',
+    delete = '',
+    -- TODO: Implement the following icons properly
+    topdelete = '契',
+    changedelete = '▎',
+    untracked = '▎',
 }
 
 M.lualine = {
@@ -46,62 +87,24 @@ M.bufferline = {
 }
 
 M.lualine = {
-    time = "",
+    time = " ",
 }
 
 M.dashboard = {
-    update = '',
-    files = '',
-    apps = '',
-    dotfiles = '',
+    update = ' ',
+    files = ' ',
+    apps = ' ',
+    dotfiles = ' ',
 }
 
 M.comments = {
-    fix = '',
-    todo = '',
-    hack = '',
-    warn = '',
-    perf = '',
-    note = '',
-    test = '⏲',
-}
-
-M.kinds = {
-    Array = " ",
-    Boolean = " ",
-    Class = " ",
-    Color = " ",
-    Constant = " ",
-    Constructor = " ",
-    Copilot = " ",
-    Enum = " ",
-    EnumMember = " ",
-    Event = " ",
-    Field = " ",
-    File = " ",
-    Folder = " ",
-    Function = " ",
-    Interface = " ",
-    Key = " ",
-    Keyword = " ",
-    Method = " ",
-    Module = " ",
-    Namespace = " ",
-    Null = "ﳠ ",
-    Number = " ",
-    Object = " ",
-    Operator = " ",
-    Package = " ",
-    Property = " ",
-    Reference = " ",
-    Snippet = " ",
-    String = " ",
-    Struct = " ",
-    Text = " ",
-    TypeParameter = " ",
-    Unit = " ",
-    Value = " ",
-    Variable = " ",
+    fix = ' ',
+    todo = ' ',
+    hack = ' ',
+    warn = ' ',
+    perf = ' ',
+    note = ' ',
+    test = '⏲ ',
 }
 
 return M

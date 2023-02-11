@@ -11,6 +11,11 @@ local function bind(op, outer_opts)
 	end
 end
 
+local function map(mode, l, r, desc)
+    vim.keymap.set(mode, l, r, { buffer = buffer, desc = desc })
+end
+
+M.map = map
 M.nmap = bind("n", {noremap = false})
 M.vmap = bind("v", {noremap = false})
 M.xmap = bind("x", {noremap = false})

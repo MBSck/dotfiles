@@ -1,14 +1,17 @@
 local nnoremap = require("remaps.keymap").nnoremap
 
-require("toggleterm").setup {
-	start_in_insert = true,
-	insert_mappings = true,
-	direction = 'horizontal',
-	persist_size = true,
-	close_on_exit = false,
-	auto_scroll = true,
-	shade_terminals = true,
-	}
+{
+    "akinsho/toggleterm.nvim"
+    opts = {
+        start_in_insert = true,
+        insert_mappings = true,
+        direction = 'horizontal',
+        persist_size = true,
+        close_on_exit = false,
+        auto_scroll = true,
+        shade_terminals = true,
+    }
+}
 
 -- Local variables
 local python_package_cmd = "python3 -m "..vim.fn.fnamemodify(vim.fn.fnamemodify(vim.fn.getcwd(), ":h"), ":t").."."..vim.fn.fnamemodify(vim.fn.getcwd(), ":t").."."..vim.fn.expand("%:t:r")
