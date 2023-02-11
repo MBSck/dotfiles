@@ -8,7 +8,6 @@ return require('packer').startup(function(use)
     use 'Yggdroot/indentLine'                          -- Better visual support for indentation
     use 'kyazdani42/nvim-web-devicons'                 -- Icon support
     use 'machakann/vim-highlightedyank'                -- Highlights the code yanking
-    use 'glepnir/dashboard-nvim'                       -- A fancy dashboard for nvim
     use 'itchyny/vim-highlighturl'                     -- URL highlighting
     use 'yuttie/comfortable-motion.vim'                -- Simulates comfortable scroll motion
     use {
@@ -36,7 +35,6 @@ return require('packer').startup(function(use)
         config = function() require("nvim-autopairs").setup {} end
     }                                               -- Autopairs brackets
     use 'tmhedberg/SimpylFold'                      -- Better folding for coding
-    use 'ntpeters/vim-better-whitespace'            -- Better whitespace
 
 
     -- Latex support

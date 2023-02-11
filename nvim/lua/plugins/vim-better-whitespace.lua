@@ -1,7 +1,12 @@
-local nnoremap = require("remaps.keymap").nnoremap
+{
+    'ntpeters/vim-better-whitespace',
+    opts = {
+        better_whitespace_enabled=0
+        strip_whitespace_on_save=0
+    }
+    keys = {
+        { "<leader><f7>", ":StripWhitespace<cr>" },
+        { "<f7>", ":ToggleWhitespace<cr>" },
+    }
+}
 
-vim.g.better_whitespace_enabled=0
-vim.g.strip_whitespace_on_save=0
-
-nnoremap("<leader><f7>", ":StripWhitespace<cr>")
-nnoremap("<f7>", ":ToggleWhitespace<cr>")

@@ -1,4 +1,3 @@
-local nnoremap = require("remaps.keymap").nnoremap
 local icons = require("config.icons")
 
 {

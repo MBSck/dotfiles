@@ -1,10 +1,9 @@
-local nnoremap = require("remaps.keymap").nnoremap
-
 {
     "iamcco/markdown-preview.nvim",
-    run = function() vim.fn["mkdp#util#install"]() end,
+    opts = {
+        run = function() vim.fn["mkdp#util#install"]() end,
+    },
+    keys = {
+        { "<f10>", "<Plug>MarkdownPreviewToggle" },
+    }
 }
-
-    -- Markdown support
-
-nnoremap("<f10>", "<Plug>MarkdownPreviewToggle")

@@ -1,5 +1,4 @@
 local icons = require("config.icons")
-local sign = require("config.signs").sign
 
 {
   "neovim/nvim-lspconfig",
