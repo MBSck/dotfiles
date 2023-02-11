@@ -28,6 +28,7 @@ return require('packer').startup(function(use)
             require('colorful-winsep').setup()
         end
     } -- Colorful window separation to see what window is active
+    use 'rcarriga/nvim-notify' -- Notify
 
     -- Navigation plugins
     use {
@@ -37,7 +38,7 @@ return require('packer').startup(function(use)
     use {
         'nvim-telescope/telescope.nvim', tag = '0.1.0',
         requires = 'nvim-lua/plenary.nvim'
-    }
+    } -- Requires BurntSushi/ripgrep as a grep dependency
     use {
       'stevearc/aerial.nvim',
       config = function() require('aerial').setup() end

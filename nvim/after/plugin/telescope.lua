@@ -2,6 +2,7 @@ local nnoremap = require("remaps.keymap").nnoremap
 local builtin = require("telescope.builtin")
 
 require('telescope').load_extension('aerial')
+require("telescope").load_extension("notify")
 require('telescope').setup({
   extensions = {
     aerial = {

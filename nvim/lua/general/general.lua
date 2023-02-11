@@ -1,3 +1,7 @@
+-- Disable netrw at the very start of the init.lua
+vim.g.loaded_netrw = 1
+vim.g.loaded_netrwPlugin = 1
+
 -- Set encoding to utf-8
 vim.opt.encoding = "utf-8"
 
@@ -16,10 +20,6 @@ vim.opt.clipboard = "unnamed"
 
 -- Always show signalcolumn, otherwise it would shift text if diagnostics come up
 vim.opt.signcolumn = "yes"
-
--- Disable netrw at the very start of the init.lua
-vim.g.loaded_netrw = 1
-vim.g.loaded_netrwPlugin = 1
 
 -- Enable filetype -> Neovim will try to detect the filetype
 vim.g.do_filetype_lua = true

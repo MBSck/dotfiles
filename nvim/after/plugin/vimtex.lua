@@ -2,7 +2,9 @@ local nnoremap = require("remaps.keymap").nnoremap
 
 vim.g.vimtex_quickfix_open_on_warning = 0
 vim.g.vimtex_compiler_method = "latexmk"
-vim.g.vimtex_view_method = 'okular'
+
+-- Scientific PDF viewer
+vim.g.vimtex_view_method = "okular"
 
 -- Movement
 nnoremap("<localleader>k", "m[")

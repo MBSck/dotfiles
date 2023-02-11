@@ -1,32 +1,32 @@
-local icons = {}
+local M = {}
 
-icons.cmp = {
+M.cmp = {
     lsp = 'ƒ',
     snippets = '⋗',
     buffer = 'Ω',
     path = '🖫',
 }
 
-icons.lsp = {
+M.lsp = {
     error = "",
     warn = "",
     hint = "⚑",
     info = "",
 }
 
-icons.mason = {
+M.mason = {
     install = "✓",
     pending = "➜",
     uninstall = "✗",
 }
 
-icons.git = {
+M.git = {
     add = '',
     modify = '',
     remove = ''
 }
 
-icons.lualine = {
+M.lualine = {
     component = {
         left = '',
         right = ''
@@ -36,8 +36,8 @@ icons.lualine = {
         right = ''},
 }
 
-icons.bufferline = {
-    indicator = '',
+M.bufferline = {
+    indicator = '▎',
 }
 
-return icons
+return M

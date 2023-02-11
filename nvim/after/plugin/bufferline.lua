@@ -1,10 +1,12 @@
+local icons = require("config.icons")
+
 require('bufferline').setup {
     options = {
         mode = "tabs", -- set to "tabs" to only show tabpages instead
         numbers = "both",
         close_command = "bdelete! %d",       -- can be a string | function, see "Mouse actions"
         indicator = {
-            icon = '▎', -- this should be omitted if indicator style is not 'icon'
+            icon = icons.bufferline.indicator, -- this should be omitted if indicator style is not 'icon'
             style = 'icon',
         },
         max_name_length = 18,
