@@ -1,3 +1,6 @@
+-- Additional icons
+-- , , 
+
 local M = {}
 
 M.cmp = {
@@ -45,6 +48,16 @@ M.dashboard = {
     files = '',
     apps = '',
     dotfiles = '',
+}
+
+M.comments = {
+    fix = '',
+    todo = '',
+    hack = '',
+    warn = '',
+    perf = '',
+    note = '',
+    test = '⏲',
 }
 
 return M

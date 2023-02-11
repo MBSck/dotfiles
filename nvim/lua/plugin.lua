@@ -1,5 +1,5 @@
 -- Only required if you have packer configured as `opt`
-vim.cmd [[packadd packer.nvim]]
+vim.cmd[[packadd packer.nvim]]
 
 return require('packer').startup(function(use)
     -- Let packer manage packer
@@ -62,13 +62,20 @@ return require('packer').startup(function(use)
     use 'rafamadriz/friendly-snippets'     -- Collection of user-defined snippets
 
     -- Autocompletion
-    use 'hrsh7th/nvim-cmp'            -- Autocompletion
-    use 'hrsh7th/cmp-path'            -- Autocompletion for Path
-    use 'hrsh7th/cmp-buffer'          -- Autocompletion for Buffer
-    use 'hrsh7th/cmp-cmdline'         -- Autocompletion for cmdline
-    use 'hrsh7th/cmp-nvim-lsp'        -- Autocompletion for LSP
-    use 'hrsh7th/cmp-nvim-lua'        -- Autcompletion for lua
-    use 'saadparwaiz1/cmp_luasnip'    -- Autocompletion for luasnip
+    use 'hrsh7th/nvim-cmp'              -- Autocompletion
+    use 'hrsh7th/cmp-path'              -- Autocompletion for Path
+    use 'hrsh7th/cmp-buffer'            -- Autocompletion for Buffer
+    use 'hrsh7th/cmp-cmdline'           -- Autocompletion for cmdline
+    use 'hrsh7th/cmp-nvim-lsp'          -- Autocompletion for LSP
+    use 'hrsh7th/cmp-nvim-lua'          -- Autcompletion for lua
+    use 'saadparwaiz1/cmp_luasnip'      -- Autocompletion for luasnip
+
+    -- Commenting
+    use 'scrooloose/nerdcommenter'      -- Autocomment function that is language specific
+    use {
+        'folke/todo-comments.nvim',
+        requires = "nvim-lua/plenary.nvim"
+    }                                  -- Highlights TO-DO comments and similar. And adds search tools
 
     -- Git support
     use 'airblade/vim-gitgutter' -- Git sideline support
@@ -80,35 +87,20 @@ return require('packer').startup(function(use)
     use {
         "windwp/nvim-autopairs",
         config = function() require("nvim-autopairs").setup {} end
-    }                                          -- Autopairs brackets
-    use 'scrooloose/nerdcommenter'             -- Autocomment function that is language specific
-    use 'tmhedberg/SimpylFold'                 -- Better folding for coding
-    use 'bronson/vim-trailing-whitespace'      -- Quickly removes trailing Whitespace
-    use 'mbbill/undotree'                      -- Undotree
-    use {"akinsho/toggleterm.nvim", tag = '*', config = function()
-        require("toggleterm").setup()
-    end}                                       -- Toggleterm
+    }                                               -- Autopairs brackets
+    use 'tmhedberg/SimpylFold'                      -- Better folding for coding
+    use 'ntpeters/vim-better-whitespace'            -- Better whitespace
+    use 'mbbill/undotree'                           -- Undotree
+    use {"akinsho/toggleterm.nvim", tag = '*'}      -- Toggleterm
 
     -- Markdown support
     use {
         "iamcco/markdown-preview.nvim",
         run = function() vim.fn["mkdp#util#install"]() end,
-    } -- Markdown preview. Install without yarn or npm
+    } -- Markdown preview
 
     -- Latex support
     use {
-        'lervag/vimtex',
-        opt = true,
-        config = function ()
-            vim.g.vimtex_view_general_viewer = 'okular'
-            vim.g.vimtex_compiler_latexmk_engines = {
-                _ = '-xelatex'
-            }
-            vim.g.tex_comment_nospell = 1
-            vim.g.vimtex_compiler_progname = 'nvr'
-            vim.g.vimtex_view_general_options = [[--unique file:@pdf\#src:@line@tex]]
-            vim.g.vimtex_view_general_options_latexmk = '--unique'
-        end,
-        ft = 'tex'
+        'lervag/vimtex', opt = true, ft = 'tex'
     }
 end)
