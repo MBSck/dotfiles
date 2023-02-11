@@ -11,7 +11,15 @@ require('telescope').setup({
         ['_'] = false, -- This key will be the default
         json = true,   -- You can set the option for specific filetypes
         yaml = true,
+        python = true,
+        rust = true,
       }
+    },
+    defaults = {
+        sorting_strategy = "ascending",
+        layout_config = {
+            promt_position = "bottom",
+        }
     }
   }
 })

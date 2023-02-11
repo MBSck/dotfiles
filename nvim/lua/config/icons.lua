@@ -40,4 +40,11 @@ M.bufferline = {
     indicator = '▎',
 }
 
+M.dashboard = {
+    update = '',
+    files = '',
+    apps = '',
+    dotfiles = '',
+}
+
 return M

@@ -7,12 +7,17 @@ require("nvim-tree").setup({
   --open_on_setup_file = true,
   --open_on_tab = true,
   view = {
+    number = false,
+    relativenumber = false,
     adaptive_size = true,
+    side = "left",
+    signcolumn = "yes",
+    preserve_window_proportions = false,
     mappings = {
-      list = {
-        { key = "u", action = "dir_up" },
-      },
-    },
+        list = {
+            { key = "u", action = "dir_up" },
+            },
+        },
   },
   renderer = {
     group_empty = true,
