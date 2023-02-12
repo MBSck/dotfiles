@@ -82,6 +82,7 @@ M.lualine = {
         pixelbar = { left = '', right = '' },
         legoside = { left = '', right = '' },
         legorotated = { left = '', right = '' },
+    }
 }
 
 M.bufferline = {
