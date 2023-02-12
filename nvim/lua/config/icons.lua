@@ -2,7 +2,7 @@
 --             
 --           ﳠ  
 --             
---      ⋗ Ω p
+--      ⋗ Ω p 
 
 local M = {}
 
@@ -69,12 +69,19 @@ M.git = {
 
 M.lualine = {
     component = {
-        left = '',
-        right = ''
+        triangle = { '', right = '' },
+        halfcircle = { left = '', right = '' },
     },
     section = {
-        left = '',
-        right = ''},
+        topslope = { left = '', right = '' },
+        triangle = { left = '', right = '' },
+        botslope = { left = ' ', right = ' ' },
+        halfcircle = { left = '', right = '' },
+        trapezoid = { left = '', right = '' },
+        pixelslope = { left = '', right = '' },
+        pixelbar = { left = '', right = '' },
+        legoside = { left = '', right = '' },
+        legorotated = { left = '', right = '' },
 }
 
 M.bufferline = {
