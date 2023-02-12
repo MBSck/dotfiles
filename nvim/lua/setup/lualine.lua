@@ -1,7 +1,5 @@
 return {
-    setup = function(signature, winbar_sig, substitute)
-        local lualine = require('lualine')
-
+    setup = function(signature, winbar_sig)
         local function search_result()
             if vim.v.hlsearch == 0 then
                 return ''
@@ -14,12 +12,12 @@ return {
             return last_search .. '(' .. searchcount.current .. '/' .. searchcount.total .. ')'
         end
 
-        lualine.setup({
+        require("lualine").setup({
             options = {
                 icons_enabled = true,
                 theme = 'auto',
-                section_separators = { left = '', right = '' },
-                component_separators = { left = '', right = '' },
+                -- component_separators = require("config.icons").lualine.component.triangle,
+                -- section_separators = require("config.icons").lualine.section.triangle,
                 disabled_filetypes = {
                     winbar = { 'neo-tree', 'dashboard', 'help', 'toggleterm' },
                 },
@@ -36,20 +34,21 @@ return {
                     },
                     signature,
                 },
+                -- TODO: Implement the diagnostics as well as the icons properly
                 lualine_x = {
-                    substitute(),
+                    -- substitute(),
                     search_result,
                     'encoding',
                     'filetype',
                     {
                         'overseer',
                     },
-                    {
-                        'diagnostics',
-                        sources = { 'nvim-lsp' },
-                        symbols = { require("config.icons").lsp },
-                        always_visible = true,
-                    },
+                    -- {
+                        -- 'diagnostics',
+                        -- sources = { 'nvim-lsp' },
+                        -- symbols = { require("config.icons").lsp },
+                        -- always_visible = true,
+                    -- },
                 },
                 lualine_y = {
                     { 'progress', separator = "", padding = { left = 1, right = 0 } },

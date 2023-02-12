@@ -99,7 +99,7 @@ M.git = {
 
 M.lualine = {
     component = {
-        triangle = { '', right = '' },
+        triangle = { left = '', right = '' },
         halfcircle = { left = '', right = '' },
     },
     section = {
@@ -112,7 +112,7 @@ M.lualine = {
         pixelbar = { left = '', right = '' },
         legoside = { left = '', right = '' },
         legorotated = { left = '', right = '' },
-    }
+    },
 }
 
 M.bufferline = {
