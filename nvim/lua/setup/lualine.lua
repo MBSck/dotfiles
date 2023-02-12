@@ -1,8 +1,5 @@
 return {
-    setup = function(signature, weather, winbar_sig, substitute)
-        local spotify_status = require('nvim-spotify').status
-        spotify_status:start()
-
+    setup = function(signature, winbar_sig, substitute)
         local lualine = require('lualine')
 
         local function search_result()
@@ -49,19 +46,16 @@ return {
                     },
                     {
                         'diagnostics',
-                        sources = { 'nvim_diagnostic' },
-                        symbols = { error = ' ', warn = ' ', info = ' ', hint = ' ' },
+                        sources = { 'nvim-lsp' },
+                        symbols = { require("config.icons").lsp },
                         always_visible = true,
                     },
                 },
                 lualine_y = {
-                    'location',
-                    'progress',
+                    { 'progress', separator = "", padding = { left = 1, right = 0 } },
+                    { 'location', padding = { left = 0, right = 1 } },
                 },
-                lualine_z = {
-                    weather(),
-                    spotify_status.listen,
-                },
+                lualine_z = {},
             },
             inactive_sections = {
                 lualine_a = {},
@@ -116,7 +110,7 @@ return {
                     },
                 },
             },
-            extensions = {},
+            extensions = { "neo-tree" },
         })
     end,
 }
