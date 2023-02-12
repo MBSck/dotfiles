@@ -1,6 +1,6 @@
 local icons = require("config.icons")
 
-{
+return {
   "lewis6991/gitsigns.nvim",
   event = { "BufReadPre", "BufNewFile" },
   opts = {

@@ -1,10 +1,10 @@
 local icons = require("config.icons")
 
-{
+return {
   "neovim/nvim-lspconfig",
   event = { "BufReadPre", "BufNewFile" },
   dependencies = {
-    "mason.nvim",
+    "williamboman/mason.nvim",
     "williamboman/mason-lspconfig.nvim",
     {
       "hrsh7th/cmp-nvim-lsp",
@@ -68,7 +68,7 @@ local icons = require("config.icons")
   ---@param opts PluginLspOpts
   config = function(plugin, opts)
     -- diagnostics
-    for name, icon in pairs(require("config.cons").lsp) do
+    for name, icon in pairs(require("config.icons").lsp) do
       name = "DiagnosticSign" .. name
       vim.fn.sign_define(name, { text = icon, texthl = name, numhl = "" })
     end
@@ -113,59 +113,4 @@ local icons = require("config.icons")
     require("mason-lspconfig").setup({ ensure_installed = ensure_installed })
     require("mason-lspconfig").setup_handlers({ setup })
   end,
-}
-
--- Installer for lsp-servers and more
-{
-    'williamboman/mason.nvim',
-    opts = {
-        ui = {
-            icons = {
-                package_installed = icons.mason.install,
-                package_pending = icons.mason.pending,
-                package_uninstalled = icons.mason.uninstall
-            }
-        }
-    }
-}
-
-{
-    'WhoIsSethDaniel/mason-tool-installer.nvim',
-    opts = {
-        -- List of tools to be ensured installed
-        ensure_installed = {
-            {"lua-language-server", auto_update = true},        -- Lua LSP-server
-            {"vim-language-server", auto_update = true},        -- Vim LSP-server
-            {"python-lsp-server", auto_update = true},          -- Python LSP-server
-            {"rust_analyzer", auto_update = true},              -- Rust LSP-server
-            {"json-lsp", auto_update = true},                   -- JSON LSP-server
-            {"ltex-ls", auto_update = true},                    -- LaTeX LSP-server
-            {"taplo", auto_update = true},                      -- TOML LSP-server
-        },
-        -- if set to true this will check each tool for updates. If updates
-        -- are available the tool will be updated. This setting does not
-        -- affect :MasonToolsUpdate or :MasonToolsInstall.
-        -- Default: false
-        auto_update = false,
-
-        -- automatically install / update on startup. If set to false nothing
-        -- will happen on startup. You can use :MasonToolsInstall or
-        -- :MasonToolsUpdate to install tools and check for updates.
-        -- Default: true
-        run_on_start = true,
-
-        -- set a delay (in ms) before the installation starts. This is only
-        -- effective if run_on_start is set to true.
-        -- e.g.: 5000 = 5 second delay, 10000 = 10 second delay, etc...
-        -- Default: 0
-        start_delay = 3000, -- 3 second delay
-
-        -- Only attempt to install if 'debounce_hours' number of hours has
-        -- elapsed since the last time Neovim was started. This stores a
-        -- timestamp in a file named stdpath('data')/mason-tool-installer-debounce.
-        -- This is only relevant when you are using 'run_on_start'. It has no
-        -- effect when running manually via ':MasonToolsInstall' etc....
-        -- Default: nil
-        debounce_hours = 5, -- at least 5 hours between attempts to install/update
-    }
 }

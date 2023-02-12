@@ -1,4 +1,4 @@
-{
+return {
   "hrsh7th/nvim-cmp",
   version = false, -- last release is way too old
   event = "InsertEnter",
@@ -79,7 +79,7 @@
           }),
           formatting = {
               format = function(_, item)
-                  local icons = require("config.icons").cmp.kinds
+                  local icons = require("config.icons").cmp
                   if icons[item.kind] then
                       item.kind = icons[item.kind] .. item.kind
                   end

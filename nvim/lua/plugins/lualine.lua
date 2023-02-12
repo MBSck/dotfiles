@@ -1,6 +1,6 @@
 local icons = require("config.icons")
 
-{
+return {
     'nvim-lualine/lualine.nvim',
     opts = {
         options = {
@@ -8,14 +8,6 @@ local icons = require("config.icons")
             globalstatus = true,
             icons_enabled = true,
             disabled_filetypes = { statusline = { "dashboard", "lazy"} },
-            component_separators = {
-                left = icons.lualine.component.left,
-                right = icons.lualine.component.right
-            },
-            section_separators = {
-                left = icons.lualine.section.left,
-                right = icons.lualine.section.right
-            },
             disabled_filetypes = {
                 statusline = {},
                 winbar = {},

@@ -1,6 +1,6 @@
 local icons = require("config.icons")
 
-{
+return {
     "folke/todo-comments.nvim",
     cmd = { "TodoTrouble", "TodoTelescope" },
     keys = {

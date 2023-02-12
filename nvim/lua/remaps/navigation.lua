@@ -53,4 +53,3 @@ nnoremap("<leader>b", ":buffers<cr>:buffer<space>")
 nnoremap("<leader>bd", ":bdelete<cr>")
 nnoremap("<leader>bn", ":bnext<cr>")
 nnoremap("<leader>bp", ":bprev<cr>")
-

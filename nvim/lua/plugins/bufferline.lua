@@ -1,6 +1,6 @@
 local icons = require("config.icons")
 
-{
+return {
     'akinsho/bufferline.nvim',
     opts = {
         options = {

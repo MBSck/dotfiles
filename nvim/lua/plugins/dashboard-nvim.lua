@@ -1,6 +1,6 @@
 local icons = require("config.icons")
 
-{
+return {
     'glepnir/dashboard-nvim',
     opts = {
         theme = 'hyper',

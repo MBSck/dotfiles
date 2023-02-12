@@ -1,4 +1,4 @@
-{
+return {
     'rcarriga/nvim-notify',
     opts = {
       -- Default timeout for notifications
@@ -9,4 +9,4 @@
     }
 }
 
-vim.notify = require("notify")
+-- vim.notify = require("notify")

@@ -1,7 +1,7 @@
 -- Shows where one is at the top of the file
-{
+return {
     'stevearc/aerial.nvim',
-    keys = { {'<leader>a', '<cmd>AerialToggle!<CR>', desc = "Toggle aerial"} }
+    keys = { {'<leader>a', '<cmd>AerialToggle!<CR>', desc = "Toggle aerial"} },
     opts = {
         -- Priority list of preferred backends for aerial.
         -- This can be a filetype map (see :help aerial-filetype-map)
@@ -278,5 +278,5 @@
             -- How long to wait (in ms) after a buffer change before updating
             update_delay = 300,
         }
-    }
+    },
 }

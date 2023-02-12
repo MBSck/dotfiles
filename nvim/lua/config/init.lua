@@ -1,2 +1,2 @@
--- require("config.lazy")
+require("config.lazy")
 require("config.icons")
