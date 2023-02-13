@@ -6,7 +6,7 @@
 
 local M = {}
 
-M.types = {
+M.kind = {
     standard = {
         Array = " ",
         Boolean = " ",
