@@ -9,10 +9,9 @@ return {
         },
         event = "BufEnter",
         config = require('setup.neotree').setup,
-        tag = "v2.x",
     },
     -- better terminal
-    { 'akinsho/toggleterm.nvim', config = require('setup.toggleterm').setup },
+    { 'akinsho/toggleterm.nvim', event = "BufEnter", config = require('setup.toggleterm').setup },
     { 'numToStr/Comment.nvim', event = "BufEnter", config = require('setup.comment').setup },
     {
         'nvim-telescope/telescope.nvim',
