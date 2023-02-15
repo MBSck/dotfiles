@@ -94,6 +94,7 @@ return {
                     },
                     ["<2-LeftMouse>"] = "open",
                     ["<cr>"] = "open",
+                    ["o"] = "open",
                     ["<esc>"] = "revert_preview",
                     ["P"] = { "toggle_preview", config = { use_float = true } },
                     ["l"] = "focus_preview",
@@ -163,9 +164,9 @@ return {
                         --".null-ls_*",
                     },
                 },
-                follow_current_file = false, -- This will find and focus the file in the active buffer every
+                follow_current_file = true, -- This will find and focus the file in the active buffer every
                 -- time the current file is changed while the tree is open.
-                group_empty_dirs = false, -- when true, empty folders will be grouped together
+                group_empty_dirs = true, -- when true, empty folders will be grouped together
                 hijack_netrw_behavior = "open_default", -- netrw disabled, opening a directory opens neo-tree
                 -- in whatever position is specified in window.position
                 -- "open_current",  -- netrw disabled, opening a directory opens within the
