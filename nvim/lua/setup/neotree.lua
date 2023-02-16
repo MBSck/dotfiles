@@ -4,15 +4,6 @@ return {
         -- Unless you are still migrating, remove the deprecated commands from v1.x
         vim.g.neo_tree_remove_legacy_commands = 1
 
-        -- If you want icons for diagnostic errors, you'll need to define them somewhere:
-        vim.fn.sign_define("DiagnosticSignError",
-            {text = icons.lsp.Error.." ", texthl = "DiagnosticSignError"})
-        vim.fn.sign_define("DiagnosticSignWarn",
-            {text = icons.lsp.Warn.." ", texthl = "DiagnosticSignWarn"})
-        vim.fn.sign_define("DiagnosticSignInfo",
-            {text = icons.lsp.Info.." ", texthl = "DiagnosticSignInfo"})
-        vim.fn.sign_define("DiagnosticSignHint",
-            {text = icons.lsp.Hint.." ", texthl = "DiagnosticSignHint"})
         -- NOTE: this is changed from v1.x, which used the old style of highlight groups
         -- in the form "LspDiagnosticsSignWarning"
 

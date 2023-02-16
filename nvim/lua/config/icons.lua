@@ -6,6 +6,14 @@
 
 local M = {}
 
+-- TODO: Reorder icons in shapes and similar
+
+M.general = {
+    devil = "",
+    settings = "",
+    bar = "▊",
+}
+
 M.kind = {
     standard = {
         Array = " ",
@@ -75,10 +83,10 @@ M.kind = {
 }
 
 M.lsp = {
-    Error = "",
-    Warn = "",
-    Hint = "⚑",
-    Info = "",
+    error = "",
+    warn = "",
+    hint = "⚑",
+    info = "",
 }
 
 M.mason = {
@@ -95,6 +103,7 @@ M.git = {
     topdelete = '契',
     changedelete = '▎',
     untracked = '▎',
+    branch =  "",
 }
 
 M.lualine = {

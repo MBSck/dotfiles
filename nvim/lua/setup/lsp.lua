@@ -40,7 +40,7 @@ end
 M.setup = function()
     -- diagnostics icons
     for name, icon in pairs(require("config.icons").lsp) do
-        name = "DiagnosticSign" .. name
+        name = "DiagnosticSign" .. (name:gsub("^%l", string.upper))
         vim.fn.sign_define(name, { text = icon, texthl = name, numhl = "" })
     end
 

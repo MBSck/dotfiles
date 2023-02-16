@@ -3,8 +3,18 @@ return {
     { 'rcarriga/nvim-notify', config = { require("setup.notify").setup } },
     -- Status progress for lsp servers
     { 'j-hui/fidget.nvim', config = require('setup.fidget').setup },
-    -- Bufferline
-
+    -- Better visual comment displays
+    { 
+        "folke/todo-comments.nvim",
+        event = { "BufReadPre", "BufNewFile" },
+        config = require("setup.todo-comments").setup
+    },
+    -- cmd = { "TodoTrouble", "TodoTelescope" },
+    -- Gitsigns
+    {
+        "lewis6991/gitsigns.nvim",
+        event = { "BufReadPre", "BufNewFile" },
+        config = require("setup.gitsigns").setup },
     -- Status line
     {
     'nvim-lualine/lualine.nvim',
