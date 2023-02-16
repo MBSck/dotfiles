@@ -3,7 +3,7 @@ return {
         require('toggleterm').setup({
             size = function(term)
                 if term.direction == 'horizontal' then
-                    return 15
+                    return vim.o.lines * 0.3
                 elseif term.direction == 'vertical' then
                     return vim.o.columns * 0.4
                 end
@@ -31,7 +31,9 @@ return {
         })
         -- Terminal variables
         local Terminal = require("toggleterm.terminal").Terminal
-        local terminal = Terminal:new()
+        local terminal = Terminal:new({
+            float_opts = { border = "double", },
+        })
         local lazygit = Terminal:new({
             cmd = "lazygit",
             dir = "git_dir",
