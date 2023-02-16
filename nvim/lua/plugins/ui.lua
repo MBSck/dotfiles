@@ -1,6 +1,6 @@
 return {
     -- Dashboard
-    { 'glepnir/dashboard-nvim', event = "VimEnter", config = require("setup.dashboard").setup },
+    { 'glepnir/dashboard-nvim', event = "UIEnter", config = require("setup.dashboard").setup },
     -- Overides the default vim notify method for a floating window
     { 'rcarriga/nvim-notify', config = require("setup.notify").setup },
     -- Status progress for lsp servers
