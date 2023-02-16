@@ -3,6 +3,8 @@ return {
     { 'rcarriga/nvim-notify', config = { require("setup.notify").setup } },
     -- Status progress for lsp servers
     { 'j-hui/fidget.nvim', config = require('setup.fidget').setup },
+    -- Bufferline
+
     -- Status line
     {
     'nvim-lualine/lualine.nvim',
@@ -14,14 +16,15 @@ return {
         )
     end,
     },
+    { 'nanozuki/tabby.nvim', event = "UIEnter", config = require('setup.tabline').setup },
     {
-      "folke/tokyonight.nvim",
-      lazy = false,
-      opts = { style = "moon" },
-      priority = 1000,
-      config = function()
-          -- load the colorscheme here
-          vim.cmd([[colorscheme tokyonight]])
-      end,
+        "folke/tokyonight.nvim",
+        lazy = false,
+        opts = { style = "moon" },
+        priority = 1000,
+        config = function()
+            -- load the colorscheme here
+            vim.cmd([[colorscheme tokyonight]])
+        end,
     },
 }
