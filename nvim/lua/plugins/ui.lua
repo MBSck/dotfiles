@@ -2,20 +2,26 @@ return {
     -- Dashboard
     { 'glepnir/dashboard-nvim', event = "UIEnter", config = require("setup.dashboard").setup },
     -- Overides the default vim notify method for a floating window
-    { 'rcarriga/nvim-notify', config = require("setup.notify").setup },
+    { 'rcarriga/nvim-notify', event = "UIEnter", config = require("setup.notify").setup },
     -- Status progress for lsp servers
     { 'j-hui/fidget.nvim', config = require('setup.fidget').setup },
+    -- Shows where one is at the top of the file
+    {
+        'stevearc/aerial.nvim',
+        event = { "BufReadPost", "BufNewFile" },
+        keys = { {'<leader>a', '<cmd>AerialToggle!<CR>', desc = "Toggle aerial"} },
+    },
     -- Better visual comment displays
     { 
         "folke/todo-comments.nvim",
-        event = { "BufReadPre", "BufNewFile" },
+        event = { "BufReadPost", "BufNewFile" },
         config = require("setup.todo-comments").setup
     },
     -- cmd = { "TodoTrouble", "TodoTelescope" },
     -- Gitsigns
     {
         "lewis6991/gitsigns.nvim",
-        event = { "BufReadPre", "BufNewFile" },
+        event = { "BufReadPost", "BufNewFile" },
         config = require("setup.gitsigns").setup },
     -- Status line
     {

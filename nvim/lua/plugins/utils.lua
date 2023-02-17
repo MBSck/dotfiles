@@ -14,6 +14,14 @@ return {
     { 'akinsho/toggleterm.nvim', event = "BufEnter", config = require('setup.toggleterm').setup },
     { 'numToStr/Comment.nvim', event = "BufEnter", config = require('setup.comment').setup },
     {
+        'ntpeters/vim-better-whitespace',
+        event = "BufEnter",
+        keys = {
+            { "<leader><f5>", ":StripWhitespace<cr>" },
+            { "<f5>", ":ToggleWhitespace<cr>" },
+        },
+    },
+    {
         'nvim-telescope/telescope.nvim',
         dependencies = {
             'gbrlsnchs/telescope-lsp-handlers.nvim',

@@ -1,7 +1,7 @@
 -- Additional icons
 --             
 --           ﳠ  
---             
+--             
 --      ⋗ Ω p 
 
 local M = {}
@@ -133,20 +133,21 @@ M.lualine = {
 }
 
 M.dashboard = {
-    update = ' ',
-    files = ' ',
-    apps = ' ',
-    dotfiles = ' ',
+    update = '',
+    files = '',
+    apps = '',
+    dotfiles = '',
+    exit = '',
 }
 
 M.comments = {
-    fix = ' ',
-    todo = ' ',
-    hack = ' ',
-    warn = ' ',
-    perf = ' ',
-    note = ' ',
-    test = '⏲ ',
+    fix = '',
+    todo = '',
+    hack = '',
+    warn = '',
+    perf = '',
+    note = '',
+    test = '⏲',
 }
 
 M.neotree ={

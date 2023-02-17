@@ -1,8 +1,5 @@
--- Shows where one is at the top of the file
 return {
-    'stevearc/aerial.nvim',
-    keys = { {'<leader>a', '<cmd>AerialToggle!<CR>', desc = "Toggle aerial"} },
-    opts = {
+    setup = function()
         -- Priority list of preferred backends for aerial.
         -- This can be a filetype map (see :help aerial-filetype-map)
         backends = { "treesitter", "lsp", "markdown", "man" },
@@ -51,19 +48,19 @@ return {
         -- it will use the mapping at require("aerial.actions").<name>
         -- Set to `false` to remove a keymap
         keymaps = {
-            ["?"] = "actions.show_help",
-            ["g?"] = "actions.show_help",
-            ["<CR>"] = "actions.jump",
-            ["<2-LeftMouse>"] = "actions.jump",
-            ["<C-v>"] = "actions.jump_vsplit",
-            ["<C-s>"] = "actions.jump_split",
-            ["p"] = "actions.scroll",
-            ["<C-j>"] = "actions.down_and_scroll",
-            ["<C-k>"] = "actions.up_and_scroll",
-            ["{"] = "actions.prev",
-            ["}"] = "actions.next",
-            ["[["] = "actions.prev_up",
-            ["]]"] = "actions.next_up",
+        ["?"] = "actions.show_help",
+        ["g?"] = "actions.show_help",
+        ["<CR>"] = "actions.jump",
+        ["<2-LeftMouse>"] = "actions.jump",
+        ["<C-v>"] = "actions.jump_vsplit",
+        ["<C-s>"] = "actions.jump_split",
+        ["p"] = "actions.scroll",
+        ["<C-j>"] = "actions.down_and_scroll",
+        ["<C-k>"] = "actions.up_and_scroll",
+        ["{"] = "actions.prev",
+        ["}"] = "actions.next",
+        ["[["] = "actions.prev_up",
+        ["]]"] = "actions.next_up",
             ["q"] = "actions.close",
             ["o"] = "actions.tree_toggle",
             ["za"] = "actions.tree_toggle",
@@ -215,15 +212,15 @@ return {
 
         -- Customize the characters used when show_guides = true
         guides = {
-            -- When the child item has a sibling below it
-            mid_item = "├─",
-            -- When the child item is the last in the list
-            last_item = "└─",
+        -- When the child item has a sibling below it
+        mid_item = "├─",
+        -- When the child item is the last in the list
+        last_item = "└─",
             -- When there are nested child guides to the right
-            nested_top = "│ ",
-            -- Raw indentation
-            whitespace = "  ",
-        },
+        nested_top = "│ ",
+        -- Raw indentation
+        whitespace = "  ",
+    },
 
         -- Options for opening aerial in a floating win
         float = {
@@ -278,5 +275,5 @@ return {
             -- How long to wait (in ms) after a buffer change before updating
             update_delay = 300,
         }
-    },
+    end,
 }

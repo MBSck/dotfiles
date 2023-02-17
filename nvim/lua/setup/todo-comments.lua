@@ -13,12 +13,12 @@ return {
                     alt = { "FIXME", "BUG", "FIXIT", "ISSUE" }, -- a set of other keywords that all map to this FIX keywords
                     -- signs = false, -- configure signs for some keywords individually
                 },
-                TODO = { icon = icons.comments.todo, color = "info" },
-                HACK = { icon = icons.comments.hack, color = "warning" },
-                WARN = { icon = icons.comments.warn, color = "warning", alt = { "WARNING", "XXX" } },
-                PERF = { icon = icons.comments.perf, alt = { "OPTIM", "PERFORMANCE", "OPTIMIZE" } },
-                NOTE = { icon = icons.comments.note, color = "hint", alt = { "INFO" } },
-                TEST = { icon = icons.comments.test, color = "test", alt = { "TESTING", "PASSED", "FAILED" } },
+                TODO = { icon = icons.comments.todo.." ", color = "info" },
+                HACK = { icon = icons.comments.hack.." ", color = "warning" },
+                WARN = { icon = icons.comments.warn.." ", color = "warning", alt = { "WARNING", "XXX" } },
+                PERF = { icon = icons.comments.perf.." ", alt = { "OPTIM", "PERFORMANCE", "OPTIMIZE" } },
+                NOTE = { icon = icons.comments.note.." ", color = "hint", alt = { "INFO" } },
+                TEST = { icon = icons.comments.test.." ", color = "test", alt = { "TESTING", "PASSED", "FAILED" } },
             },
             gui_style = {
                 fg = "NONE", -- The gui style to use for the fg highlight group.

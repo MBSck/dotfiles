@@ -59,7 +59,7 @@ return {
         end
 
         local nnoremap = require("remaps.keymap").nnoremap
-        nnoremap("<f2>", "<cmd>lua _terminal_toggle()<CR>", { silent = true })
-        nnoremap("<f4>", "<cmd>lua _lazygit_toggle()<CR>", { silent = true })
+        nnoremap("<f2>", "<cmd>lua _lazygit_toggle()<CR>", { silent = true })
+        nnoremap("<f4>", "<cmd>lua _terminal_toggle()<CR>", { silent = true })
     end,
 }
