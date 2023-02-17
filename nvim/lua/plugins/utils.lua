@@ -17,8 +17,8 @@ return {
         'ntpeters/vim-better-whitespace',
         event = "BufEnter",
         keys = {
-            { "<leader><f5>", ":StripWhitespace<cr>" },
-            { "<f5>", ":ToggleWhitespace<cr>" },
+            { "<leader>wr", ":StripWhitespace<cr>" },
+            { "<leader>wt", ":ToggleWhitespace<cr>" },
         },
     },
     {

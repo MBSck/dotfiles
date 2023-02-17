@@ -1,7 +1,7 @@
 -- Additional icons
 --             
 --           ﳠ  
---             
+--            
 --      ⋗ Ω p 
 
 local M = {}
@@ -171,6 +171,6 @@ M.neotree ={
         unstaged = "",
         conflict = "",
     }
-} 
+}
 
 return M
