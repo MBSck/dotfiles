@@ -21,14 +21,7 @@ return {
     { 'numToStr/Comment.nvim', event = "BufEnter", config = require('setup.comment').setup },
 
     -- Whitespace stripping
-    {
-        'ntpeters/vim-better-whitespace',
-        event = "BufEnter",
-        keys = {
-            { "<leader>wr", ":StripWhitespace<cr>" },
-            { "<leader>wt", ":ToggleWhitespace<cr>" },
-        },
-    },
+    { 'ntpeters/vim-better-whitespace', event = "BufEnter", keys = require("setup.vim-better-whitespace").keys },
 
     -- File finder
     {
@@ -44,4 +37,15 @@ return {
         },
         config = require('setup.telescope').setup,
     },
+
+    -- VimTex
+    { "lervag/vimtex", event = "BufEnter *.tex", keys = require("setup.vimtex").keys },
+
+    -- Markdown-preview
+    -- {
+    --     "iamcco/markdown-preview.nvim",
+    --     event = "BufEnter *.md",
+    --     opts = require("setup.markdown-preview").opts,
+    --     keys = require("setup.markdown-preview").keys,
+    -- },
 }
