@@ -35,6 +35,9 @@ return {
                     limit = 100,
                 },
 
+    --         prompt_prefix = " ",
+    --         selection_caret = " ",
+
                 -- Mappings
                 mappings = {
                     i = {
@@ -42,6 +45,28 @@ return {
                         ['<C-j>'] = require('telescope.actions').move_selection_next,
                         ['<C-k>'] = require('telescope.actions').move_selection_previous,
                         ['<C-q>'] = require('telescope.actions').send_to_qflist,
+
+                        -- ["<c-t>"] = function(...)
+                        --     return require("trouble.providers.telescope").open_with_trouble(...)
+                        -- end,
+                        -- ["<a-i>"] = function()
+                        --     Util.telescope("find_files", { no_ignore = true })()
+                        -- end,
+                        -- ["<a-h>"] = function()
+                        --     Util.telescope("find_files", { hidden = true })()
+                        -- end,
+                        -- ["<C-Down>"] = function(...)
+                        --     return require("telescope.actions").cycle_history_next(...)
+                        -- end,
+                        -- ["<C-Up>"] = function(...)
+                        --     return require("telescope.actions").cycle_history_prev(...)
+                        -- end,
+                        -- ["<C-f>"] = function(...)
+                        --     return require("telescope.actions").preview_scrolling_down(...)
+                        -- end,
+                        -- ["<C-b>"] = function(...)
+                        --     return require("telescope.actions").preview_scrolling_up(...)
+                        -- end,
                     },
                     n = { ['<ESC>'] = require('telescope.actions').close },
                     n = { ['q'] = require('telescope.actions').close },
@@ -50,42 +75,43 @@ return {
         })
         require('telescope').load_extension('fzf')
         require('telescope').load_extension('lsp_handlers')
-        require('telescope').load_extension('dap')
-        require('telescope').load_extension('session-lens')
+        -- require('telescope').load_extension('dap')
+        -- require('telescope').load_extension('session-lens')
         require('telescope').load_extension('file_browser')
     end,
     keys = {
-        { "<leader>ff", ":Telescope find_files<cr>" },
-        { "<leader>tb", "<cmd>Telescope buffers show_all_buffers=true<cr>" },
-        --{ "<leader>/", Util.telescope("live_grep"), desc = "Find in Files (Grep)" },
-        { "<leader>:", "<cmd>Telescope command_history<cr>", desc = "Command History" },
+        { "<leader>ff", "<cmd>Telescope find_files<cr>" },
+        { "<leader>fb", "<cmd>Telescope buffers show_all_buffers=true<cr>" },
+        -- { "<leader>fb", "<cmd>Telescope buffers<cr>", desc = "Buffers" },
+        -- { "<leader>fg", Util.telescope("live_grep"), desc = "Find in Files (Grep)" },
         --{ "<leader><space>", Util.telescope("files"), desc = "Find Files (root dir)" },
         -- find
-        { "<leader>fb", "<cmd>Telescope buffers<cr>", desc = "Buffers" },
         --{ "<leader>ff", Util.telescope("files"), desc = "Find Files (root dir)" },
         --{ "<leader>fF", Util.telescope("files", { cwd = false }), desc = "Find Files (cwd)" },
-        { "<leader>fr", "<cmd>Telescope oldfiles<cr>", desc = "Recent" },
+        -- { "<leader>fr", "<cmd>Telescope oldfiles<cr>", desc = "Recent" },
+
         -- git
-        { "<leader>gc", "<cmd>Telescope git_commits<CR>", desc = "commits" },
-        { "<leader>gs", "<cmd>Telescope git_status<CR>", desc = "status" },
+        -- { "<leader>gc", "<cmd>Telescope git_commits<CR>", desc = "commits" },
+        -- { "<leader>gs", "<cmd>Telescope git_status<CR>", desc = "status" },
+
         -- search
-        { "<leader>sa", "<cmd>Telescope autocommands<cr>", desc = "Auto Commands" },
-        { "<leader>sb", "<cmd>Telescope current_buffer_fuzzy_find<cr>", desc = "Buffer" },
-        { "<leader>sc", "<cmd>Telescope command_history<cr>", desc = "Command History" },
-        { "<leader>sC", "<cmd>Telescope commands<cr>", desc = "Commands" },
-        { "<leader>sd", "<cmd>Telescope diagnostics<cr>", desc = "Diagnostics" },
-        --{ "<leader>sg", Util.telescope("live_grep"), desc = "Grep (root dir)" },
-        --{ "<leader>sG", Util.telescope("live_grep", { cwd = false }), desc = "Grep (cwd)" },
-        { "<leader>sh", "<cmd>Telescope help_tags<cr>", desc = "Help Pages" },
-        { "<leader>sH", "<cmd>Telescope highlights<cr>", desc = "Search Highlight Groups" },
-        { "<leader>sk", "<cmd>Telescope keymaps<cr>", desc = "Key Maps" },
-        { "<leader>sM", "<cmd>Telescope man_pages<cr>", desc = "Man Pages" },
-        { "<leader>sm", "<cmd>Telescope marks<cr>", desc = "Jump to Mark" },
-        { "<leader>so", "<cmd>Telescope vim_options<cr>", desc = "Options" },
-        --{ "<leader>sw", Util.telescope("grep_string"), desc = "Word (root dir)" },
-        --{ "<leader>sW", Util.telescope("grep_string", { cwd = false }), desc = "Word (cwd)" },
-        --{ "<leader>uC", Util.telescope("colorscheme", { enable_preview = true }), desc = "Colorscheme with preview" },
-        --{
+        -- { "<leader>sa", "<cmd>Telescope autocommands<cr>", desc = "Auto Commands" },
+        -- { "<leader>sb", "<cmd>Telescope current_buffer_fuzzy_find<cr>", desc = "Buffer" },
+        -- { "<leader>sc", "<cmd>Telescope command_history<cr>", desc = "Command History" },
+        -- { "<leader>sC", "<cmd>Telescope commands<cr>", desc = "Commands" },
+        -- { "<leader>sd", "<cmd>Telescope diagnostics<cr>", desc = "Diagnostics" },
+        -- { "<leader>sg", Util.telescope("live_grep"), desc = "Grep (root dir)" },
+        -- { "<leader>sG", Util.telescope("live_grep", { cwd = false }), desc = "Grep (cwd)" },
+        -- { "<leader>sh", "<cmd>Telescope help_tags<cr>", desc = "Help Pages" },
+        -- { "<leader>sH", "<cmd>Telescope highlights<cr>", desc = "Search Highlight Groups" },
+        -- { "<leader>sk", "<cmd>Telescope keymaps<cr>", desc = "Key Maps" },
+        -- { "<leader>sM", "<cmd>Telescope man_pages<cr>", desc = "Man Pages" },
+        -- { "<leader>sm", "<cmd>Telescope marks<cr>", desc = "Jump to Mark" },
+        -- { "<leader>so", "<cmd>Telescope vim_options<cr>", desc = "Options" },
+        -- { "<leader>sw", Util.telescope("grep_string"), desc = "Word (root dir)" },
+        -- { "<leader>sW", Util.telescope("grep_string", { cwd = false }), desc = "Word (cwd)" },
+        -- { "<leader>uC", Util.telescope("colorscheme", { enable_preview = true }), desc = "Colorscheme with preview" },
+
         --"<leader>ss",
         --Util.telescope("lsp_document_symbols", {
         --symbols = {
@@ -104,47 +130,3 @@ return {
         -- desc = "Goto Symbol",
     }
 }
-
--- return {
---     "nvim-telescope/telescope.nvim",
---     cmd = "Telescope",
---     version = false, -- telescope did only one release, so use HEAD for now
---     keys = {
--- },
--- opts = {
---     defaults = {
---         prompt_prefix = " ",
---         selection_caret = " ",
---         mappings = {
---             i = {
---                 ["<c-t>"] = function(...)
---                     return require("trouble.providers.telescope").open_with_trouble(...)
---                 end,
---                 ["<a-i>"] = function()
---                     Util.telescope("find_files", { no_ignore = true })()
---                 end,
---                 ["<a-h>"] = function()
---                     Util.telescope("find_files", { hidden = true })()
---                 end,
---                 ["<C-Down>"] = function(...)
---                     return require("telescope.actions").cycle_history_next(...)
---                 end,
---                 ["<C-Up>"] = function(...)
---                     return require("telescope.actions").cycle_history_prev(...)
---                 end,
---                 ["<C-f>"] = function(...)
---                     return require("telescope.actions").preview_scrolling_down(...)
---                 end,
---                 ["<C-b>"] = function(...)
---                     return require("telescope.actions").preview_scrolling_up(...)
---                 end,
---             },
---             n = {
---                 ["q"] = function(...)
---                     return require("telescope.actions").close(...)
---                 end,
---             },
---         },
---     },
--- },
--- }
