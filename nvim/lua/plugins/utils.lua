@@ -1,5 +1,5 @@
 return {
-    -- file browser
+    -- File Tree browser
     {
         'nvim-neo-tree/neo-tree.nvim',
         dependencies = {
@@ -10,9 +10,17 @@ return {
         event = "BufEnter",
         config = require('setup.neotree').setup,
     },
-    -- better terminal
+
+    -- Simulates comfortable scroll motion
+    { 'yuttie/comfortable-motion.vim', event = { "BufReadPost", "BufNewFile" } },
+
+    -- Better terminal
     { 'akinsho/toggleterm.nvim', event = "BufEnter", config = require('setup.toggleterm').setup },
+
+    -- Comment functionality
     { 'numToStr/Comment.nvim', event = "BufEnter", config = require('setup.comment').setup },
+
+    -- Whitespace stripping
     {
         'ntpeters/vim-better-whitespace',
         event = "BufEnter",
@@ -21,8 +29,11 @@ return {
             { "<leader>wt", ":ToggleWhitespace<cr>" },
         },
     },
+
+    -- File finder
     {
         'nvim-telescope/telescope.nvim',
+        keys = require("setup.telescope").keys,
         dependencies = {
             'gbrlsnchs/telescope-lsp-handlers.nvim',
             'nvim-telescope/telescope-dap.nvim',

@@ -1,28 +1,37 @@
+-- TODO: The colors of both the lualine and the sideline of git should be the same
 return {
+    -- Colorful window separation to see what window is active
+    -- { "nvim-zh/colorful-winsep.nvim", event = { "BufReadPost", "BufNewFile" } },
+
     -- Dashboard
     { 'glepnir/dashboard-nvim', event = "UIEnter", config = require("setup.dashboard").setup },
+
     -- Overides the default vim notify method for a floating window
     { 'rcarriga/nvim-notify', event = "UIEnter", config = require("setup.notify").setup },
+
     -- Status progress for lsp servers
     { 'j-hui/fidget.nvim', config = require('setup.fidget').setup },
+
+    -- Highlights the code yanking
+    {'machakann/vim-highlightedyank', event = { "BufReadPost", "BufNewFile" } },
+
+    -- URL highlighting
+    { 'itchyny/vim-highlighturl', event = { "BufReadPost", "BufNewFile" } },
+
     -- Shows where one is at the top of the file
     {
         'stevearc/aerial.nvim',
         event = { "BufReadPost", "BufNewFile" },
         keys = { {'<leader>a', '<cmd>AerialToggle!<CR>', desc = "Toggle aerial"} },
     },
+
     -- Better visual comment displays
-    { 
-        "folke/todo-comments.nvim",
-        event = { "BufReadPost", "BufNewFile" },
-        config = require("setup.todo-comments").setup
-    },
-    -- cmd = { "TodoTrouble", "TodoTelescope" },
+    { "folke/todo-comments.nvim", event = { "BufReadPost", "BufNewFile" }, config = require("setup.todo-comments").setup },
+
     -- Gitsigns
-    {
-        "lewis6991/gitsigns.nvim",
-        event = { "BufReadPost", "BufNewFile" },
-        config = require("setup.gitsigns").setup },
+    -- cmd = { "TodoTrouble", "TodoTelescope" },
+    { "lewis6991/gitsigns.nvim", event = { "BufReadPost", "BufNewFile" }, config = require("setup.gitsigns").setup },
+
     -- Status line
     {
     'nvim-lualine/lualine.nvim',
@@ -34,7 +43,11 @@ return {
         )
     end,
     },
+
+    -- Tabline
     { 'nanozuki/tabby.nvim', event = "UIEnter", config = require('setup.tabline').setup },
+
+    -- Colorscheme
     {
         "folke/tokyonight.nvim",
         lazy = false,

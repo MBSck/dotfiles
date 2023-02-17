@@ -173,4 +173,10 @@ M.neotree ={
     }
 }
 
+M.telescope = {
+    entry_prefix = "",
+    prompt_prefix = "",
+    selection_caret = "",
+}
+
 return M
