@@ -37,55 +37,30 @@ M.capabilities = function()
     return capabilities
 end
 
+M.diagnostics = {
+    underline = true,
+    update_in_insert = false,
+    virtual_text = { spacing = 4, prefix = "●" },
+    severity_sort = true,
+}
+
 M.setup = function()
-    -- diagnostics icons
+    -- Diagnostic icons
     for name, icon in pairs(require("config.icons").lsp) do
         name = "DiagnosticSign" .. (name:gsub("^%l", string.upper))
         vim.fn.sign_define(name, { text = icon, texthl = name, numhl = "" })
     end
+    vim.diagnostic.config(M.diagnostics)
 
-    -- TODO: Set this up with opts for server and for the config fo the diagnostic
-    -- options for vim.diagnostic.config()
-    vim.diagnostic.config ({
-        underline = true,
-        update_in_insert = true,
-        virtual_text = { spacing = 4, prefix = "●" },
-        severity_sort = true,
+    local lspconfig = require('lspconfig')
+    require('mason-lspconfig').setup_handlers({
+        function(server_name)
+            lspconfig[server_name].setup({
+                on_attach = M.on_attach,
+                capabilities = M.capabilities,
+            })
+        end,
     })
-
-    local capabilities = require("cmp_nvim_lsp").default_capabilities(vim.lsp.protocol.make_client_capabilities())
-
-    local function setup(server)
-        local server_opts = vim.tbl_deep_extend("force", {
-            capabilities = vim.deepcopy(capabilities),
-        }, servers[server] or {})
-
-        if opts.setup[server] then
-            if opts.setup[server](server, server_opts) then
-                return
-            end
-        elseif opts.setup["*"] then
-            if opts.setup["*"](server, server_opts) then
-                return
-            end
-        end
-        require("lspconfig")[server].setup(server_opts)
-    end
-
-    local mlsp = require("mason-lspconfig")
-    local available = mlsp.get_available_servers()
-
-    -- local ensure_installed = {} ---@type string[]
-    -- for server, server_opts in pairs(servers) do
-        -- if server_opts then
-            -- server_opts = server_opts == true and {} or server_opts
-            -- run manual setup if mason=false or if this is a server that cannot be installed with mason-lspconfig
-            -- if server_opts.mason == false or not vim.tbl_contains(available, server) then
-                -- setup(server)
-            -- else
-                -- ensure_installed[#ensure_installed + 1] = server
-            -- end
-        -- end
-    -- end
 end
+
 return M
