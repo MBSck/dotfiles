@@ -36,10 +36,7 @@ return {
 
         -- Terminal variables
         local Terminal = require("toggleterm.terminal").Terminal
-        local terminal = Terminal:new({
-            float_opts = { border = "double", },
-            close_on_exit = true,
-        })
+        local terminal = Terminal:new({ float_opts = { border = "double", }, close_on_exit = true, })
         local lazygit = Terminal:new({
             cmd = "lazygit",
             dir = "git_dir",
@@ -54,8 +51,6 @@ return {
                 vim.api.nvim_buf_set_keymap(term.bufnr, "n", "q", "<cmd>close<CR>", {noremap = true, silent = true})
             end,
         })
-        -- local pytest = Terminal:new({ cmd = "pytest "..vim.fn.expand("%, t"), })
-
         local filetype_cmd = {
             python = "python3",
             rust = "cargo run",
@@ -65,6 +60,8 @@ return {
         -- there is need for a file to be attached to the command
         function _get_file_executable(filetype)
             if filetype == "python" then
+            -- TODO: Check how to implement pytest -> Check if pytest is in file?
+            -- local pytest = Terminal:new({ cmd = "pytest "..vim.fn.expand("%, t"), })
                 return filetype_cmd.python, true
             elseif filetype == "rust" then
                 return filetype_cmd.rust, false
@@ -81,7 +78,6 @@ return {
                     local file = vim.fn.expand("%, t")
                     Terminal:new({ cmd = executable.." "..file, }):toggle()
                 elseif not file_needed then
-                    print(executable, file_needed)
                     Terminal:new({ cmd = executable, }):toggle()
                 end
             else
