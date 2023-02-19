@@ -16,6 +16,6 @@ return {
         { 'Saecki/crates.nvim', dependencies = { 'nvim-lua/plenary.nvim' } }, -- auto complete for Cargo.toml
         'onsails/lspkind-nvim', -- show pictograms in the auto complete popup
         'hrsh7th/cmp-nvim-lsp-document-symbol',
-        { 'Exafunction/codeium.vim', dependencies = { "nvim-lua/plenary.nvim", "MunifTanjim/nui.nvim" } },
+        -- { 'Exafunction/codeium.vim', dependencies = { "nvim-lua/plenary.nvim", "MunifTanjim/nui.nvim" } },
     },
 }

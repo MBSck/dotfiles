@@ -6,6 +6,7 @@ return {
         -- noinsert: Do not insert text until a selection is made
         -- noselect: Do not select, force user to select one from the menu
         -- vim.o.completeopt = 'menu, menuone, noinsert'
+        local icons = require("config.icons")
 
         local lspkind = require('lspkind')
         local cmp = require('cmp')
@@ -19,20 +20,19 @@ return {
             ext_ops = {
                 [luasnip_types.choiceNode] = {
                     active = {
-                        virt_text = { { '●', 'DevIconSml' } },
+                        virt_text = { { icons.lsp.prefix, 'DevIconSml' } },
                     },
                 },
                 [luasnip_types.insertNode] = {
                     active = {
-                        virt_text = { { '●', 'DevIconC' } },
+                        virt_text = { { icons.lsp.prefix, 'DevIconC' } },
                     },
                 },
             },
             parser_nested_assembler = function(_, snippet)
                 local select = function(snip, no_move)
                     snip.parent:enter_node(snip.indx)
-                    -- upon deletion, extmarks of inner nodes should shift to end of
-                    -- placeholder-text.
+                    -- Upon deletion, extmarks of inner nodes should shift to end of placeholder-text.
                     for _, node in ipairs(snip.nodes) do
                         node:set_mark_rgrav(true, true)
                     end
@@ -49,7 +49,7 @@ return {
                 end
                 function snippet:jump_into(dir, no_move)
                     if self.active then
-                        -- inside snippet, but not selected.
+                        -- Inside snippet, but not selected.
                         if dir == 1 then
                             self:input_leave()
                             return self.next:jump_into(dir, no_move)
@@ -58,7 +58,7 @@ return {
                             return self
                         end
                     else
-                        -- jumping in from outside snippet.
+                        -- Jumping in from outside snippet.
                         self:input_enter()
                         if dir == 1 then
                             select(self, no_move)
@@ -69,7 +69,7 @@ return {
                     end
                 end
 
-                -- this is called only if the snippet is currently selected.
+                -- This is called only if the snippet is currently selected.
                 function snippet:jump_from(dir, no_move)
                     if dir == 1 then
                         return self.inner_first:jump_into(dir, no_move)
@@ -83,7 +83,7 @@ return {
             end,
         })
 
-        -- set keymap for navigating through snippet choices
+        -- Set keymap for navigating through snippet choices
         vim.keymap.set({ 'i', 's' }, '<a-l>', function()
             if luasnip.choice_active() then
                 luasnip.change_choice(1)
@@ -215,14 +215,13 @@ return {
 
         -- TODO: Implement codeium
         -- require('codeium').setup(function()
-            -- vim.g.codeium_disable_bindings = 1
+        --     vim.g.codeium_disable_bindings = 1
 
-            -- local inoremap = require("remaps.keymap").inoremap
-
-            -- inoremap("<c-x>", function() return vim.fn['codeium#Clear']() end, { expr = true })
-            -- inoremap("<C-;>", function() return vim.fn['codeium#CycleCompletions'](1) end, { expr = true })
-            -- inoremap("<C-,>", function() return vim.fn['codeium#CycleCompletions'](-1) end, { expr = true })
-            -- inoremap("<C-g>", function() return vim.fn['codeium#Accept']() end, { expr = true })
+        --     local inoremap = require("remaps.keymap").inoremap
+        --     inoremap("<c-x>", function() return vim.fn['codeium#Clear']() end, { expr = true })
+        --     inoremap("<C-;>", function() return vim.fn['codeium#CycleCompletions'](1) end, { expr = true })
+        --     inoremap("<C-,>", function() return vim.fn['codeium#CycleCompletions'](-1) end, { expr = true })
+        --     inoremap("<C-g>", function() return vim.fn['codeium#Accept']() end, { expr = true })
         -- end)
     end,
 }
