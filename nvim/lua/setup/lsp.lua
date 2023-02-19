@@ -1,12 +1,13 @@
-local M = {}
+M = {}
 
-M.on_attach = function(client, bufnr)
+M.lsp_attach = function(client, bufnr)
     if client.server_capabilities.documentSymbolProvider then
         require('nvim-navic').attach(client, bufnr)
     end
 
     local nnoremap = require("remaps.keymap").nnoremap
     local inoremap = require("remaps.keymap").inoremap
+    local opts = { noremap = true, silent = true }
 
     nnoremap("K", function() vim.lsp.buf.hover() end, opts)
     inoremap("<C-k>", function() vim.lsp.buf.signature_help() end, opts)
@@ -30,7 +31,7 @@ M.on_attach = function(client, bufnr)
     -- https://github.com/L3MON4D3/LuaSnip/wiki/Misc#improve-language-server-snippets
 end
 
-M.capabilities = function()
+M.lsp_capabilities = function()
     local capabilities = vim.lsp.protocol.make_client_capabilities()
     capabilities.textDocument.completion.completionItem.snippetSupport = true
     capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
@@ -40,27 +41,33 @@ end
 M.diagnostics = {
     underline = true,
     update_in_insert = false,
-    virtual_text = { spacing = 4, prefix = "●" },
+    virtual_text = { spacing = 4, prefix = require("config.icons").lsp.prefix },
     severity_sort = true,
 }
 
 M.setup = function()
-    -- Diagnostic icons
+    require('mason').setup()
+    require('mason-lspconfig').setup({
+        ensure_installed = {
+            'rust_analyzer',
+        }
+    })
+
+    local lspconfig = require('lspconfig')
+    local get_servers = require('mason-lspconfig').get_installed_servers
+    for _, server_name in ipairs(get_servers()) do
+        lspconfig[server_name].setup({
+            -- TODO: Add here the correct lsp_attach forms
+            on_attach = lsp_attach,
+            capabilities = lsp_capabilities,
+        })
+    end
+
     for name, icon in pairs(require("config.icons").lsp) do
         name = "DiagnosticSign" .. (name:gsub("^%l", string.upper))
         vim.fn.sign_define(name, { text = icon, texthl = name, numhl = "" })
     end
     vim.diagnostic.config(M.diagnostics)
-
-    local lspconfig = require('lspconfig')
-    require('mason-lspconfig').setup_handlers({
-        function(server_name)
-            lspconfig[server_name].setup({
-                on_attach = M.on_attach,
-                capabilities = M.capabilities,
-            })
-        end,
-    })
 end
 
 return M

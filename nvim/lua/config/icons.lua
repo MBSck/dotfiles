@@ -87,6 +87,7 @@ M.lsp = {
     warn = "",
     hint = "⚑",
     info = "",
+    prefix = "●",
 }
 
 M.mason = {
