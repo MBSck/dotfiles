@@ -4,7 +4,7 @@ return {
         -- Author: shadmansaleh
         -- Credit: glepnir
         local icons = require("config.icons")
-        local colors = require("config.colors")
+        local colors = require("config.colors").general
         local lualine = require('lualine')
 
         -- Color table for highlights

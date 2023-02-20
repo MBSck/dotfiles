@@ -1,4 +1,4 @@
-eturn {
+return {
     keymap_table = keymap_table,
     which_key = {
         visual = {
@@ -198,3 +198,4 @@ eturn {
             vim.keymap.set(keymap.modes, keymap.shortcut, keymap.cmd, opts)
         end
     end,
+}

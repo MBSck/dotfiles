@@ -1,5 +1,4 @@
 return {
-    { 'nathom/filetype.nvim', config = require('setup.filetype').setup }, -- replaces filetype load from vim for a more performant one
     'farmergreg/vim-lastplace', -- remembers cursor position with nice features in comparison to just an autocmd
     'nvim-lua/plenary.nvim', -- serveral lua utilities
     {

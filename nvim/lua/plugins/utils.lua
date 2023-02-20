@@ -48,4 +48,7 @@ return {
     --     opts = require("setup.markdown-preview").opts,
     --     keys = require("setup.markdown-preview").keys,
     -- },
+
+    -- Filetype specific plugins
+    { "jeetsukumaran/vim-python-indent-black", event = "BufEnter *.py" }
 }

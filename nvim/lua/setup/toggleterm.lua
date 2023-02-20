@@ -56,12 +56,22 @@ return {
             rust = "cargo run",
         }
 
+        -- TODO: Implement this and check how one can see if terminals insert mode is
+        -- activated and if it is leave it and untoggle the Terminal and then when key is
+        -- hit again open terminal and go back into insert mode
+        -- local function _toggle_terminal()
+        --     if
+        -- end
+
+        -- TODO: Check out the better functionality provided by toggelterm and implement
+        -- it as well...
+
         -- This function returns both the filetypes executable and a bool that tells if
         -- there is need for a file to be attached to the command
-        function _get_file_executable(filetype)
+        local function _get_file_executable(filetype)
             if filetype == "python" then
-            -- TODO: Check how to implement pytest -> Check if pytest is in file?
-            -- local pytest = Terminal:new({ cmd = "pytest "..vim.fn.expand("%, t"), })
+            -- TODO: Implement pytest here by checking if the filename contains test, if
+                -- it is a python file (should work for most cases)
                 return filetype_cmd.python, true
             elseif filetype == "rust" then
                 return filetype_cmd.rust, false
@@ -70,7 +80,7 @@ return {
             end
         end
 
-        function _filetype_toggle()
+        local function _filetype_toggle()
             local filetype = vim.bo.filetype
             local executable, file_needed = _get_file_executable(filetype)
             if executable ~= nil then

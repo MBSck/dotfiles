@@ -100,7 +100,7 @@ M.git = {
     add = '',
     change = '',
     delete = '',
-    -- TODO: Implement the following icons properly
+    -- TODO: Implement the following icons (maybe only topdelete?) properly
     topdelete = '契',
     changedelete = '▎',
     untracked = '▎',
@@ -178,6 +178,10 @@ M.telescope = {
     entry_prefix = "",
     prompt_prefix = "",
     selection_caret = "",
+}
+
+M.indent_blankline = {
+    eol = "↴",
 }
 
 return M

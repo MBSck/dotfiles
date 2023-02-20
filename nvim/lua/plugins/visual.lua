@@ -3,6 +3,9 @@ return {
     -- Colorful window separation to see what window is active
     -- { "nvim-zh/colorful-winsep.nvim", event = { "BufReadPost", "BufNewFile" } },
 
+    -- Nice indent guidelines
+    { "lukas-reineke/indent-blankline.nvim", event = "UIEnter", config = require("setup.indent-blankline").setup },
+
     -- Dashboard
     { 'glepnir/dashboard-nvim', event = "UIEnter", config = require("setup.dashboard").setup },
 

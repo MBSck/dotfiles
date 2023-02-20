@@ -12,9 +12,6 @@ vim.g.mapleader = ","
 vim.g.maplocalleader = ";"
 vim.g.mapgloballeader = ":"
 
--- Import the setups
-require("setup")
-
 -- Configuration setting
 require("config")
 
