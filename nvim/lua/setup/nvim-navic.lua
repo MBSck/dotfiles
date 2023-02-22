@@ -1,7 +1,7 @@
 return {
     setup = function()
         require('nvim-navic').setup({
-            icons = { require("config.icons").types.standard },
+            icons = { require('lspkind').presets.default },
             highlight = true,
         })
     end,

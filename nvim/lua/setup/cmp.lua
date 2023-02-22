@@ -7,7 +7,6 @@ return {
         -- noselect: Do not select, force user to select one from the menu
         -- vim.o.completeopt = 'menu, menuone, noinsert'
         local icons = require("config.icons")
-
         local lspkind = require('lspkind')
         local cmp = require('cmp')
         local Rule = require('nvim-autopairs.rule')

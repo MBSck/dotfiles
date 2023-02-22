@@ -46,20 +46,15 @@ M.diagnostics = {
 }
 
 M.setup = function()
-    require('mason').setup()
-    require('mason-lspconfig').setup({
-        ensure_installed = {
-            'rust_analyzer',
-        }
-    })
-
     local lspconfig = require('lspconfig')
     local get_servers = require('mason-lspconfig').get_installed_servers
     for _, server_name in ipairs(get_servers()) do
         lspconfig[server_name].setup({
             -- TODO: Add here the correct lsp_attach forms
-            on_attach = lsp_attach,
+            on_attach = M.lsp_attach,
             capabilities = lsp_capabilities,
+            -- require('treesitter-context').setup({
+            --     enable = true,
         })
     end
 
