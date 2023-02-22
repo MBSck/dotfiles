@@ -1,17 +1,11 @@
 # ALIASES
-# Some Helpful path variables
-CODE="${HOME}/Code"
-DATA="${HOME}/Data"
-DOT="${CODE}/dotfiles"
-TERMINAL="${DOT}/terminal/"
-
 # Make aliases for programs
 alias vi="nvim"
 alias vim="nvim"
 alias py3="python3"
 alias pip3="python3 -m pip"
 alias pytest="python -m pytest"
-alias fv="open -a ring"
+alias fv="open -a fv"
 
 # Configuration path shortcuts
 alias nvimrc="cd ${DOT}/nvim/"
@@ -29,18 +23,23 @@ alias loadzsh="source ~/.zshrc"
 alias home="cd ${HOME}"
 alias data="cd ${DATA}"
 alias code="cd ${CODE}"
-alias down="cd ${HOME}/Downloads/"
-alias docs="cd ${HOME}/Documents/"
-alias pics="cd ${HOME}/Pictures/"
-alias book="cd  ${HOME}/Books/"
-alias paper="cd ${HOME}/Papers/"
+alias down="cd ${DOWN}"
+alias doc="cd ${DOC}"
+alias pic="cd ${PIC}"
+alias book="cd  ${BOOK}"
+alias paper="cd ${PAPER}"
+
+# More Path shortcuts
+alias glatex="cd ${LATEX}"
+alias rust="cd ${CODE}/rust_projects"
 
 # Code shortcuts
 alias dot="cd ${DOT}"
+alias calfind="cd ${CODE}/calfind; pyenv activate calfind"
 alias matadrs="cd ${CODE}/matadrs; pyenv activate matadrs"
 alias p2obp="cd ${CODE}/p2obp; pyenv activate p2obp"
-alias model="cd ${CODE}/modelling; pyenv activate modelling"
-alias oimodel="cd ${CODE}/modelling/oimodeler; pyenv activate oimodeler"
+alias mod="cd ${CODE}/modelling; pyenv activate modelling"
+alias oimod="cd ${CODE}/modelling/oimodeler; pyenv activate oimodeler"
 alias tidbits="cd ${CODE}/tidbits; pyenv activate tidbits"
 
 # Fast interactions
@@ -59,3 +58,7 @@ alias cl="clear; ls -ll"
 alias ...="cd ..; cd .."
 alias ....="cd ..; cd ..; cd .."
 alias .....="cd ..; cd ..; cd ..; cd .."
+
+# Kitty integration
+alias ikat="kitty +kitten icat"
+alias ssh="kitty +kitten ssh"
