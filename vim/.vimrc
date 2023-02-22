@@ -93,7 +93,7 @@ Plugin 'tmhedberg/SimpylFold'                                       " Better fol
 Plugin 'junegunn/fzf.vim'                                           " Fuzzy file finder
 
 " Linting
-Plugin 'dense-analysis/ale'					    " Syntax checking/linting for vim
+" Plugin 'dense-analysis/ale'					    " Syntax checking/linting for vim
 
 " Utility Plugin
 Plugin 'airblade/vim-gitgutter'					    " Git sideline support for vim
@@ -153,9 +153,12 @@ let g:highlightedyank_highlight_duration = 1000
 " Show buffer number for easier switching between buffer,
 let g:airline#extensions#tabline#buffer_nr_show = 1
 
-" Sets 80 column so line skip can be seen
+" Set terminal colors
+set t_Co=256
+
+" Sets column so line skip can be seen
 if (exists('+colorcolumn'))
-set colorcolumn=80
+set colorcolumn=90
     highlight ColorColumn ctermbg=9
 endif
 
