@@ -61,4 +61,4 @@ alias .....="cd ..; cd ..; cd ..; cd .."
 
 # Kitty integration
 alias ikat="kitty +kitten icat"
-alias ssh="kitty +kitten ssh"
+alias s="kitty +kitten ssh"

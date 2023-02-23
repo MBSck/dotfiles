@@ -40,10 +40,7 @@ return {
     'nvim-lualine/lualine.nvim',
     event = "UIEnter",
     config = function()
-        require("setup.lualine").setup(
-            require("setup.lsp_signature").status_line,
-            require("setup.nvim-navic").winbar
-        )
+        require("setup.lualine").setup()
     end,
     },
 

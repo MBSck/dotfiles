@@ -40,14 +40,13 @@ return {
         local lazygit = Terminal:new({
             cmd = "lazygit",
             dir = "git_dir",
-            hidden = true,
+            start_in_insert = false,
             close_on_exit = true,
             direction = "float",
             float_opts = { border = "double", },
 
             -- function to run on opening the terminal
             on_open = function(term)
-                vim.cmd("startinsert!")
                 vim.api.nvim_buf_set_keymap(term.bufnr, "n", "q", "<cmd>close<CR>", {noremap = true, silent = true})
             end,
         })

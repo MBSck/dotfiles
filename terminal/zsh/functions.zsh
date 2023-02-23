@@ -25,8 +25,8 @@ function nhppy ()
 function castro ()
 {
     if [[ $# -eq 0 ]]; then
-        ssh -X -t "scheuck@astro-node1.mpia.de"
+        s -X -t "scheuck@astro-node1.mpia.de"
     else
-        ssh -X -t "scheuck@astro-node${1}.mpia.de"
+        s -X -t "scheuck@astro-node${1}.mpia.de"
     fi
 }
