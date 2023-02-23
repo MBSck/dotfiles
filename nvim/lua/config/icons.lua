@@ -2,14 +2,84 @@
 --             
 --           ﳠ  
 --            
+--      ⋗ Ω p 
 
 local M = {}
 
-M.cmp = {
-    lsp = 'ƒ',
-    snippets = '⋗',
-    buffer = 'Ω',
-    path = '🖫',
+-- TODO: Reorder icons in shapes and similar
+
+M.general = {
+    devil = "",
+    settings = "",
+    bar = "▊",
+}
+
+M.kind = {
+    standard = {
+        Array = " ",
+        Boolean = " ",
+        Class = " ",
+        Color = " ",
+        Constant = " ",
+        Constructor = " ",
+        Copilot = " ",
+        Enum = " ",
+        EnumMember = " ",
+        Event = " ",
+        Field = " ",
+        File = " ",
+        Folder = " ",
+        Function = " ",
+        Interface = " ",
+        Key = " ",
+        Keyword = " ",
+        Method = " ",
+        Module = " ",
+        Namespace = " ",
+        Null = "ﳠ ",
+        Number = " ",
+        Object = " ",
+        Operator = " ",
+        Package = " ",
+        Property = " ",
+        Reference = " ",
+        Snippet = " ",
+        String = " ",
+        Struct = " ",
+        Text = " ",
+        TypeParameter = " ",
+        Unit = " ",
+        Value = " ",
+        Variable = " ",
+    },
+    other = {
+        File = ' ',
+        Module = ' ',
+        Namespace = ' ',
+        Package = ' ',
+        Class = ' ',
+        Method = ' ',
+        Property = ' ',
+        Field = ' ',
+        Constructor = ' ',
+        Enum = '練',
+        Interface = '練',
+        Function = ' ',
+        Variable = ' ',
+        Constant = ' ',
+        String = ' ',
+        Number = ' ',
+        Boolean = '◩ ',
+        Array = ' ',
+        Object = ' ',
+        Key = ' ',
+        Null = 'ﳠ ',
+        EnumMember = ' ',
+        Struct = ' ',
+        Event = ' ',
+        Operator = ' ',
+        TypeParameter = ' ',
+    }
 }
 
 M.lsp = {
@@ -17,6 +87,7 @@ M.lsp = {
     warn = "",
     hint = "⚑",
     info = "",
+    prefix = "●",
 }
 
 M.mason = {
@@ -27,18 +98,31 @@ M.mason = {
 
 M.git = {
     add = '',
-    modify = '',
-    remove = ''
+    change = '',
+    delete = '',
+    -- TODO: Implement the following icons (maybe only topdelete?) properly
+    topdelete = '契',
+    changedelete = '▎',
+    untracked = '▎',
+    branch =  "",
 }
 
 M.lualine = {
     component = {
-        left = '',
-        right = ''
+        triangle = { left = '', right = '' },
+        halfcircle = { left = '', right = '' },
     },
     section = {
-        left = '',
-        right = ''},
+        topslope = { left = '', right = '' },
+        triangle = { left = '', right = '' },
+        botslope = { left = ' ', right = ' ' },
+        halfcircle = { left = '', right = '' },
+        trapezoid = { left = '', right = '' },
+        pixelslope = { left = '', right = '' },
+        pixelbar = { left = '', right = '' },
+        legoside = { left = '', right = '' },
+        legorotated = { left = '', right = '' },
+    },
 }
 
 M.bufferline = {
@@ -46,7 +130,7 @@ M.bufferline = {
 }
 
 M.lualine = {
-    time = "",
+    time = " ",
 }
 
 M.dashboard = {
@@ -54,6 +138,7 @@ M.dashboard = {
     files = '',
     apps = '',
     dotfiles = '',
+    exit = '',
 }
 
 M.comments = {
@@ -66,42 +151,37 @@ M.comments = {
     test = '⏲',
 }
 
-M.kinds = {
-    Array = " ",
-    Boolean = " ",
-    Class = " ",
-    Color = " ",
-    Constant = " ",
-    Constructor = " ",
-    Copilot = " ",
-    Enum = " ",
-    EnumMember = " ",
-    Event = " ",
-    Field = " ",
-    File = " ",
-    Folder = " ",
-    Function = " ",
-    Interface = " ",
-    Key = " ",
-    Keyword = " ",
-    Method = " ",
-    Module = " ",
-    Namespace = " ",
-    Null = "ﳠ ",
-    Number = " ",
-    Object = " ",
-    Operator = " ",
-    Package = " ",
-    Property = " ",
-    Reference = " ",
-    Snippet = " ",
-    String = " ",
-    Struct = " ",
-    Text = " ",
-    TypeParameter = " ",
-    Unit = " ",
-    Value = " ",
-    Variable = " ",
+M.neotree ={
+    indent_marker = "│",
+    last_indent_maker = "└",
+    expander_collapse = "",
+    expander_expanded = "",
+    folder_closed = "",
+    folder_open = "",
+    folder_empty = "ﰊ",
+    default = "*",
+    git = {
+        added = "", -- or "✚", but this is redundant info if you use git_status_colors on the name
+        modified = "", -- or "", but this is redundant info if you use git_status_colors on the name
+        deleted = "✖",-- this can only be used in the git_status source
+        renamed = "",-- this can only be used in the git_status source
+        -- Status type
+        untracked = "",
+        ignored = "",
+        staged = "",
+        unstaged = "",
+        conflict = "",
+    }
+}
+
+M.telescope = {
+    entry_prefix = "",
+    prompt_prefix = "",
+    selection_caret = "",
+}
+
+M.indent_blankline = {
+    eol = "↴",
 }
 
 return M

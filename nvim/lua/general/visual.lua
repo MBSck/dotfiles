@@ -10,11 +10,5 @@ vim.opt.history = 1000
 vim.opt.termguicolors = true
 vim.opt.lazyredraw = true
 
--- Sets the colorcolumn at 90 characters
-vim.opt.colorcolumn = "90"
-
--- Colorscheme
-vim.cmd("colorscheme tokyonight")
-
 -- No-showmode on command line as lualine can show it
 --vim.opt.noshowmode

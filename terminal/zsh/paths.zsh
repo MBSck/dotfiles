@@ -5,6 +5,18 @@ if type rg &> /dev/null; then
   export FZF_DEFAULT_OPTS='-m --height 50% --border'
 fi
 
+# Set Important Path aliases
+DOWN="${HOME}/Downloads/"
+DOC="${HOME}/Documents/"
+PIC="${HOME}/Pictures/"
+BOOK="${HOME}/Books/"
+PAPER="${HOME}/Papers/"
+CODE="${HOME}/Code"
+DATA="${HOME}/Data"
+DOT="${CODE}/dotfiles"
+TERMINAL="${DOT}/terminal/"
+LATEX="${DOC}/latex"
+
 # Configure .pyenv
 export PATH="$HOME/.pyenv/bin:$PATH"
 eval "$(pyenv init -)"

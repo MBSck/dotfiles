@@ -1,3 +1,3 @@
--- require("config.lazy")
+require("config.lazy")
 require("config.icons")
-require("config.signs")
+require("config.colors")

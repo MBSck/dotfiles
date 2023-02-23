@@ -1,5 +1,6 @@
 # General files to ignore
 .DS_STORE
+*lock*.json
 
 # Folders to ignore
 nvim/plugin/

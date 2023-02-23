@@ -35,11 +35,6 @@ vim.opt.swapfile = false
 vim.opt.undodir = os.getenv("HOME").."/.vim/undodir"
 vim.opt.undofile = true
 
--- Leaders
-vim.g.mapleader = ","
-vim.g.maplocalleader = ";"
-vim.g.mapgloballeader = ":"
-
 -- File settings
 vim.opt.tabstop = 4
 vim.opt.softtabstop = 4
@@ -56,4 +51,3 @@ vim.g.python3_host_prog = "/Users/scheuck/.pyenv/shims/python3"
 
 -- Set python3 version to standard version for evaluation within nvim
 vim.opt.pyxversion=3
-

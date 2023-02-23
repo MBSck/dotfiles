@@ -7,6 +7,11 @@
 -- "vim.v" predefined vim variable
 -- "vim.env" environment variable
 
+-- Leaders
+vim.g.mapleader = ","
+vim.g.maplocalleader = ";"
+vim.g.mapgloballeader = ":"
+
 -- Configuration setting
 require("config")
 
