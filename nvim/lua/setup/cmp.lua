@@ -118,6 +118,9 @@ return {
 
         cmp.setup({
             completion = {
+                -- menuone: popup even when there's only one match
+                -- noinsert: Do not insert text until a selection is made
+                -- noselect: Do not auto-select, nvim-cmp plugin will handle this for us.
                 completeopt = 'menu,menuone,noinsert',
             },
             view = {
@@ -212,15 +215,13 @@ return {
         npairs.add_rule(Rule('r#"', '"#', 'rust'))
         npairs.add_rule(Rule('|', '|', 'rust'))
 
-        -- TODO: Implement codeium
-        -- require('codeium').setup(function()
-        --     vim.g.codeium_disable_bindings = 1
+        -- Codemium Settings
+        vim.g.codeium_disable_bindings = 1
 
-        --     local inoremap = require("remaps.keymap").inoremap
-        --     inoremap("<c-x>", function() return vim.fn['codeium#Clear']() end, { expr = true })
-        --     inoremap("<C-;>", function() return vim.fn['codeium#CycleCompletions'](1) end, { expr = true })
-        --     inoremap("<C-,>", function() return vim.fn['codeium#CycleCompletions'](-1) end, { expr = true })
-        --     inoremap("<C-g>", function() return vim.fn['codeium#Accept']() end, { expr = true })
-        -- end)
+        local inoremap = require("remaps.keymap").inoremap
+        inoremap("<c-x>", function() return vim.fn['codeium#Clear']() end, { expr = true })
+        inoremap("<C-;>", function() return vim.fn['codeium#CycleCompletions'](1) end, { expr = true })
+        inoremap("<C-,>", function() return vim.fn['codeium#CycleCompletions'](-1) end, { expr = true })
+        inoremap("<C-g>", function() return vim.fn['codeium#Accept']() end, { expr = true })
     end,
 }

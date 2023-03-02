@@ -52,6 +52,7 @@ local diagnostics = {
 M.setup = function()
     local lspconfig = require('lspconfig')
     local get_servers = require('mason-lspconfig').get_installed_servers
+
     for _, server_name in ipairs(get_servers()) do
         lspconfig[server_name].setup({
             on_attach = lsp_attach,

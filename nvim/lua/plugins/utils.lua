@@ -50,7 +50,7 @@ return {
     -- },
 
     -- Filetype specific plugins
-    { "jeetsukumaran/vim-python-indent-black"},
+    { "jeetsukumaran/vim-python-indent-black", ft = "py"},
     -- Debugger for various programming languages
     {
         "mfussenegger/nvim-dap",
