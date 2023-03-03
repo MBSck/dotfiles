@@ -31,6 +31,9 @@ local color_defaults = {
     warning = "",
     hint = "",
     info = "",
+    git_add = "#266d6a",
+    git_change = "#536c9e",
+    git_delete = "#b2555b",
 }
 
 return combineLists(colorscheme, color_defaults)

@@ -100,10 +100,9 @@ M.git = {
     add = '',
     change = '',
     delete = '',
-    -- TODO: Implement the following icons (maybe only topdelete?) properly
-    topdelete = '‾',
-    changedelete = '▎',
-    untracked = '┆',
+    top_delete = '‾',
+    change_delete = '▎',
+    untrack = '┆',
     branch =  "",
 }
 
@@ -163,15 +162,15 @@ M.neotree ={
     folder_empty = "ﰊ",
     default = "*",
     git = {
-        added = "", -- or "✚", but this is redundant info if you use git_status_colors on the name
-        modified = "", -- or "", but this is redundant info if you use git_status_colors on the name
-        deleted = "✖",-- this can only be used in the git_status source
-        renamed = "",-- this can only be used in the git_status source
+        add = "", -- or "✚", but this is redundant info if you use git_status_colors on the name
+        change = "", -- or "", but this is redundant info if you use git_status_colors on the name
+        delete = "✖",-- this can only be used in the git_status source
+        rename = "",-- this can only be used in the git_status source
         -- Status type
-        untracked = "",
-        ignored = "",
-        staged = "",
-        unstaged = "",
+        untrack = "",
+        ignore = "",
+        stage = "",
+        unstage = "",
         conflict = "",
     }
 }
