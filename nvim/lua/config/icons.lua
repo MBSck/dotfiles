@@ -11,7 +11,8 @@ local M = {}
 M.general = {
     devil = "",
     settings = "",
-    bar = "▊",
+    bar = "█",
+    thin_bar = "▊"
 }
 
 M.kind = {
@@ -187,6 +188,10 @@ M.indent_blankline = {
 
 M.lsp_signature = {
     hint_prefix = "",
+}
+
+M.scrollbar = {
+    body = "█",
 }
 
 return M

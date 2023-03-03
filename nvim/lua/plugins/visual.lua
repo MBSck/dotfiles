@@ -1,10 +1,13 @@
 -- TODO: The colors of both the lualine and the sideline of git should be the same
 return {
     -- Colorful window separation to see what window is active
-    { "nvim-zh/colorful-winsep.nvim", event = { "BufReadPost", "BufNewFile" }, config = require("colorful-winsep").setup, },
+    { 'nvim-zh/colorful-winsep.nvim', event = { "BufReadPost", "BufNewFile" }, config = require("colorful-winsep").setup, },
 
     -- Nice indent guidelines
-    { "lukas-reineke/indent-blankline.nvim", event = "UIEnter", config = require("setup.indent-blankline").setup },
+    { 'lukas-reineke/indent-blankline.nvim', event = "UIEnter", config = require("setup.indent-blankline").setup },
+
+    -- Generates a scrollbar for neovim
+    { 'petertriho/nvim-scrollbar', event = "BufReadPost", config = require("setup.scrollbar").setup },
 
     -- Dashboard
     { 'glepnir/dashboard-nvim', event = "UIEnter", config = require("setup.dashboard").setup },
@@ -16,7 +19,7 @@ return {
     { 'j-hui/fidget.nvim', event = "UIEnter", config = require('setup.fidget').setup },
 
     -- Highlights the code yanking
-    {'machakann/vim-highlightedyank', event = { "BufReadPost", "BufNewFile" } },
+    { 'machakann/vim-highlightedyank', event = { "BufReadPost", "BufNewFile" } },
 
     -- URL highlighting
     { 'itchyny/vim-highlighturl', event = { "BufReadPost", "BufNewFile" } },
@@ -29,27 +32,21 @@ return {
     },
 
     -- Better visual comment displays
-    { "folke/todo-comments.nvim", event = { "BufReadPost", "BufNewFile" }, config = require("setup.todo-comments").setup },
+    { 'folke/todo-comments.nvim', event = { "BufReadPost", "BufNewFile" }, config = require("setup.todo-comments").setup },
 
     -- Gitsigns
     -- cmd = { "TodoTrouble", "TodoTelescope" },
-    { "lewis6991/gitsigns.nvim", event = { "BufReadPost", "BufNewFile" }, config = require("setup.gitsigns").setup },
+    { 'lewis6991/gitsigns.nvim', event = { "BufReadPost", "BufNewFile" }, config = require("setup.gitsigns").setup },
 
     -- Status line
-    {
-    'nvim-lualine/lualine.nvim',
-    event = "UIEnter",
-    config = function()
-        require("setup.lualine").setup()
-    end,
-    },
+    { 'nvim-lualine/lualine.nvim', event = "UIEnter", config = require("setup.lualine").setup() },
 
     -- Tabline
     { 'nanozuki/tabby.nvim', event = "UIEnter", config = require('setup.tabline').setup },
 
     -- Colorscheme
     {
-        "folke/tokyonight.nvim",
+        'folke/tokyonight.nvim',
         lazy = false,
         opts = { style = "moon" },
         priority = 1000,
