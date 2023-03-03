@@ -13,7 +13,7 @@ return {
     { 'rcarriga/nvim-notify', event = "UIEnter", config = require("setup.notify").setup },
 
     -- Status progress for lsp servers
-    { 'j-hui/fidget.nvim', config = require('setup.fidget').setup },
+    { 'j-hui/fidget.nvim', event = "UIEnter", config = require('setup.fidget').setup },
 
     -- Highlights the code yanking
     {'machakann/vim-highlightedyank', event = { "BufReadPost", "BufNewFile" } },

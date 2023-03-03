@@ -22,7 +22,12 @@ return {
         config = require("setup.lsp").setup,
     },
     -- show signature from methods as float windows
-    -- { 'ray-x/lsp_signature.nvim', dependencies = 'nvim-lspconfig', config = require('setup.lsp_signature').setup },
+    {
+        'ray-x/lsp_signature.nvim',
+        event = { "BufReadPre", "BufNewFile" },
+        dependencies = 'nvim-lspconfig',
+        config = require('setup.lsp_signature').setup,
+    },
 
     { 'WhoIsSethDaniel/toggle-lsp-diagnostics.nvim', event = { "BufReadPre", "BufNewFile" } },
 }

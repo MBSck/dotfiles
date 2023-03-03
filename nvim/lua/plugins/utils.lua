@@ -39,18 +39,25 @@ return {
     },
 
     -- VimTex
-    { "lervag/vimtex", config = require("setup.vimtex").setup, keys = require("setup.vimtex").keys, ft = "tex" },
+    {
+        "lervag/vimtex",
+        ft = "tex",
+        config = require("setup.vimtex").setup,
+        keys = require("setup.vimtex").keys,
+    },
 
     -- Markdown-preview
-    -- {
-    --     "iamcco/markdown-preview.nvim",
-    --     event = "BufEnter *.md",
-    --     opts = require("setup.markdown-preview").opts,
-    --     keys = require("setup.markdown-preview").keys,
-    -- },
+    {
+        "iamcco/markdown-preview.nvim",
+        ft = { "md", "markdown" },
+        config = require("setup.markdown-preview").setup,
+        keys = require("setup.markdown-preview").keys,
+        opts = require("setup.markdown-preview").opts,
+    },
 
     -- Filetype specific plugins
     { "jeetsukumaran/vim-python-indent-black", ft = "py"},
+
     -- Debugger for various programming languages
     {
         "mfussenegger/nvim-dap",
