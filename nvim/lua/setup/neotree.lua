@@ -1,11 +1,9 @@
 return {
     setup = function()
         local icons = require("config.icons")
+
         -- Unless you are still migrating, remove the deprecated commands from v1.x
         vim.g.neo_tree_remove_legacy_commands = 1
-
-        -- NOTE: this is changed from v1.x, which used the old style of highlight groups
-        -- in the form "LspDiagnosticsSignWarning"
 
         require("neo-tree").setup({
             close_if_last_window = false, -- Close Neo-tree if it is the last window left in the tab
@@ -59,14 +57,14 @@ return {
                 },
                 git_status = {
                     symbols = {
-                        added = icons.neotree.git.added,
-                        modified = icons.neotree.git.modified,
-                        deleted = icons.neotree.git.deleted,
-                        renamed = icons.neotree.git.renamed,
-                        untracked = icons.neotree.git.untracked,
-                        ignored = icons.neotree.git.ignored,
-                        unstaged = icons.neotree.git.unstaged,
-                        staged = icons.neotree.git.staged,
+                        added = icons.neotree.git.add,
+                        modified = icons.neotree.git.change,
+                        deleted = icons.neotree.git.delete,
+                        renamed = icons.neotree.git.rename,
+                        untracked = icons.neotree.git.untrack,
+                        ignored = icons.neotree.git.ignore,
+                        unstaged = icons.neotree.git.unstage,
+                        staged = icons.neotree.git.stage,
                         conflict = icons.neotree.git.conflict,
                     }
                 },
@@ -207,9 +205,8 @@ return {
                 }
             }
         })
-
-        -- Remaps
-        local nnoremap = require("remaps.keymap").nnoremap
-        keys = nnoremap("<f3>", ":NeoTreeRevealToggle<CR>")
     end,
+    keys = {
+        { "<f3>", ":NeoTreeRevealToggle<CR>" },
+    }
 }
