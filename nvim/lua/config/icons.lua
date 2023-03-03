@@ -184,4 +184,8 @@ M.indent_blankline = {
     eol = "↴",
 }
 
+M.lsp_signature = {
+    hint_prefix = "",
+}
+
 return M

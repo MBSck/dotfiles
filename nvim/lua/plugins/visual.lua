@@ -1,7 +1,7 @@
 -- TODO: The colors of both the lualine and the sideline of git should be the same
 return {
     -- Colorful window separation to see what window is active
-    -- { "nvim-zh/colorful-winsep.nvim", event = { "BufReadPost", "BufNewFile" } },
+    { "nvim-zh/colorful-winsep.nvim", event = { "BufReadPost", "BufNewFile" }, config = require("colorful-winsep").setup, },
 
     -- Nice indent guidelines
     { "lukas-reineke/indent-blankline.nvim", event = "UIEnter", config = require("setup.indent-blankline").setup },
