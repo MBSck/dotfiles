@@ -4,7 +4,7 @@ return {
         -- Author: shadmansaleh
         -- Credit: glepnir
         local icons = require("config.icons")
-        local colors = require("config.colors").general
+        local colors = require("config.colors")
         local lualine = require('lualine')
 
         -- Color table for highlights
@@ -136,9 +136,9 @@ return {
                 hint = icons.lsp.hint..' ',
             },
             diagnostics_color = {
-                color_error = { fg = colors.red },
-                color_warn = { fg = colors.yellow },
-                color_info = { fg = colors.cyan },
+                color_error = { fg = colors.error },
+                color_warn = { fg = colors.warning },
+                color_info = { fg = colors.info },
             },
         }
 
@@ -200,9 +200,9 @@ return {
                 modified = icons.git.change.." ",
                 removed = icons.git.delete.." " },
             diff_color = {
-                added = { fg = colors.green },
-                modified = { fg = colors.orange },
-                removed = { fg = colors.red },
+                added = { fg = colors.git_add },
+                modified = { fg = colors.git_change },
+                removed = { fg = colors.git_delete },
             },
             cond = conditions.hide_in_width,
         }

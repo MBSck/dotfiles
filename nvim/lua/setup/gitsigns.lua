@@ -2,17 +2,18 @@ return {
     setup = function()
         -- TODO: Use the gitsigns colors for the lualine as well and remove whitespace
         -- around lualine as well
+        local colors = require("config.colors")
         local icons = require("config.icons")
         require("gitsigns").setup({
             signs = {
-                add = { text = icons.git.add },
-                change = { text = icons.git.change },
-                delete = { text = icons.git.delete },
-                topdelete = { text = icons.git.topdelete },
-                changedelete = { text = icons.git.changedelete },
-                untracked = { text = icons.git.untracked },
+                add = { text = icons.git.add, hl = colors.git_add },
+                change = { text = icons.git.change, hl = colors.git_change },
+                delete = { text = icons.git.delete, hl = colors.git_delete },
+                topdelete = { text = icons.git.top_delete, hl = colors.git_delete },
+                changedelete = { text = icons.git.change_delete, hl = colors.git_change },
+                untracked = { text = icons.git.untrack, hl = colors.git_add },
             },
-            on_attach = function(buffer)
+            on_attach = function(bufnr)
                 local gs = package.loaded.gitsigns
                 local map = require("remaps.keymap").map
                 -- stylua: ignore start
@@ -30,5 +31,6 @@ return {
                 map({ "o", "x" }, "ih", ":<C-U>Gitsigns select_hunk<CR>", "GitSigns Select Hunk")
             end,
         })
+        require("scrollbar.handlers.gitsigns").setup()
     end,
 }
