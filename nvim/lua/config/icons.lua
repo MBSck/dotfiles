@@ -101,9 +101,9 @@ M.git = {
     change = '',
     delete = '',
     -- TODO: Implement the following icons (maybe only topdelete?) properly
-    topdelete = '契',
+    topdelete = '‾',
     changedelete = '▎',
-    untracked = '▎',
+    untracked = '┆',
     branch =  "",
 }
 
@@ -139,6 +139,8 @@ M.dashboard = {
     apps = '',
     dotfiles = '',
     exit = '',
+    clock = '',
+    date = '',
 }
 
 M.comments = {
