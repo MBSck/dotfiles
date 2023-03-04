@@ -6,6 +6,9 @@ return {
     -- Nice indent guidelines
     { 'lukas-reineke/indent-blankline.nvim', event = "UIEnter", config = require("setup.indent-blankline").setup },
 
+    -- Floating status lines
+    { "b0o/incline.nvim", event = "BufReadPre", config = require("setup.incline").setup },
+
     -- Generates a scrollbar for neovim
     { 'petertriho/nvim-scrollbar', event = "BufReadPost", config = require("setup.scrollbar").setup },
 

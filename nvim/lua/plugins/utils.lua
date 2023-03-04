@@ -1,4 +1,12 @@
 return {
+    -- Extended folding
+    {
+        "kevinhwang91/nvim-ufo",
+        dependencies = "kevinhwang91/promise-async",
+        event = "BufReadPost",
+        config = require("setup.ufo").setup,
+    },
+
     -- File Tree browser
     {
         'nvim-neo-tree/neo-tree.nvim',
@@ -7,12 +15,15 @@ return {
             "nvim-lua/plenary.nvim",
             "nvim-tree/nvim-web-devicons"
         },
-        event = "BufEnter",
         config = require('setup.neotree').setup,
+        keys = require('setup.neotree').keys,
     },
 
+    -- Better matchup for the % command
+    { "andymass/vim-matchup", event = "BufReadPost", config = require("setup.matchup").setup },
+
     -- Simulates comfortable scroll motion
-    { 'yuttie/comfortable-motion.vim', event = { "BufReadPost", "BufNewFile" } },
+    -- { 'yuttie/comfortable-motion.vim', event = { "BufReadPost", "BufNewFile" } },
 
     -- Better terminal
     { 'akinsho/toggleterm.nvim', event = "BufEnter", config = require('setup.toggleterm').setup },
@@ -61,10 +72,12 @@ return {
     -- Debugger for various programming languages
     {
         "mfussenegger/nvim-dap",
+        init = require("setup.dap").init,
+        config = require("setup.dap").setup,
         dependencies = {
+            { "rcarriga/nvim-dap-ui", config = require("dapui").setup() },
             "mfussenegger/nvim-dap-python",
-            "leoluz/nvim-dap-go",
-            "rcarriga/nvim-dap-ui",
+            "jbyuki/one-small-step-for-vimkind",
             "theHamsta/nvim-dap-virtual-text",
         },
     },
