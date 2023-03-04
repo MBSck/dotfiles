@@ -75,7 +75,7 @@ return {
         init = require("setup.dap").init,
         config = require("setup.dap").setup,
         dependencies = {
-            { "rcarriga/nvim-dap-ui", config = require("dapui").setup() },
+            "rcarriga/nvim-dap-ui",
             "mfussenegger/nvim-dap-python",
             "jbyuki/one-small-step-for-vimkind",
             "theHamsta/nvim-dap-virtual-text",

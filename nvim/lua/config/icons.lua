@@ -194,4 +194,9 @@ M.scrollbar = {
     body = "█",
 }
 
+M.dap = {
+    breakpoint = "🔴",
+    stop = "🟢",
+}
+
 return M

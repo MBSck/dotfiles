@@ -39,6 +39,10 @@ return {
 
     setup = function()
         local dap = require("dap")
+        local icons = require("config.icons")
+
+        vim.fn.sign_define("DapBreakpoint", { text = icons.dap.breakpoint, texthl = "DapBreakpoint" })
+        vim.fn.sign_define("DapStopped", { text = icons.dap.stop, texthl = "DapStopped" })
 
         -- Rust/C++ debugging adapter
         dap.adapters.lldb = {
@@ -79,18 +83,6 @@ return {
             },
         }
 
-        -- UI configuration for dap
-        local dapui = require("dapui")
-        dap.listeners.after.event_initialized["dapui_config"] = function()
-            dapui.open({})
-        end
-        dap.listeners.before.event_terminated["dapui_config"] = function()
-            dapui.close({})
-        end
-        dap.listeners.before.event_exited["dapui_config"] = function()
-            dapui.close({})
-        end
-
         require("nvim-dap-virtual-text").setup {
             enabled = true,                        -- enable this plugin (the default)
             enabled_commands = true,               -- create commands DapVirtualTextEnable, DapVirtualTextDisable, DapVirtualTextToggle, (DapVirtualTextForceRefresh for refreshing when debug adapter did not notify its termination)
@@ -117,5 +109,43 @@ return {
             virt_text_win_col = nil                -- position the virtual text at a fixed window column (starting from the first text column) ,
             -- e.g. 80 to position at column 80, see `:h nvim_buf_set_extmark()`
         }
+
+        -- Nvim dap ui configs
+        require("dapui").setup({
+            -- icons = { expanded = "?", collapsed = "?" },
+            mappings = {
+                -- Use a table to apply multiple mappings
+                expand = { "<CR>", "<2-LeftMouse>" },
+                open = "o",
+                remove = "d",
+                edit = "e",
+                repl = "r",
+            },
+            layouts = {
+                {
+                    elements = {
+                        { id = "scopes", size = 0.25 },
+                        { id = "breakpoints", size = 0.20 },
+                        { id = "stacks", size = 0.25 },
+                        { id = "watches", size = 0.30 },
+                    },
+                    size = 50,
+                    position = 'right',
+                },
+                {
+                    elements = { 'repl' },
+                    size = 10,
+                    position = 'bottom',
+                },
+            },
+            floating = {
+                max_height = nil, -- These can be integers or a float between 0 and 1.
+                max_width = nil, -- Floats will be treated as percentage of your screen.
+                mappings = {
+                    close = { "q", "<Esc>" },
+                },
+            },
+            windows = { indent = 1 },
+        })
     end
 }
