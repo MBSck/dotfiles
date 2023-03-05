@@ -1,6 +1,6 @@
 M = {}
 
-local lsp_keymaps = function(bufnr)
+function M.lsp_keymaps(bufnr)
     local keymaps = require("config.utils").keymaps
     local nnoremap = keymaps.nnoremap
     local inoremap = keymaps.inoremap
@@ -24,26 +24,28 @@ local lsp_keymaps = function(bufnr)
     nnoremap("<leader>f", function() vim.lsp.buf.format { async = true } end, opts)
 end
 
-local lsp_attach = function(client, bufnr)
+function M.lsp_attach(client, bufnr)
     if client.server_capabilities.documentSymbolProvider then
         require('nvim-navic').attach(client, bufnr)
     end
-    lsp_keymaps(bufnr)
+    M.lsp_keymaps(bufnr)
 
     -- require('setup.autocommand').lsp_autocmds(client, bufnr)
     -- check if this is applicable (for rust for example it is not)
     -- https://github.com/L3MON4D3/LuaSnip/wiki/Misc#improve-language-server-snippets
 end
 
--- FIXME: Not working rn?!
-local lsp_capabilities = function()
-    local capabilities = vim.lsp.protocol.make_client_capabilities()
-    capabilities.textDocument.completion.completionItem.snippetSupport = true
-    capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
-    return capabilities
+function M.lsp_capabilities(lspconfig)
+    local lsp_defaults = lspconfig.util.default_config
+    local lsp_capabilities = vim.tbl_deep_extend(
+        "force",
+        lsp_defaults.capabilities,
+        require('cmp_nvim_lsp').default_capabilities()
+    )
+    return lsp_capabilities
 end
 
-local diagnostics = {
+M.diagnostics = {
     underline = true,
     update_in_insert = false,
     virtual_text = { spacing = 4, prefix = require("config.assets").icons.lsp.prefix },
@@ -56,11 +58,8 @@ M.setup = function()
 
     for _, server_name in ipairs(get_servers()) do
         lspconfig[server_name].setup({
-            on_attach = lsp_attach,
-            -- FIXME: Add here the correct lsp-capabilities
-            capabilities = None,
-            -- require('treesitter-context').setup({
-            --     enable = true,
+            on_attach = M.lsp_attach,
+            capabilities = M.lsp_capabilities(lspconfig),
         })
     end
 
@@ -68,7 +67,7 @@ M.setup = function()
         name = "DiagnosticSign" .. (name:gsub("^%l", string.upper))
         vim.fn.sign_define(name, { text = icon, texthl = name, numhl = "" })
     end
-    vim.diagnostic.config(diagnostics)
+    vim.diagnostic.config(M.diagnostics)
 end
 
 return M

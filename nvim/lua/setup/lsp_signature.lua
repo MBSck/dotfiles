@@ -56,10 +56,12 @@ return {
             move_cursor_key = nil, -- imap, use nvim_set_current_win to move cursor between current win and floating
         })
     end,
+
     status_line = function()
         local sig = require('lsp_signature').status_line()
         return sig.hint
     end,
+
     winbar = function()
         local columns = vim.api.nvim_get_option('columns')
         return require('lsp_signature').status_line(columns)

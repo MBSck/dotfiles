@@ -1,7 +1,8 @@
 return {
     setup = function()
-        local icons = require("config.icons")
-        local headers = require("config.headers")
+        local assets = require("config.assets")
+        local icons = assets.icons
+        local headers = assets.headers
 
         local function random_quote()
             local quotes = require("config.quotes").star_trek

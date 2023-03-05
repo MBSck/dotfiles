@@ -3,10 +3,11 @@ return {
         -- Eviline config for lualine
         -- Author: shadmansaleh
         -- Credit: glepnir
-        local assets = require("config.assets")
-        local icons = assets.icons
-        local colors = assets.colors()
         local lualine = require('lualine')
+
+        local assets = require("config.assets")
+        local colors = assets.colors()
+        local icons = assets.icons
 
         -- Color table for highlights
         -- stylua: ignore
@@ -28,8 +29,8 @@ return {
         local config = {
             options = {
                 -- Disable sections and component separators
-                component_separators = '',
-                section_separators = '',
+                component_separators = icons.lualine.component.none,
+                section_separators = icons.lualine.section.none,
                 theme = {
                     -- We are going to use lualine_c an lualine_x as left and
                     -- right section. Both are highlighted by c theme .  So we
@@ -62,6 +63,7 @@ return {
         -- Inserts a component in lualine_c at left section
         local function ins_left(component)
             table.insert(config.sections.lualine_c, component)
+
         end
 
         -- Inserts a component in lualine_x ot right section
@@ -69,6 +71,7 @@ return {
             table.insert(config.sections.lualine_x, component)
         end
 
+        -- Bar on the left side of the line
         ins_left {
             function()
                 return icons.general.bar
@@ -112,20 +115,20 @@ return {
         }
 
         ins_left {
-            -- filesize component
-            'filesize',
-            cond = conditions.buffer_not_empty,
-        }
-
-        ins_left {
             'filename',
             cond = conditions.buffer_not_empty,
             color = { fg = colors.magenta, gui = 'bold' },
         }
 
-        ins_left { 'location' }
+        ins_left {
+            'branch',
+            icon = icons.git.branch,
+            color = { fg = colors.violet, gui = 'bold' },
+        }
 
-        ins_left { 'progress', color = { fg = colors.fg, gui = 'bold' } }
+        -- Location and Progress in file
+        ins_left { 'location' }
+        -- ins_left { 'progress', color = { fg = colors.fg, gui = 'bold' } }
 
         ins_left {
             'diagnostics',
@@ -169,7 +172,7 @@ return {
                 return msg
             end,
             icon = icons.general.settings..' LSP:',
-            color = { fg = '#ffffff', gui = 'bold' },
+            color = { fg = colors.white, gui = 'bold' },
         }
 
         -- Add components to right sections
@@ -185,12 +188,6 @@ return {
             fmt = string.upper,
             icons_enabled = false, -- I think icons are cool but Eviline doesn't have them. sigh
             color = { fg = colors.green, gui = 'bold' },
-        }
-
-        ins_right {
-            'branch',
-            icon = icons.git.branch,
-            color = { fg = colors.violet, gui = 'bold' },
         }
 
         ins_right {

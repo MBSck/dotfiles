@@ -14,8 +14,8 @@ return {
         "neovim/nvim-lspconfig",
         event = { "BufReadPre", "BufNewFile" },
         dependencies = {
+            { 'SmiteshP/nvim-navic', config = require("setup.navic").setup, },
             { 'williamboman/mason-lspconfig.nvim' },
-            { 'SmiteshP/nvim-navic', config = require("setup.nvim-navic").setup, },
             { "folke/neoconf.nvim", cmd = "Neoconf", config = true },
             { "folke/neodev.nvim", opts = { experimental = { pathStrict = true } } },
         },

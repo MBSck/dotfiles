@@ -1,20 +1,19 @@
 return {
     setup = function()
-        -- Set completeopt to have a better completion experience
-        -- :help completeopt
-        -- menuone: popup even when there's only one match
-        -- noinsert: Do not insert text until a selection is made
-        -- noselect: Do not select, force user to select one from the menu
-        -- vim.o.completeopt = 'menu, menuone, noinsert'
-        local icons = require("config.icons")
         local lspkind = require('lspkind')
+        local assets = require("config.assets")
+        local icons = assets.icons
         local cmp = require('cmp')
-        local Rule = require('nvim-autopairs.rule')
+
+        local rule = require('nvim-autopairs.rule')
         local npairs = require('nvim-autopairs')
 
         local luasnip = require('luasnip')
         local luasnip_util = require('luasnip.util.util')
         local luasnip_types = require('luasnip.util.types')
+
+        local source_mapping = assets.text.cmp.none_source_mapping
+
         luasnip.config.setup({
             ext_ops = {
                 [luasnip_types.choiceNode] = {
@@ -94,23 +93,6 @@ return {
             end
         end)
 
-        local lspkind_opts = {
-            with_text = true,
-            preset = 'codicons', -- need to install font https://github.com/microsoft/vscode-codicons/blob/main/dist/codicon.ttf
-        }
-
-        local source_mapping = {
-            nvim_lsp = '[LSP]',
-            luasnip = '[Snippet]',
-            treesitter = '[TS]',
-            cmp_tabnine = '[TN]',
-            nvim_lua = '[Vim]',
-            path = '[Path]',
-            buffer = '[Buffer]',
-            crates = '[Crates]',
-            copilot = '[Copilot]',
-        }
-
         -- local has_words_before = function()
         --     local line, col = unpack(vim.api.nvim_win_get_cursor(0))
         --     return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match('%s') == nil
@@ -127,23 +109,28 @@ return {
                 entries = { name = 'custom', selection_order = 'near_cursor' },
             },
             sources = {
-                { name = 'nvim_lsp', priority = 99 },
-                { name = 'luasnip', priority = 90 },
-                { name = 'nvim_lua', priority = 80 },
+                { name = 'buffer', priority = 0, keyword_length = 3 },
+                { name = 'codeium', group_index = 2 },
+                { name = 'crates', priority = 90 },
                 { name = 'cmp_tabnine', priority = 80 },
                 { name = 'path', priority = 10 },
-                { name = 'codeium', group_index = 2 },
-                { name = 'buffer', priority = 0 },
-                { name = 'crates', priority = 90 },
+                { name = 'nvim_lsp', priority = 99, keyword_length = 1 },
+                { name = 'luasnip', priority = 90, keyword_length = 2 },
+                { name = 'nvim_lua', priority = 80 },
             },
             snippet = {
                 expand = function(args)
                     luasnip.lsp_expand(args.body)
                 end,
             },
+            window = {
+                completion = cmp.config.window.bordered(),
+                documentation = cmp.config.window.bordered()
+            },
             formatting = {
+                fields = { "menu", "abbr", "kind" },
                 format = function(entry, vim_item)
-                    vim_item.kind = lspkind.symbolic(vim_item.kind, lspkind_opts)
+                    vim_item.kind = lspkind.symbolic(vim_item.kind, { with_text = true, preset = 'default'})
                     local menu = source_mapping[entry.source.name]
                     if entry.source.name == 'codeium' then
                         vim_item.kind = 'ﯙ Codeium'
@@ -212,8 +199,8 @@ return {
         local cmp_autopairs = require('nvim-autopairs.completion.cmp')
         cmp.event:on('confirm_done', cmp_autopairs.on_confirm_done())
 
-        npairs.add_rule(Rule('r#"', '"#', 'rust'))
-        npairs.add_rule(Rule('|', '|', 'rust'))
+        npairs.add_rule(rule('r#"', '"#', 'rust'))
+        npairs.add_rule(rule('|', '|', 'rust'))
 
         -- Codemium Settings
         vim.g.codeium_disable_bindings = 1

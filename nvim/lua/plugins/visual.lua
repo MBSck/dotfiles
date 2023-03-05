@@ -1,6 +1,6 @@
 return {
-    -- Colorful window separation to see what window is active
-    { 'nvim-zh/colorful-winsep.nvim', event = { "BufReadPost", "BufNewFile" }, config = require("colorful-winsep").setup, },
+    -- Colorful window separation to see what window is activ
+    { 'nvim-zh/colorful-winsep.nvim', event = { "BufReadPost", "BufNewFile" }, config = require("setup.colorful-winsep").setup, },
 
     -- Nice indent guidelines
     { 'lukas-reineke/indent-blankline.nvim', event = "UIEnter", config = require("setup.indent-blankline").setup },
@@ -44,7 +44,7 @@ return {
     { 'nvim-lualine/lualine.nvim', event = "UIEnter", config = require("setup.lualine").setup() },
 
     -- Tabline
-    { 'nanozuki/tabby.nvim', event = "UIEnter", config = require('setup.tabline').setup },
+    { 'nanozuki/tabby.nvim', event = "UIEnter", config = require('setup.tabby').setup },
 
     -- Colorscheme
     {

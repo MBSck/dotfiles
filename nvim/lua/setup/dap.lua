@@ -14,7 +14,7 @@ return {
 
     setup = function()
         local dap = require("dap")
-        local icons = require("config.icons")
+        local icons = require("config.assets").icons
 
         vim.fn.sign_define("DapBreakpoint", { text = icons.dap.breakpoint, texthl = "DapBreakpoint" })
         vim.fn.sign_define("DapStopped", { text = icons.dap.stop, texthl = "DapStopped" })

@@ -14,6 +14,3 @@ vim.g.mapgloballeader = ":"
 
 -- Configuration setting
 require("config")
-
--- General settings
-require("general")

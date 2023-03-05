@@ -1,4 +1,3 @@
--- General
 -- Disable netrw at the very start of the init.lua
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
@@ -59,9 +58,9 @@ vim.opt.splitbelow = true
 vim.opt.splitright = true
 
 -- Enable code folding
-vim.opt.foldlevelstart=10   -- Opens most fold by default
-vim.opt.foldlevel=99
-vim.opt.foldnestmax=10      -- 10 nested fold max shown from start
+vim.opt.foldlevelstart = 10   -- Opens most fold by default
+vim.opt.foldlevel = 99
+vim.opt.foldnestmax = 10      -- 10 nested fold max shown from start
 vim.opt.foldmethod = "indent"
 
 -- Search
