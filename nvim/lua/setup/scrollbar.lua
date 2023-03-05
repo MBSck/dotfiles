@@ -1,7 +1,8 @@
 return {
     setup = function()
-        local icons = require("config.icons")
-        local colors = require("config.colors")
+        local assets = require("config.assets")
+        local icons = assets.icons
+        local colors = assets.colors()
 
         require("scrollbar").setup({
             show = true,

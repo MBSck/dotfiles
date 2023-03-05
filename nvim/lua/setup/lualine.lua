@@ -3,8 +3,9 @@ return {
         -- Eviline config for lualine
         -- Author: shadmansaleh
         -- Credit: glepnir
-        local icons = require("config.icons")
-        local colors = require("config.colors")
+        local assets = require("config.assets")
+        local icons = assets.icons
+        local colors = assets.colors()
         local lualine = require('lualine')
 
         -- Color table for highlights

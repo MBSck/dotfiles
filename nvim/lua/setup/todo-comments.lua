@@ -1,6 +1,6 @@
 return {
     setup = function()
-        local icons = require("config.icons")
+        local icons = require("config.assets").icons
         local nnoremap = require("config.utils").keymaps.nnoremap
         require("todo-comments").setup({
             signs = true, -- show icons in the signs column

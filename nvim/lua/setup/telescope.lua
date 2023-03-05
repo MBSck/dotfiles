@@ -1,6 +1,6 @@
 return {
     setup = function()
-        local icons = require("config.icons")
+        local icons = require("config.assets").icons
         require('telescope').setup({
             defaults = {
                 -- Appearance

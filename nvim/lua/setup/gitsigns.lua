@@ -2,8 +2,9 @@ return {
     setup = function()
         -- TODO: Use the gitsigns colors for the lualine as well and remove whitespace
         -- around lualine as well
-        local colors = require("config.colors")
-        local icons = require("config.icons")
+        local assets = require("config.assets")
+        local colors = assets.colors()
+        local icons = assets.icons
         require("gitsigns").setup({
             signs = {
                 add = { text = icons.git.add, hl = colors.git_add },

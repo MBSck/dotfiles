@@ -1,6 +1,5 @@
 M = {}
 
-
 function M.colors()
     local colorscheme = require("tokyonight.colors").setup()
     local color_defaults = {
@@ -28,7 +27,6 @@ function M.colors()
         git_delete = "#b2555b",
     }
     local functions = require("config.utils").functions
-
     return functions.combineLists(colorscheme, color_defaults)
 end
 

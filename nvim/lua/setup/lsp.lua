@@ -46,7 +46,7 @@ end
 local diagnostics = {
     underline = true,
     update_in_insert = false,
-    virtual_text = { spacing = 4, prefix = require("config.icons").lsp.prefix },
+    virtual_text = { spacing = 4, prefix = require("config.assets").icons.lsp.prefix },
     severity_sort = true,
 }
 
@@ -64,7 +64,7 @@ M.setup = function()
         })
     end
 
-    for name, icon in pairs(require("config.icons").lsp) do
+    for name, icon in pairs(require("config.assets").icons.lsp) do
         name = "DiagnosticSign" .. (name:gsub("^%l", string.upper))
         vim.fn.sign_define(name, { text = icon, texthl = name, numhl = "" })
     end
