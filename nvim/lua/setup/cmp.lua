@@ -218,7 +218,7 @@ return {
         -- Codemium Settings
         vim.g.codeium_disable_bindings = 1
 
-        local inoremap = require("remaps.keymap").inoremap
+        local inoremap = require("config.utils").keymaps.inoremap
         inoremap("<c-x>", function() return vim.fn['codeium#Clear']() end, { expr = true })
         inoremap("<C-;>", function() return vim.fn['codeium#CycleCompletions'](1) end, { expr = true })
         inoremap("<C-,>", function() return vim.fn['codeium#CycleCompletions'](-1) end, { expr = true })

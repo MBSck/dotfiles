@@ -31,12 +31,17 @@ return {
                 end
             },
         })
+
         -- Python package
         -- local python_package_cmd = "python3 -m "..vim.fn.fnamemodify(vim.fn.fnamemodify(vim.fn.getcwd(), ":h"), ":t").."."..vim.fn.fnamemodify(vim.fn.getcwd(), ":t").."."..vim.fn.expand("%:t:r")
 
         -- Terminal variables
         local Terminal = require("toggleterm.terminal").Terminal
         local terminal = Terminal:new({ float_opts = { border = "double", }, close_on_exit = true, })
+        local terminal_tab = Terminal:new({
+            direction = "tab",
+            float_opts = { border = "double", },
+            close_on_exit = true, })
         local lazygit = Terminal:new({
             cmd = "lazygit",
             dir = "git_dir",
@@ -52,6 +57,7 @@ return {
         })
         local filetype_cmd = {
             python = "python3",
+            pytest = "pytest",
             rust = "cargo run",
         }
 
@@ -67,11 +73,17 @@ return {
 
         -- This function returns both the filetypes executable and a bool that tells if
         -- there is need for a file to be attached to the command
+        -- @param filetype The filetype to check
+        -- @return The filetypes executable and a bool that tells if there is need for a
+        -- file to be attached to the command
         local function _get_file_executable(filetype)
             if filetype == "python" then
-            -- TODO: Implement pytest here by checking if the filename contains test, if
-                -- it is a python file (should work for most cases)
-                return filetype_cmd.python, true
+                local file_name = vim.fn.expand("%")
+                if string.find(file_name, "test") then
+                    return filetype_cmd.pytest, true
+                else
+                    return filetype_cmd.python, true
+                end
             elseif filetype == "rust" then
                 return filetype_cmd.rust, false
             else
@@ -97,8 +109,9 @@ return {
             end
         end
 
-        local nnoremap = require("remaps.keymap").nnoremap
+        local nnoremap = require("config.utils").keymaps.nnoremap
         nnoremap("<f2>", function() lazygit:toggle() end, { silent = true })
+        nnoremap("<leader><f4>", function() terminal_tab:toggle() end, { silent = true })
         nnoremap("<f4>", function() terminal:toggle() end, { silent = true })
         nnoremap("<f5>", function() _filetype_toggle() end, { silent = true })
     end,

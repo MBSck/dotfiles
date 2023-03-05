@@ -1,8 +1,9 @@
 M = {}
 
 local lsp_keymaps = function(bufnr)
-    local nnoremap = require("remaps.keymap").nnoremap
-    local inoremap = require("remaps.keymap").inoremap
+    local keymaps = require("config.utils").keymaps
+    local nnoremap = keymaps.nnoremap
+    local inoremap = keymaps.inoremap
     local opts = { noremap = true, silent = true }
 
     nnoremap("K", function() vim.lsp.buf.hover() end, opts)

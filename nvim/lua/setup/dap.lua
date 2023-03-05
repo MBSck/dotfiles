@@ -1,6 +1,6 @@
 return {
     init = function ()
-        local nnoremap = require("remaps.keymap").nnoremap
+        local nnoremap = require("config.utils").keymaps.nnoremap
         nnoremap("<leader>db", function() require("dap").toggle_breakpoint() end, { desc = "Toggle Breakpoint" })
         nnoremap("<leader>dc", function() require("dap").continue() end, { desc = "Continue" })
         nnoremap("<leader>do", function() require("dap").step_over() end, { desc = "Step Over" })

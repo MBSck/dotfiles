@@ -25,8 +25,8 @@ return {
     -- Simulates comfortable scroll motion
     -- { 'yuttie/comfortable-motion.vim', event = { "BufReadPost", "BufNewFile" } },
 
-    -- Better terminal
-    { 'akinsho/toggleterm.nvim', event = "BufEnter", config = require('setup.toggleterm').setup },
+    -- Better terminal functionality
+    { 'akinsho/toggleterm.nvim', event = "BufEnter", config = require('setup.toggleterm').setup, },
 
     -- Comment functionality
     { 'numToStr/Comment.nvim', event = "BufEnter", config = require('setup.comment').setup },

@@ -15,7 +15,7 @@ return {
             },
             on_attach = function(bufnr)
                 local gs = package.loaded.gitsigns
-                local map = require("remaps.keymap").map
+                local map = require("config.utils").functions.map
                 -- stylua: ignore start
                 map("n", "]h", gs.next_hunk, "Next Hunk")
                 map("n", "[h", gs.prev_hunk, "Prev Hunk")

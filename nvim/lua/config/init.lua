@@ -1,3 +1,5 @@
+require("config.assets")
+require("config.keymaps")
 require("config.lazy")
-require("config.icons")
-require("config.colors")
+require("config.options")
+require("config.utils")
