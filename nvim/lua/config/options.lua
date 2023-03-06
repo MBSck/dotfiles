@@ -8,10 +8,6 @@ vim.opt.encoding = "utf-8"
 -- Set language support
 vim.opt.spelllang = "en_gb"
 
--- Avoid language server issues with backup-files
-vim.opt.backup = false
-vim.opt.writebackup = false
-
 -- Having longer update-time leads to delays
 vim.opt.updatetime = 300
 
@@ -28,31 +24,25 @@ vim.g.do_filetype_lua = true
 -- delays and poor user experience.
 vim.opt.updatetime = 50
 
+-- Avoid language server issues with backup-files
+vim.opt.backup = false
+vim.opt.writebackup = false
+
 -- General undo settings
-vim.opt.scrolloff = 3
-vim.opt.wrap = false
 vim.opt.swapfile = false
 vim.opt.undodir = os.getenv("HOME").."/.vim/undodir"
 vim.opt.undofile = true
 
 -- File settings
-vim.opt.tabstop = 4
-vim.opt.softtabstop = 4
-vim.opt.shiftwidth = 4
-vim.opt.textwidth = 90
-vim.opt.expandtab = true
-vim.opt.smartindent = true
-vim.opt.autoindent = true
 vim.opt.fileformat = "unix"
 
--- Disblae python support and enable python3 support for neovim
+-- Set python3 version to standard version for evaluation within nvim
+vim.opt.pyxversion = 3
+
+-- Disable python support and enable python3 support for neovim
 vim.g.loaded_python_provider = 0
 vim.g.python3_host_prog = "/Users/scheuck/.pyenv/shims/python3"
 
--- Set python3 version to standard version for evaluation within nvim
-vim.opt.pyxversion=3
-
--- Navigation
 -- General Layout for splitting
 vim.opt.splitbelow = true
 vim.opt.splitright = true
@@ -73,13 +63,6 @@ vim.opt.history = 1000
 -- Visual
 vim.opt.nu = true
 vim.opt.relativenumber = true
-
-vim.opt.hlsearch = true
-vim.opt.incsearch = true
-vim.opt.ignorecase = true
-vim.opt.smartcase = true
-vim.opt.history = 1000
-
 vim.opt.termguicolors = true
 vim.opt.lazyredraw = true
 
