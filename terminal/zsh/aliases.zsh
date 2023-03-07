@@ -6,6 +6,8 @@ alias py3="python3"
 alias pip3="python3 -m pip"
 alias pytest="python -m pytest"
 alias fv="open -a fv"
+alias idl="/Applications/itt/idl71/bin/idl"
+alias optool="/Applications/optool/optool"
 
 # Configuration path shortcuts
 alias nvimrc="cd ${DOT}/nvim/"
@@ -31,6 +33,7 @@ alias paper="cd ${PAPER}"
 
 # More Path shortcuts
 alias glatex="cd ${LATEX}"
+alias goptool="cd /Applications/optool/"
 alias rust="cd ${CODE}/rust_projects"
 
 # Code shortcuts
