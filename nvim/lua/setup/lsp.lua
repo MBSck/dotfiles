@@ -53,6 +53,7 @@ M.diagnostics = {
 }
 
 M.setup = function()
+	require("neodev").setup({})
     local lspconfig = require('lspconfig')
     local get_servers = require('mason-lspconfig').get_installed_servers
 

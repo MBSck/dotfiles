@@ -81,4 +81,11 @@ return {
             "theHamsta/nvim-dap-virtual-text",
         },
     },
+    {
+        "nvim-neorg/neorg",
+        build = ":Neorg sync-parsers",
+        event = "BufEnter",
+        config = require("setup.neorg").setup,
+        keys = require("setup.neorg").keys,
+    },
 }

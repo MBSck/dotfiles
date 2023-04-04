@@ -9,7 +9,7 @@ return {
             highlight = {
                 enable = true,
                 -- add languages not supported by treesitter here
-                additional_vim_regex_highlighting = false,
+                additional_vim_regex_highlighting = {'org'},
             },
             indent = {
                 enable = true,
