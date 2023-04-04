@@ -5,8 +5,8 @@ vo.colorcolumn = "90"
 vo.textwidth = 90
 
 -- Settings for python
-vo.tabstop = 4              -- number of visual spaces per TAB
 vo.wrap = true              -- wrap long lines
+vo.tabstop = 4              -- number of visual spaces per TAB
 vo.softtabstop = 4          -- Number of spaces in tab when editing
 vo.shiftwidth = 4           -- Number of spaces to use for autoindent
 vo.expandtab = true         -- Expand tab to spaces so that tabs are spaces
