@@ -1,5 +1,5 @@
 return {
-  options = {
+  opt = {
     swapfile = false,
   },
   g = {
