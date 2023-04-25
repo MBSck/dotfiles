@@ -1,6 +1,6 @@
 return {
   options = {
-    -- noswapfile = true,
+    swapfile = false,
   },
   g = {
     mapleader = " ", -- sets vim.g.mapleader

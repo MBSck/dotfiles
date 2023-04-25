@@ -7,7 +7,7 @@ return {
   },
   i = {
     -- Exit terminal insert mode
-    ["<leader>j"] = {"<c-\\><c-n>"},
+    -- ["<leader>j"] = {"<c-\\><c-n>"},
   },
   v = {
     
