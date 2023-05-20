@@ -1,36 +1,12 @@
 # PATHS
-# For ripgrep
-if type rg &> /dev/null; then
-  export FZF_DEFAULT_COMMAND='rg --files'
-  export FZF_DEFAULT_OPTS='-m --height 50% --border'
-fi
-
-# Set Important Path aliases
-DOWN="${HOME}/Downloads/"
-DOC="${HOME}/Documents/"
-PIC="${HOME}/Pictures/"
-BOOK="${HOME}/Books/"
-PAPER="${HOME}/Papers/"
-CODE="${HOME}/Code"
-DATA="${HOME}/Data"
-DOT="${CODE}/dotfiles"
-TERMINAL="${DOT}/terminal/"
-LATEX="${DOC}/latex"
-
-# Configure .pyenv
-export PATH="$HOME/.pyenv/bin:$PATH"
-eval "$(pyenv init -)"
-eval "$(pyenv virtualenv-init -)"
-
-export PYENV_VIRTUALENV_DISABLE_PROMPT=1
-
-# Add paths
-export PATH="$HOME/.local/bin:$PATH"
+# Path to pyenv installation
+PYENV_ROOT="${HOME}/.pyenv"
+export PATH="${PYENV_ROOT}/bin:$PATH"
 
 # Implement adb
-if [ -d "$HOME/adb-fastboot/platform-tools" ] ; then
- export PATH="$HOME/adb-fastboot/platform-tools:$PATH"
-fi
+# if [ -d "$HOME/adb-fastboot/platform-tools" ] ; then
+#  export PATH="$HOME/adb-fastboot/platform-tools:$PATH"
+# fi
 
 # Set IDL paths
 export IDL_PATH="/Applications/itt/idl71:/Applications/itt/idl71/lib:/Applications/itt/idl71/lib/wavelet/source"
@@ -44,3 +20,15 @@ export IDL_PATH=$IDL_PATH:/Users/scheuck/Code/idl/extra_idl_routines
 export IDL_PATH=$IDL_PATH:/Users/scheuck/Code/idl/idl_emcee/pro
 export IDL_PATH=$IDL_PATH:/Users/scheuck/Code/idl/itools:/Users/scheuck/Code/idl/itools/components:/Users/scheuck/Code/idl/itools/framework:/Users/scheuck/Code/idl/itools/iu_widgets:idl/itools/extra
 export IDL_STARTUP=/Users/scheuck/.idlrc
+
+# Set Important Path aliases
+DOWN="${HOME}/Downloads/"
+DOC="${HOME}/Documents/"
+PIC="${HOME}/Pictures/"
+BOOK="${HOME}/ReadingMaterial/Books/"
+PAPER="${HOME}/ReadingMaterial/Papers/"
+CODE="${HOME}/Code"
+DATA="${HOME}/Data"
+DOT="${CODE}/dotfiles"
+TERMINAL="${DOT}/terminal/"
+LATEX="${DOC}/latex"

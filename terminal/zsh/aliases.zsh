@@ -10,7 +10,7 @@ alias idl="/Applications/itt/idl71/bin/idl"
 alias optool="/Applications/optool/optool"
 
 # Configuration path shortcuts
-alias nvimrc="cd ${DOT}/nvim/"
+alias nvimrc="cd ${DOT}/user/"
 alias zsh="cd ${TERMINAL}/zsh/"
 alias kittyrc="cd ${TERMINAL}/kitty/"
 
@@ -33,7 +33,6 @@ alias paper="cd ${PAPER}"
 
 # More Path shortcuts
 alias glatex="cd ${LATEX}"
-alias goptool="cd /Applications/optool/"
 alias rust="cd ${CODE}/rust_projects"
 
 # Code shortcuts
@@ -63,5 +62,5 @@ alias ....="cd ..; cd ..; cd .."
 alias .....="cd ..; cd ..; cd ..; cd .."
 
 # Kitty integration
-alias ikat="kitty +kitten icat"
-alias s="kitty +kitten ssh"
+# alias ikat="kitty +kitten icat"
+# alias s="kitty +kitten ssh"

@@ -12,7 +12,7 @@ return {
 
   -- Markdown and latex
   { import = "astrocommunity.markdown-and-latex.vimtex" },
-  { import = "astrocommunity.markdown-and-latex.glow-nvim" },
+  { import = "astrocommunity.markdown-and-latex.markdown-preview-nvim" },
 
   -- Code runners
   { import = "astrocommunity.code-runner.overseer-nvim" },
