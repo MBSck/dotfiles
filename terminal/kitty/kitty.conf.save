@@ -1,4 +1,4 @@
-kinclude remaps.conf
+include remaps.conf
 include visual/init.conf
 include layout/init.conf
 
