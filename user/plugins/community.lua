@@ -2,7 +2,10 @@ return {
   "AstroNvim/astrocommunity",
 
   -- Colorscheme
-  { import = "astrocommunity.colorscheme.tokyonight" },
+  { import = "astrocommunity.colorscheme.tokyonight-nvim" },
+
+  -- Codeium
+  { import = "astrocommunity.completion.codeium-vim" },
   
   -- Motion
   { import = "astrocommunity.motion.vim-matchup" },
