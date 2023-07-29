@@ -4,7 +4,7 @@
 function nhpy ()
 {
     if [[ $# -eq 1 ]]; then
-        nohup python3 $1 > "${${1}%.*}.txt"
+        nohup python3 $1 > ${1%.*}.txt
     else
         nohup python3 $1 > $2&
     fi
@@ -15,7 +15,7 @@ function nhpy ()
 function nhppy ()
 {
     if [[ $# -eq 1 ]]; then
-        nohup python3 -m $1 > "${${1}%.*}.txt"
+        nohup python3 -m $1 > ${1%.*}.txt
     else
         nohup python3 -m $1 > $2&
     fi

@@ -9,17 +9,21 @@ export PATH="${PYENV_ROOT}/bin:$PATH"
 # fi
 
 # Set IDL paths
+IDL_PACKAGE_DIR="/Applications/itt/idl71/packages"
 export IDL_PATH="/Applications/itt/idl71:/Applications/itt/idl71/lib:/Applications/itt/idl71/lib/wavelet/source"
-export IDL_DIR="/Applications/itt/idl71"
-export IDL_PATH=$IDL_PATH:/Users/scheuck/Code/idl/astrolib/pro
-export IDL_PATH=$IDL_PATH:/Users/scheuck/Code/idl/textoidl
-export IDL_PATH=$IDL_PATH:/Users/scheuck/Code/idl/OIfits_Monnier/OI-data
-export IDL_PATH=$IDL_PATH:/Users/scheuck/Code/idl/starfinder
-export IDL_PATH=$IDL_PATH:/Users/scheuck/Code/idl/coyote
-export IDL_PATH=$IDL_PATH:/Users/scheuck/Code/idl/extra_idl_routines
-export IDL_PATH=$IDL_PATH:/Users/scheuck/Code/idl/idl_emcee/pro
-export IDL_PATH=$IDL_PATH:/Users/scheuck/Code/idl/itools:/Users/scheuck/Code/idl/itools/components:/Users/scheuck/Code/idl/itools/framework:/Users/scheuck/Code/idl/itools/iu_widgets:idl/itools/extra
-export IDL_STARTUP=/Users/scheuck/.idlrc
+export IDL_PATH=$IDL_PATH:$IDL_PACKAGE_DIR/astrolib/pro
+export IDL_PATH=$IDL_PATH:$IDL_PACKAGE_DIR/textoidl
+export IDL_PATH=$IDL_PATH:$IDL_PACKAGE_DIR/OIfits_Monnier/OI-data
+export IDL_PATH=$IDL_PATH:$IDL_PACKAGE_DIR/starfinder
+export IDL_PATH=$IDL_PATH:$IDL_PACKAGE_DIR/coyote
+export IDL_PATH=$IDL_PATH:$IDL_PACKAGE_DIR/extra_idl_routines
+export IDL_PATH=$IDL_PATH:$IDL_PACKAGE_DIR/idl_emcee/pro
+export IDL_PATH=$IDL_PATH:$IDL_PACKAGE_DIR/itools
+export IDL_PATH=$IDL_PATH:$IDL_PACKAGE_DIR/itools/components
+export IDL_PATH=$IDL_PATH:$IDL_PACKAGE_DIR/itools/framework
+export IDL_PATH=$IDL_PATH:$IDL_PACKAGE_DIR/itools/iu_widgets
+export IDL_PATH=$IDL_PATH:$IDL_PACKAGE_DIR/itools/extra
+export IDL_STARTUP=~/.idlrc
 
 # Set Important Path aliases
 DOWN="${HOME}/Downloads/"

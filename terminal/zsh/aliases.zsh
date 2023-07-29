@@ -42,6 +42,7 @@ alias matadrs="cd ${CODE}/matadrs; pyenv activate matadrs"
 alias p2obp="cd ${CODE}/p2obp; pyenv activate p2obp"
 alias mod="cd ${CODE}/modelling; pyenv activate modelling"
 alias oimod="cd ${CODE}/modelling/oimodeler; pyenv activate oimodeler"
+alias plot="cd ${CODE}/plotting; pyenv activate plotting"
 alias tidbits="cd ${CODE}/tidbits; pyenv activate tidbits"
 
 # Fast interactions
