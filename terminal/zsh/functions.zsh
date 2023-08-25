@@ -30,3 +30,21 @@ function castro ()
         ssh -X -t "scheuck@astro-node${1}.mpia.de"
     fi
 }
+
+function comp ()
+{
+    if [[ $# -eq 0 ]]; then
+        g++ main.cpp -o main.exe 
+    else
+        g++ $1.cpp -o $1.exe
+    fi
+}
+
+function compe ()
+{
+    if [[ $# -eq 0 ]]; then
+        g++ main.cpp -o main.exe && ./main.exe
+    else
+        g++ $1.cpp -o $1.exe && ./$1.exe
+    fi
+}
