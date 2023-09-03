@@ -1,6 +1,6 @@
 # FUNCTIONS
 # Makes a nohup-python3 with two arguments and if the second one is not specified then the
-# name is chosen by default
+# name is chosen by default.
 function nhpy ()
 {
     if [[ $# -eq 1 ]]; then
@@ -11,7 +11,7 @@ function nhpy ()
 }
 
 # Makes a nohup-python3 with two arguments and if the second one is not specified then the
-# name is chosen by default. In this case executes a package
+# name is chosen by default. In this case executes a package.
 function nhppy ()
 {
     if [[ $# -eq 1 ]]; then
@@ -21,7 +21,7 @@ function nhppy ()
     fi
 }
 
-# Connects to an astro-node if none specified connects to a default one
+# Connects to an astro-node if none specified connects to a default one.
 function castro ()
 {
     if [[ $# -eq 0 ]]; then
@@ -31,21 +31,33 @@ function castro ()
     fi
 }
 
+# Compiles a program with additional flags.
 function comp ()
 {
-    if [[ $# -eq 0 ]]; then
-        g++ -std=c++11 main.cpp -o main.exe
-    else
-        g++ -std=c++11 $1.cpp -o $1.exe
-    fi
-}
+    source_file="main"
+    include_path=""
+    run=false
 
-function compe ()
-{
+    # Parse command line arguments
+    while [ $# -gt 0 ]; do
+      case "$1" in
+        -e)
+          run=true
+          ;;
+        -I)
+          shift
+          include_path="-I $1 "
+          ;;
+        *)
+          source_file="$1"
+          ;;
+      esac
+      shift
+    done
 
-    if [[ $# -eq 0 ]]; then
-        g++ -std=c++11 main.cpp -o main.exe && ./main.exe
-    else
-        g++ -std=c++11 $1.cpp -o $1.exe  && ./$1.exe
+    g++ -std=c++11 $include_path "$source_file.cpp" -o "$source_file"
+
+    if [ "$run" = true ]; then
+      "./$source_file"
     fi
 }
