@@ -26,9 +26,6 @@ export IDL_PATH=$IDL_PATH:$IDL_PACKAGE_DIR/itools/extra
 export IDL_STARTUP=~/.idlrc
 
 # FFTW paths.
-export DYLD_LIBRARY_PATH="/usr/local/lib"
-export LDFLAGS="-L/usr/local/lib"
-export CFLAGS="-I/usr/local/include"
 
 # Set Important Path aliases
 DOWN="${HOME}/Downloads/"

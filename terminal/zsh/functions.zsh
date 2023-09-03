@@ -34,17 +34,18 @@ function castro ()
 function comp ()
 {
     if [[ $# -eq 0 ]]; then
-        g++ main.cpp -o main.exe 
+        g++ -std=c++11 main.cpp -o main.exe
     else
-        g++ $1.cpp -o $1.exe
+        g++ -std=c++11 $1.cpp -o $1.exe
     fi
 }
 
 function compe ()
 {
+
     if [[ $# -eq 0 ]]; then
-        g++ main.cpp -o main.exe && ./main.exe
+        g++ -std=c++11 main.cpp -o main.exe && ./main.exe
     else
-        g++ $1.cpp -o $1.exe && ./$1.exe
+        g++ -std=c++11 $1.cpp -o $1.exe  && ./$1.exe
     fi
 }
