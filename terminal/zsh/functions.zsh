@@ -55,9 +55,42 @@ function comp ()
       shift
     done
 
-    g++ -std=c++11 $include_path "$source_file.cpp" -o "$source_file"
+    source_file=$(find . $source_file -name "*.cpp" -o -name "*.c")
+
+    g++ -std=c++11 $include_path $source_file -o "$source_file"
 
     if [ "$run" = true ]; then
       "./$source_file"
+    fi
+}
+
+
+# Compiles a program with additional flags.
+function ccomp ()
+{
+    run=false
+
+    if ! [[ -d build ]]; then
+        mkdir -p build/
+    fi
+
+    # Parse command line arguments
+    while [ $# -gt 0 ]; do
+      case "$1" in
+        -e)
+          run=true
+          ;;
+        *)
+          source_file="$1"
+          ;;
+      esac
+      shift
+    done
+
+    cmake -B build/ && cmake --build build/
+
+    if [ "$run" = true ]; then
+        source_file=$(grep -w project CMakeLists.txt | awk -F'[()]' '{print $2}' | awk '{print $1}')
+      "./build/$source_file"
     fi
 }
