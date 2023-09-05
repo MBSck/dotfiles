@@ -2,6 +2,15 @@
 # Path to pyenv installation
 PYENV_ROOT="${HOME}/.pyenv"
 export PATH="${PYENV_ROOT}/bin:$PATH"
+export PATH="/opt/local/bin:${PATH}"
+
+# Set clang paths.
+export CC="/opt/local/bin/clang-mp-12"
+export CXX="/opt/local/bin/clang++-mp-12"
+export C_INCLUDE_PATH="/opt/local/include"
+export CPLUS_INCLUDE_PATH="/opt/local/include"
+export LIBRARY_PATH="/opt/local/lib"
+XCBASE=`xcrun --show-sdk-path`
 
 # Implement adb
 # if [ -d "$HOME/adb-fastboot/platform-tools" ] ; then
@@ -25,7 +34,6 @@ export IDL_PATH=$IDL_PATH:$IDL_PACKAGE_DIR/itools/iu_widgets
 export IDL_PATH=$IDL_PATH:$IDL_PACKAGE_DIR/itools/extra
 export IDL_STARTUP=~/.idlrc
 
-# FFTW paths.
 
 # Set Important Path aliases
 DOWN="${HOME}/Downloads/"
