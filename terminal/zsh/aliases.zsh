@@ -17,7 +17,7 @@ alias g++="/opt/local/bin/g++-mp-16"
 alias cpp="/opt/local/bin/cpp-mp-16"
 
 # Configuration path shortcuts
-alias nvimrc="cd ${DOT}/user/"
+alias nvimrc="cd ${DOT}/vim/lvim/"
 alias zsh="cd ${TERMINAL}/zsh/"
 alias kittyrc="cd ${TERMINAL}/kitty/"
 
