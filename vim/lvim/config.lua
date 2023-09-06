@@ -7,3 +7,6 @@
 lvim.keys.normal_mode["o"] = "o<ESC>"
 lvim.keys.normal_mode["O"] = "o<ESC>"
 lvim.keys.insert_mode["jj"] = "<ESC>"
+
+-- Other settings
+vim.opt.relativenumber = true -- relative line numbers
