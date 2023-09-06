@@ -3,10 +3,11 @@
 PYENV_ROOT="${HOME}/.pyenv"
 export PATH="${PYENV_ROOT}/bin:$PATH"
 export PATH="/opt/local/bin:${PATH}"
+export PATH=/Users/scheuck/.local/bin:$PATH
 
 # Set clang paths.
-export CC="/opt/local/bin/clang-mp-12"
-export CXX="/opt/local/bin/clang++-mp-12"
+export CC="/opt/local/bin/clang-mp-16"
+export CXX="/opt/local/bin/clang++-mp-16"
 export C_INCLUDE_PATH="/opt/local/include"
 export CPLUS_INCLUDE_PATH="/opt/local/include"
 export LIBRARY_PATH="/opt/local/lib"
