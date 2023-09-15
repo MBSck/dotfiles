@@ -6,11 +6,11 @@ export PATH="/opt/local/bin:${PATH}"
 export PATH=/Users/scheuck/.local/bin:$PATH
 
 # Set clang paths.
-export CC="/opt/local/bin/clang-mp-16"
-export CXX="/opt/local/bin/clang++-mp-16"
-export C_INCLUDE_PATH="/opt/local/include"
-export CPLUS_INCLUDE_PATH="/opt/local/include"
-export LIBRARY_PATH="/opt/local/lib"
+# export CC="/opt/local/bin/clang-mp-16"
+# export CXX="/opt/local/bin/clang++-mp-16"
+# export C_INCLUDE_PATH="/opt/local/include"
+# export CPLUS_INCLUDE_PATH="/opt/local/include"
+# export LIBRARY_PATH="/opt/local/lib"
 XCBASE=`xcrun --show-sdk-path`
 
 # Implement adb
@@ -47,3 +47,9 @@ DATA="${HOME}/Data"
 DOT="${CODE}/dotfiles"
 TERMINAL="${DOT}/terminal/"
 LATEX="${DOC}/latex"
+
+export LDFLAGS="-L/usr/local/opt/llvm/lib"
+export CPPFLAGS="-I/usr/local/opt/llvm/include"
+
+# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
+export PATH="$PATH:$HOME/.rvm/bin"

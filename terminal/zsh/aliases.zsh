@@ -9,12 +9,7 @@ alias pytest="python -m pytest"
 alias fv="open -a fv"
 alias idl="/Applications/itt/idl71/bin/idl"
 alias optool="/Applications/optool/optool"
-
-# Clang aliases and such.
-alias clang="/opt/local/bin/clang-mp-16"
-alias gcc="/opt/local/bin/gcc-mp-16"
-alias g++="/opt/local/bin/g++-mp-16"
-alias cpp="/opt/local/bin/cpp-mp-16"
+alias ds9="/Applications/SAOImageDS9.app/Contents/MacOS/ds9"
 
 # Configuration path shortcuts
 alias nvimrc="cd ${DOT}/vim/lvim/"
