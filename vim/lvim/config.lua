@@ -3,13 +3,11 @@
 -- Forum: https://www.reddit.com/r/lunarvim/
 -- Discord: https://discord.com/invite/Xb9B4Ny
 
--- General.
-lvim.builtin.nvimtree.active = false -- NOTE: using neo-tree
-
 -- Remaps.
 lvim.keys.normal_mode["o"] = "o<ESC>"
 lvim.keys.normal_mode["O"] = "o<ESC>"
-
+lvim.keys.visual_mode["J"] = ":m '>+1<CR>gv=gv"
+lvim.keys.visual_mode["K"] = ":m '<-2<CR>gv=gv"
 lvim.keys.insert_mode["jj"] = "<ESC>"
 
 lvim.builtin.which_key.mappings["e"]= {"<cmd>NeoTreeFocusToggle<cr>", "Toggle NeoTree"}
@@ -29,6 +27,11 @@ lvim.builtin.terminal.open_mapping = "<f7>"
 
 -- Visual.
 vim.opt.relativenumber = true -- relative line numbers
+
+-- Core Plugin.
+lvim.builtin.nvimtree.active = false -- NOTE: using neo-tree
+lvim.builtin.lualine.extensions = { "neo-tree" }
+
 
 -- Plugins.
 lvim.plugins = {
