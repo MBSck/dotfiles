@@ -34,7 +34,8 @@ function castro ()
 # Compiles a program with additional flags.
 function comp ()
 {
-    default_name="main"
+    default_file="main"
+    source_file=""
     include_path=""
     run=false
 
@@ -55,7 +56,9 @@ function comp ()
       shift
     done
 
-    source_file=$(find . $default_name -name "*.cpp" -o -name "*.c")
+    if [ -z "$source_file" ]; then
+      source_file=$(find . $default_file -name "*.cpp" -o -name "*.c")
+    fi
 
     g++ -std=c++11 $include_path $source_file -o "$default_name"
 
@@ -69,6 +72,8 @@ function comp ()
 function ccomp ()
 {
     run=false
+    default_file="main"
+    source_file=""
 
     if ! [[ -d build ]]; then
         mkdir -p build/
@@ -86,6 +91,10 @@ function ccomp ()
       esac
       shift
     done
+
+    if [ -z "$source_file" ]; then
+      source_file=$(find . $default_file -name "*.cpp" -o -name "*.c")
+    fi
 
     cmake -B build/ && cmake --build build/
 
