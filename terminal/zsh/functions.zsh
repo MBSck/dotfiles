@@ -72,8 +72,6 @@ function comp ()
 function ccomp ()
 {
     run=false
-    default_file="main"
-    source_file=""
 
     if ! [[ -d build ]]; then
         mkdir -p build/
@@ -91,10 +89,6 @@ function ccomp ()
       esac
       shift
     done
-
-    if [ -z "$source_file" ]; then
-      source_file=$(find . $default_file -name "*.cpp" -o -name "*.c")
-    fi
 
     cmake -B build/ && cmake --build build/
 
