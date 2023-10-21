@@ -5,7 +5,7 @@
 
 -- Remaps.
 lvim.keys.normal_mode["o"] = "o<ESC>"
-lvim.keys.normal_mode["O"] = "o<ESC>"
+lvim.keys.normal_mode["O"] = "O<ESC>"
 lvim.keys.visual_mode["J"] = ":m '>+1<CR>gv=gv"
 lvim.keys.visual_mode["K"] = ":m '<-2<CR>gv=gv"
 lvim.keys.insert_mode["jj"] = "<ESC>"
@@ -35,25 +35,6 @@ lvim.builtin.lualine.extensions = { "neo-tree" }
 
 -- Plugins.
 lvim.plugins = {
-  {
-    "nvim-neorg/neorg",
-    event = "BufRead",
-    config = function()
-      require("neorg").setup {
-        load = {
-          ["core.defaults"] = {},
-          ["core.dirman"] = {
-            config = {
-              workspaces = {
-                work = "~/notes/work",
-                home = "~/notes/home",
-              }
-            }
-          }
-        },
-      }
-    end,
-  },
   {
     "rcarriga/nvim-notify",
   },
@@ -203,18 +184,10 @@ lvim.plugins = {
     end
   },
   {
-    "folke/noice.nvim",
-    event = "VeryLazy",
-    opts = {
-      -- add any options here
-    },
-    dependencies = {
-      -- if you lazy-load any plugin below, make sure to add proper `module="..."` entries
-      "MunifTanjim/nui.nvim",
-      -- OPTIONAL:
-      --   `nvim-notify` is only needed, if you want to use the notification view.
-      --   If not available, we use `mini` as the fallback
-      "rcarriga/nvim-notify",
-    }
-  }
+    "folke/todo-comments.nvim",
+    event = "BufRead",
+    config = function()
+      require("todo-comments").setup()
+    end,
+  },
 }

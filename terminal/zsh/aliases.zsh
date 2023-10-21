@@ -6,10 +6,11 @@ alias vim="nvim"
 alias py3="python3"
 alias pip3="python3 -m pip"
 alias pytest="python -m pytest"
-alias fv="open -a fv"
 alias idl="/Applications/itt/idl71/bin/idl"
 alias optool="/Applications/optool/optool"
 alias ds9="/Applications/SAOImageDS9.app/Contents/MacOS/ds9"
+alias wlog="python3 /Users/scheuck/Code/tidbits/log_working_hours.py"
+alias fv="/Applications/FV.app/Contents/MacOS/FV &"
 
 # Configuration path shortcuts
 alias nvimrc="cd ${DOT}/vim/lvim/"

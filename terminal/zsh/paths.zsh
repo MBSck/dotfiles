@@ -5,6 +5,9 @@ export PATH="${PYENV_ROOT}/bin:$PATH"
 export PATH="/opt/local/bin:${PATH}"
 export PATH=/Users/scheuck/.local/bin:$PATH
 
+# Homebrew
+export PATH="/opt/homebrew/bin:$PATH"
+
 # Set clang paths.
 # export CC="/opt/local/bin/clang-mp-16"
 # export CXX="/opt/local/bin/clang++-mp-16"

@@ -34,7 +34,7 @@ function castro ()
 # Compiles a program with additional flags.
 function comp ()
 {
-    source_file="main"
+    default_name="main"
     include_path=""
     run=false
 
@@ -55,12 +55,12 @@ function comp ()
       shift
     done
 
-    source_file=$(find . $source_file -name "*.cpp" -o -name "*.c")
+    source_file=$(find . $default_name -name "*.cpp" -o -name "*.c")
 
-    g++ -std=c++11 $include_path $source_file -o "$source_file"
+    g++ -std=c++11 $include_path $source_file -o "$default_name"
 
     if [ "$run" = true ]; then
-      "./$source_file"
+      "./$default_name"
     fi
 }
 
