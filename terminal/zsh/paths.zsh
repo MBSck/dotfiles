@@ -5,6 +5,9 @@ export PATH="${PYENV_ROOT}/bin:$PATH"
 export PATH="/opt/local/bin:${PATH}"
 export PATH=/Users/scheuck/.local/bin:$PATH
 
+# GNU
+export PATH="/usr/local/opt/gnu-sed/libexec/gnubin:$PATH"
+
 # Homebrew
 export PATH="/opt/homebrew/bin:$PATH"
 
