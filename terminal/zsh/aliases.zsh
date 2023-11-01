@@ -26,6 +26,7 @@ alias loadzsh="source ~/.zshrc"
 
 # General Path shortcuts
 alias home="cd ${HOME}"
+alias desk="cd ${DESK}"
 alias data="cd ${DATA}"
 alias code="cd ${CODE}"
 alias down="cd ${DOWN}"

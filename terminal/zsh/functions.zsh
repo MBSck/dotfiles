@@ -90,7 +90,7 @@ function ccomp ()
       shift
     done
 
-    cmake -B build/ && cmake --build build/
+    cmake -DCMAKE_EXPORT_COMPILE_COMMANDS=ON -B build/ && cmake --build build/
 
     if [ "$run" = true ]; then
         source_file=$(grep -w project CMakeLists.txt | awk -F'[()]' '{print $2}' | awk '{print $1}')

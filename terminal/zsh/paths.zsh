@@ -4,6 +4,10 @@ PYENV_ROOT="${HOME}/.pyenv"
 export PATH="${PYENV_ROOT}/bin:$PATH"
 export PATH="/opt/local/bin:${PATH}"
 export PATH=/Users/scheuck/.local/bin:$PATH
+export PYENV_VIRTUALENV_DISABLE_PROMPT=1
+
+# Display variable
+export DISPLAY=:0
 
 # GNU
 export PATH="/usr/local/opt/gnu-sed/libexec/gnubin:$PATH"
@@ -44,6 +48,7 @@ export IDL_STARTUP=~/.idlrc
 
 # Set Important Path aliases
 DOWN="${HOME}/Downloads/"
+DESK="${HOME}/Desktop/"
 DOC="${HOME}/Documents/"
 PIC="${HOME}/Pictures/"
 BOOK="${HOME}/ReadingMaterial/Books/"
