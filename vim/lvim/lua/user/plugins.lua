@@ -1,13 +1,27 @@
 local M = {}
 
 M.setup = function()
-  -- Core Plugins
   lvim.builtin.nvimtree.active = false -- NOTE: using neo-tree
   lvim.builtin.lualine.extensions = { "neo-tree" }
 
   lvim.plugins = {
     {
+      "p00f/clangd_extensions.nvim", -- Clangd for c++
+    },
+    {
       "rcarriga/nvim-notify",
+    },
+    {
+      "mfussenegger/nvim-dap-python", -- DAP for python
+    },
+    {
+      "stevearc/dressing.nvim",
+    },
+    {
+      "nvim-neotest/neotest", -- Testing framework
+    },
+    {
+      "nvim-neotest/neotest-python" -- Testing framework for python
     },
     {
       "windwp/nvim-spectre",
