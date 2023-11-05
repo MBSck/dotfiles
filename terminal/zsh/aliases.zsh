@@ -10,7 +10,8 @@ alias idl="/Applications/itt/idl71/bin/idl"
 alias optool="/Applications/optool/optool"
 alias ds9="/Applications/SAOImageDS9.app/Contents/MacOS/ds9"
 alias wlog="python3 /Users/scheuck/Code/tidbits/log_working_hours.py"
-alias fv="/Applications/FV.app/Contents/MacOS/FV &"
+alias fv="./Applications/FV.app/Contents/MacOS/FV &"
+alias hip="./Applications/jhip.jar &"
 
 # Configuration path shortcuts
 alias nvimrc="cd ${DOT}/vim/lvim/"

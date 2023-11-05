@@ -6,6 +6,9 @@ export PATH="/opt/local/bin:${PATH}"
 export PATH=/Users/scheuck/.local/bin:$PATH
 export PYENV_VIRTUALENV_DISABLE_PROMPT=1
 
+# Java
+export PATH="/usr/local/opt/openjdk/bin:$PATH"
+
 # Display variable
 export DISPLAY=:0
 
