@@ -56,11 +56,12 @@ function comp ()
       shift
     done
 
+    rm -f $default_file
     if [ -z "$source_file" ]; then
-      source_file=$(find . $default_file -name "*.cpp" -o -name "*.c")
+      source_file=$(find . -type f -name "$default_file*")
     fi
 
-    g++ -std=c++11 $include_path $source_file -o "$default_name"
+    gcc $include_path $source_file -o $default_file
 
     if [ "$run" = true ]; then
       "./$default_name"
