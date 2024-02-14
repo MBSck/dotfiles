@@ -3,11 +3,9 @@ local M = {}
 M.setup = function()
   lvim.builtin.nvimtree.active = false -- NOTE: using neo-tree
   lvim.builtin.lualine.extensions = { "neo-tree" }
+  -- vim.g.codeium_disable_bindings = 1
 
   lvim.plugins = {
-    {
-      "p00f/clangd_extensions.nvim", -- Clangd for c++
-    },
     {
       "rcarriga/nvim-notify",
     },
@@ -18,10 +16,15 @@ M.setup = function()
       "stevearc/dressing.nvim",
     },
     {
-      "nvim-neotest/neotest", -- Testing framework
-    },
-    {
-      "nvim-neotest/neotest-python" -- Testing framework for python
+      "zbirenbaum/copilot-cmp",
+      event = "InsertEnter",
+      dependencies = { "zbirenbaum/copilot.lua" },
+      config = function()
+        vim.defer_fn(function()
+          require("copilot").setup() -- https://github.com/zbirenbaum/copilot.lua/blob/master/README.md#setup-and-configuration
+          require("copilot_cmp").setup() -- https://github.com/zbirenbaum/copilot-cmp/blob/master/README.md#configuration
+        end, 100)
+      end,
     },
     {
       "windwp/nvim-spectre",
@@ -86,24 +89,24 @@ M.setup = function()
                   if not node:is_expanded() then -- if unexpanded, expand
                     state.commands.toggle_node(state)
                   else -- if expanded and has children, seleect the next child
-require("neo-tree.ui.renderer").focus_node(state, node:get_child_ids()[1])
+                    require("neo-tree.ui.renderer").focus_node(state, node:get_child_ids()[1])
                   end
-              else -- if not a directory just open it
-state.commands.open(state)
-end
-end,
-copy_selector = function(state)
-  local node = state.tree:get_node()
-local filepath = node:get_id()
-local filename = node.name
-local modify = vim.fn.fnamemodify
+                else -- if not a directory just open it
+                  state.commands.open(state)
+                end
+              end,
+              copy_selector = function(state)
+                local node = state.tree:get_node()
+                local filepath = node:get_id()
+                local filename = node.name
+                local modify = vim.fn.fnamemodify
 
-local vals = {
-  ["BASENAME"] = modify(filename, ":r"),
-["EXTENSION"] = modify(filename, ":e"),
-["FILENAME"] = filename,
-  ["PATH (CWD)"] = modify(filepath, ":."),
-  ["PATH (HOME)"] = modify(filepath, ":~"),
+                local vals = {
+                  ["BASENAME"] = modify(filename, ":r"),
+                  ["EXTENSION"] = modify(filename, ":e"),
+                  ["FILENAME"] = filename,
+                  ["PATH (CWD)"] = modify(filepath, ":."),
+                  ["PATH (HOME)"] = modify(filepath, ":~"),
                   ["PATH"] = filepath,
                   ["URI"] = vim.uri_from_fname(filepath),
                 }
@@ -118,8 +121,8 @@ local vals = {
                   prompt = "Choose to copy to clipboard:",
                   format_item = function(item) return ("%s: %s"):format(item, vals[item]) end,
                 }, function(choice)
-  local result = vals[choice]
-if result then
+                    local result = vals[choice]
+                    if result then
                       vim.notify(("Copied: `%s`"):format(result))
                       vim.fn.setreg("+", result)
                     end
@@ -128,12 +131,12 @@ if result then
               find_in_dir = function(state)
                 local node = state.tree:get_node()
                 local path = node:get_id()
-require("telescope.builtin").find_files {
-  cwd = node.type == "directory" and path or vim.fn.fnamemodify(path, ":h"),
-}
-end,
-}, },
-mappings = {
+                require("telescope.builtin").find_files {
+                  cwd = node.type == "directory" and path or vim.fn.fnamemodify(path, ":h"),
+                }
+              end,
+            }, },
+          mappings = {
             O = "system_open",
             Y = "copy_selector",
             h = "parent_or_close",
@@ -158,16 +161,16 @@ mappings = {
         }
       end,
     },
-    {
-      'Exafunction/codeium.vim',
-      config = function()
-        -- Change '<C-g>' here to any keycode you like.
-        vim.keymap.set('i', '<C-g>', function () return vim.fn['codeium#Accept']() end, { expr = true })
-        vim.keymap.set('i', '<c-;>', function() return vim.fn['codeium#CycleCompletions'](1) end, { expr = true })
-        vim.keymap.set('i', '<c-,>', function() return vim.fn['codeium#CycleCompletions'](-1) end, { expr = true })
-        vim.keymap.set('i', '<c-x>', function() return vim.fn['codeium#Clear']() end, { expr = true })
-      end
-    },
+    -- {
+    --   'Exafunction/codeium.vim',
+    --   config = function()
+    --     -- Change '<C-g>' here to any keycode you like.
+    --     vim.keymap.set('i', '<C-g>', function () return vim.fn['codeium#Accept']() end, { expr = true })
+    --     vim.keymap.set('i', '<c-;>', function() return vim.fn['codeium#CycleCompletions'](1) end, { expr = true })
+    --     vim.keymap.set('i', '<c-,>', function() return vim.fn['codeium#CycleCompletions'](-1) end, { expr = true })
+    --     vim.keymap.set('i', '<c-x>', function() return vim.fn['codeium#Clear']() end, { expr = true })
+    --   end
+    -- },
     {
       "folke/todo-comments.nvim",
       event = "BufRead",

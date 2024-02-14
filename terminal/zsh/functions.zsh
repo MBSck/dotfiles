@@ -61,7 +61,7 @@ function comp ()
       source_file=$(find . -type f -name "$default_file*")
     fi
 
-    gcc $include_path $source_file -o $default_file
+    g++ -std=c++11 $include_path $source_file -o $default_file
 
     if [ "$run" = true ]; then
       "./$default_name"
@@ -97,4 +97,10 @@ function ccomp ()
         source_file=$(grep -w project CMakeLists.txt | awk -F'[()]' '{print $2}' | awk '{print $1}')
       "./build/$source_file"
     fi
+}
+
+function rmd ()
+{
+  DIRECTORY="."
+  find $DIRECTORY -type d -empty -exec rmdir {} \;
 }
