@@ -33,7 +33,8 @@ XCBASE=`xcrun --show-sdk-path`
 
 # Set IDL paths
 export IDL_DIR="/Applications/harris/idl"
-export IDL_PATH=$IDL_PATH:"${IDL_DIR}/lib"
+export IDL_PATH=$IDL_PATH:$IDL_DIR/lib
+export IDL_PATH=$IDL_PATH:$IDL_DIR/bin
 # export IDL_PATH="/Applications/itt/idl71:/Applications/itt/idl71/lib:/Applications/itt/idl71/lib/wavelet/source"
 
 export IDL_PACKAGE_DIR="${IDL_DIR}/packages"
@@ -42,7 +43,7 @@ export IDL_PATH=$IDL_PATH:$IDL_PACKAGE_DIR/astrolib/pro
 export IDL_PATH=$IDL_PATH:$IDL_PACKAGE_DIR/OIfits_Monnier/OI-data
 export IDL_PATH=$IDL_PATH:$IDL_PACKAGE_DIR/starfinder
 export IDL_PATH=$IDL_PATH:$IDL_PACKAGE_DIR/coyote
-export IDL_PATH=$IDL_PATH:$IDL_PACKAGE_DIR/extra_idl_routines
+# export IDL_PATH=$IDL_PATH:$IDL_PACKAGE_DIR/extra_idl_routines
 export IDL_PATH=$IDL_PATH:$IDL_PACKAGE_DIR/idl_emcee/pro
 export IDL_PATH=$IDL_PATH:$IDL_PACKAGE_DIR/itools
 export IDL_PATH=$IDL_PATH:$IDL_PACKAGE_DIR/itools/components
@@ -75,3 +76,12 @@ export PATH="$PATH:$HOME/.rvm/bin"
 source /usr/local/opt/chruby/share/chruby/chruby.sh
 source /usr/local/opt/chruby/share/chruby/auto.sh
 chruby ruby-3.1.3
+
+# >>> juliaup initialize >>>
+
+# !! Contents within this block are managed by juliaup !!
+
+path=('/Users/scheuck/.juliaup/bin' $path)
+export PATH
+
+# <<< juliaup initialize <<<
