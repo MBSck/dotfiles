@@ -20,7 +20,7 @@ alias scal="javaws /Applications/JMMC\ SearchCal.app/SearchCal.jnlp &"
 alias update='sudo softwareupdate -i -a; brew update; brew upgrade --all; brew cleanup; npm install npm -g; npm update -g; sudo gem update'
 
 # Configuration path shortcuts
-alias nvimrc="cd ${DOT}/vim/lvim/"
+alias nvimrc="cd ${DOT}/vim/astronvim/"
 alias zsh="cd ${TERMINAL}/zsh/"
 alias kittyrc="cd ${TERMINAL}/kitty/"
 
