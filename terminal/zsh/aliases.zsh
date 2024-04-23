@@ -1,6 +1,5 @@
 # ALIASES
 # Make aliases for programs
-alias nvim="lvim"
 alias vi="nvim"
 alias vim="nvim"
 alias py3="python3"
@@ -55,6 +54,7 @@ alias p2obp="cd ${CODE}/p2obp; pyenv activate p2obp"
 alias mod="cd ${CODE}/modelling; pyenv activate modelling"
 alias ppd="cd ${CODE}/modelling/ppdmod; pyenv activate modelling"
 alias oimod="cd ${CODE}/modelling/oimodeler; pyenv activate oimodeler"
+alias fourim="cd ${CODE}/fourim; pyenv activate fourim"
 alias plot="cd ${CODE}/plotting; pyenv activate plotting"
 alias tool="cd ${CODE}/ir-tools/ir-tools; pyenv activate data-toolchain"
 alias tidbits="cd ${CODE}/tidbits; pyenv activate tidbits"
