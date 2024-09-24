@@ -1,6 +1,0 @@
-linclude remaps.conf
-include visual/init.conf
-include layout/init.conf
-
-# General
-confirm_os_window_close         3
