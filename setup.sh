@@ -72,6 +72,8 @@ command_install kitty "curl -L https://sw.kovidgoyal.net/kitty/installer.sh | sh
 brew_install fzf
 brew_install fd
 brew_install tldr
+brew_install btop
+brew_install rnr
 # <<< Install programs <<<
 
 # >>> Configuration >>>
