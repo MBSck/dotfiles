@@ -1,0 +1,17 @@
+# This is Git's per-user configuration file.
+[user]
+	name = Marten B. Scheuck
+	email = 58522505+MBSck@users.noreply.github.com
+# Please adapt and uncomment the following lines:
+#	name = Marten Scheuck
+#	email = martenscheuck@gmail.com 
+[credential]
+	helper = store
+[filter "lfs"]
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
+	clean = git-lfs clean -- %f
+[core]
+	longpaths = true
+
