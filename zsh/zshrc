@@ -1,7 +1,6 @@
 # Startup
 source ~/zsh/startup.zsh
 
-# Customize to your needs...
 # Paths
 source ~/zsh/paths_and_variables.zsh
 
