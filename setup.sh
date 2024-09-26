@@ -70,6 +70,7 @@ cd ~;
 # >>> Install programs >>>
 command_install brew "/bin/bash -c '$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)'"
 command_install kitty "curl -L https://sw.kovidgoyal.net/kitty/installer.sh | sh /dev/stdin"
+command_install nvim "brew install neovim"
 brew_install fzf
 brew_install fd
 brew_install tldr
@@ -78,6 +79,13 @@ brew_install rnr
 brew_install lazygit
 brew_install atuin
 brew_install dust
+
+if prompt_user "Do you want to install all nerdfonts?"; then
+  echo "Installing nerd fonts..."
+  brew search '/font-.*-nerd-font/' | awk '{ print $1 }' | xargs -I{} brew install --cask {} || true
+else
+  echo "Skipping installation of nerdfonts."
+fi
 # <<< Install programs <<<
 
 # >>> Configuration >>>
@@ -110,6 +118,7 @@ remove_and_relink $dotfile_dir/lazygit ~/Library/Application\ Support/lazygit
 # TODO: Make it so that it doesn't overwrite the existing files
 # >>> Configure lazyvim >>>
 if prompt_user "Do you want to back up existing Neovim configuration files and reinstall?"; then
+  echo "Setting up lazyvim..."
   mv ~/.config/nvim{,.bak}
 
   # optional but recommended
@@ -125,6 +134,7 @@ else
 fi
 
 remove_and_relink $dotfile_dir/lazyvim ~/.config/nvim/lua
+
 # <<< Configure lazyvim <<<
 # <<< Configuration <<<
 
