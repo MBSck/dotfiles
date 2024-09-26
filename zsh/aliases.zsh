@@ -6,8 +6,6 @@ alias py3="python3"
 alias pip3="python3 -m pip"
 alias pytest="python -m pytest"
 alias wlog="python3 /Users/scheuck/Code/tidbits/log_working_hours.py"
-alias idl="/Applications/harris/idl/bin/idl"
-# alias idl="/Applications/itt/idl71/bin/idl"
 alias optool="/Users/scheuck/.local/bin/optool"
 alias ds9="/Applications/SAOImageDS9.app/Contents/MacOS/ds9"
 alias fv="/Applications/FV.app/Contents/MacOS/FV &"
@@ -20,9 +18,9 @@ alias scal="javaws /Applications/JMMC\ SearchCal.app/SearchCal.jnlp &"
 alias update='sudo softwareupdate -i -a; brew update; brew upgrade --all; brew cleanup; npm install npm -g; npm update -g; sudo gem update'
 
 # Configuration path shortcuts
-alias nvimrc="cd ${DOT}/vim/lazyvim/"
-alias zsh="cd ${TERMINAL}/zsh/"
-alias kittyrc="cd ${TERMINAL}/kitty/"
+alias nvimrc="cd ${DOT}/lazyvim/"
+alias zsh="cd ${DOT}/zsh/"
+alias kittyrc="cd ${DOT}/kitty/"
 
 # Directly edit configuration files
 alias zshrc="nvim ${HOME}/.zshrc"

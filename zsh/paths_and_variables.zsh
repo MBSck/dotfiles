@@ -63,7 +63,6 @@ PAPER="${HOME}/ReadingMaterial/Papers/"
 CODE="${HOME}/Code"
 DATA="${HOME}/Data"
 DOT="${CODE}/dotfiles"
-TERMINAL="${DOT}/terminal/"
 LATEX="${DOC}/latex"
 
 export LDFLAGS="-L/usr/local/opt/llvm/lib"
