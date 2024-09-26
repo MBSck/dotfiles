@@ -1,4 +1,5 @@
-# DISCLAIMER: One needs to be installed from the dotfiles repository
+#!/bin/bash
+# DISCLAIMER: This script needs to starated from the dotfiles repository
 
 # TODO: Implement a check at some point for linux installation as well
 # Check the OS here (either linux or MacOs)
@@ -74,6 +75,9 @@ brew_install fd
 brew_install tldr
 brew_install btop
 brew_install rnr
+brew_install lazygit
+brew_install atuin
+brew_install dust
 # <<< Install programs <<<
 
 # >>> Configuration >>>
@@ -101,6 +105,7 @@ remove_and_relink $dotfile_dir/git/gitconfig ~/.gitconfig;
 remove_and_relink $dotfile_dir/zsh ~/zsh;
 remove_and_relink $dotfile_dir/zsh/zshrc ~/.zshrc;
 remove_and_relink $dotfile_dir/kitty ~/.config/kitty;
+remove_and_relink $dotfile_dir/lazygit ~/Library/Application\ Support/lazygit
 
 # TODO: Make it so that it doesn't overwrite the existing files
 # >>> Configure lazyvim >>>
