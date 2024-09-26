@@ -113,6 +113,8 @@ remove_and_relink $dotfile_dir/git/gitconfig ~/.gitconfig;
 remove_and_relink $dotfile_dir/zsh ~/zsh;
 remove_and_relink $dotfile_dir/zsh/zshrc ~/.zshrc;
 remove_and_relink $dotfile_dir/kitty ~/.config/kitty;
+remove_and_relink $dotfile_dir/btop ~/.config/btop;
+remove_and_relink $dotfile_dir/bat ~/.config/bat;
 remove_and_relink $dotfile_dir/lazygit ~/Library/Application\ Support/lazygit
 
 # TODO: Make it so that it doesn't overwrite the existing files
