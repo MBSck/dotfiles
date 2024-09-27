@@ -117,7 +117,6 @@ remove_and_relink $dotfile_dir/btop ~/.config/btop;
 remove_and_relink $dotfile_dir/bat ~/.config/bat;
 remove_and_relink $dotfile_dir/lazygit ~/Library/Application\ Support/lazygit
 
-# TODO: Make it so that it doesn't overwrite the existing files
 # >>> Configure lazyvim >>>
 if prompt_user "Do you want to back up existing Neovim configuration files and reinstall?"; then
   echo "Setting up lazyvim..."
