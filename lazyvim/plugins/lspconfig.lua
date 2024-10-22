@@ -8,6 +8,7 @@ return {
       servers = {
         -- pyright will be automatically installed with mason and loaded with lspconfig
         pyright = {},
+        julials = {},
       },
     },
   },
@@ -21,6 +22,7 @@ return {
         "shellcheck",
         "shfmt",
         "flake8",
+        "julia-lsp",
       },
     },
   },

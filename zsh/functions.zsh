@@ -112,3 +112,17 @@ function _fzf_compgen_path() {
 function _fzf_compgen_dir() {
   fd --type d --hidden --exclude .git . "$1"
 }
+
+# TODO: Finish this function to automatically execute packages from within
+function find_last_pyproject_dir() {
+    local dir="$PWD"
+
+    while [[ "$dir" != "/" ]]; do
+        if [[ -f "$dir/pyproject.toml" ]]; then
+            echo "$(basename "$dir")"
+            return
+        fi
+        dir=$(dirname "$dir")
+    done
+}
+

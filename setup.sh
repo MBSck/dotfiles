@@ -71,6 +71,8 @@ cd ~;
 command_install brew "/bin/bash -c '$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)'"
 command_install kitty "curl -L https://sw.kovidgoyal.net/kitty/installer.sh | sh /dev/stdin"
 command_install nvim "brew install neovim"
+command_install nvim "npm install neovim"
+command_install nvim "gem install neovim"
 brew_install fzf
 brew_install fd
 brew_install tldr
@@ -79,6 +81,8 @@ brew_install rnr
 brew_install lazygit
 brew_install atuin
 brew_install dust
+brew_install luarocks
+brew_install uv
 
 if prompt_user "Do you want to install all nerdfonts?"; then
   echo "Installing nerd fonts..."
