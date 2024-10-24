@@ -9,6 +9,3 @@ source ~/zsh/aliases.zsh
 
 # Functions
 source ~/zsh/functions.zsh
-
-# Programs
-source ~/zsh/programs.zsh

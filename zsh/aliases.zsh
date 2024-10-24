@@ -14,42 +14,36 @@ alias scal="javaws /Applications/JMMC\ SearchCal.app/SearchCal.jnlp &"
 alias update='sudo softwareupdate -i -a; brew update; brew upgrade --all; brew cleanup; npm install npm -g; npm update -g; sudo gem update'
 
 # Configuration path shortcuts
-alias nvimrc="cd ${DOT}/lazyvim/"
-alias zsh="cd ${DOT}/zsh/"
-alias kittyrc="cd ${DOT}/kitty/"
+alias dot="cd ${DOT}; kitty @ set-tab-title dotfiles"
+alias nvimrc="cd ${DOT}/lazyvim/; kitty @ set-tab-title lazyvim"
+alias zsh="cd ${DOT}/zsh/; kitty @ set-tab-title zsh"
+alias kittyrc="cd ${DOT}/kitty/; kitty @ set-tab-title kitty"
 
 # Directly edit configuration files
-alias zshrc="nvim ${HOME}/.zshrc"
-alias bashrc="nvim ${HOME}/.bashrc"
+alias zshrc="nvim ~/.zshrc"
 
 # Source aliases
 alias loadzsh="source ~/.zshrc"
 
 # General Path shortcuts
-alias home="cd ${HOME}"
-alias desk="cd ${DESK}"
-alias data="cd ${DATA}"
-alias code="cd ${CODE}"
-alias down="cd ${DOWN}"
-alias doc="cd ${DOC}"
-alias pic="cd ${PIC}"
-alias book="cd  ${BOOK}"
-alias paper="cd ${PAPER}"
-
-# More Path shortcuts
-alias glatex="cd ${LATEX}"
-alias rust="cd ${CODE}/rust_projects"
+alias desk="cd ${DESK}; kitty @ set-tab-title desktop"
+alias data="cd ${DATA}; kitty @ set-tab-title data"
+alias code="cd ${CODE}; kitty @ set-tab-title code"
+alias down="cd ${DOWN}; kitty @ set-tab-title downloads"
+alias doc="cd ${DOC}; kitty @ set-tab-title documents"
+alias pic="cd ${PIC}; kitty @ set-tab-title pictures"
+alias book="cd  ${BOOK}; kitty @ set-tab-title books"
+alias paper="cd ${PAPER}; kitty @ set-tab-title papers"
 
 # Code shortcuts
-alias dot="cd ${DOT}"
-alias calfind="cd ${CODE}/calfind"
-alias matadrs="cd ${CODE}/matadrs"
-alias p2obp="cd ${CODE}/p2obp"
-alias ppd="cd ${CODE}/modelling/ppdmod"
-alias oimod="cd ${CODE}/modelling/oimodeler"
-alias fourim="cd ${CODE}/fourim"
-alias tools="cd ${CODE}/ir-tools/ir-tools"
-alias tidbits="cd ${CODE}/tidbits"
+alias calfind="cd ${CODE}/calfind; kitty @ set-tab-title calfind"
+alias matadrs="cd ${CODE}/matadrs; kitty @ set-tab-title matadrs"
+alias p2obp="cd ${CODE}/p2obp; kitty @ set-tab-title p2obp"
+alias ppd="cd ${CODE}/ppdmod; kitty @ set-tab-title ppdmod"
+alias oimod="cd ${CODE}/oimodeler; kitty @ set-tab-title oimodeler"
+alias fourim="cd ${CODE}/fourim; kitty @ set-tab-title fourim"
+alias tools="cd ${CODE}/ir-tools; kitty @ set-tab-title ir-tools"
+alias tidbits="cd ${CODE}/tidbits; kitty @ set-tab-title tidbits"
 
 # Fast interactions
 alias c="clear"
