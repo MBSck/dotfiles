@@ -22,16 +22,8 @@ CODE="~/Code"
 DATA="~/Data"
 DOT="${CODE}/dotfiles"
 
-export LDFLAGS="-L/usr/local/opt/llvm/lib"
-export CPPFLAGS="-I/usr/local/opt/llvm/include"
-
 # Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
 export PATH="$PATH:~/.rvm/bin"
-
-# Ruby paths
-source /usr/local/opt/chruby/share/chruby/chruby.sh
-source /usr/local/opt/chruby/share/chruby/auto.sh
-chruby ruby-3.1.3
 
 # >>> juliaup initialize >>>
 
