@@ -1,10 +1,10 @@
 #!/bin/bash
-# DISCLAIMER: This script needs to starated from the dotfiles repository
-
-# TODO: Implement a check at some point for linux installation as well
-# Check the OS here (either linux or MacOs)
-# if [[ "$OSTYPE" == "darwin"* ]]; then
-#   installer = brew
+# DISCLAIMER: This script needs to be executed from the dotfiles repository
+# Check if the script is being run as root, if not, ask for sudo
+if [ "$(id -u)" -ne 0 ]; then
+    echo "This script requires sudo privileges. Please run it with sudo."
+    exit 1
+fi
 
 # >>> Functions >>>
 function check_install() {
@@ -28,7 +28,7 @@ function brew_install() {
   check_install $1
   if [ $? -eq 0 ]; then
     brew install $1
-  fi
+ fi
 }
 
 remove_and_relink() {
@@ -79,7 +79,6 @@ brew_install tldr
 brew_install btop
 brew_install rnr
 brew_install lazygit
-brew_install atuin
 brew_install dust
 brew_install luarocks
 brew_install uv
@@ -109,7 +108,7 @@ if [[ "$SHELL" != "/bin/zsh" ]]; then
   echo "Changing shell to zsh..."
   chsh -s /bin/zsh
 else
-  echo "Shell is already zsh per default."
+  echo "Shell is already zsh."
 fi
 # <<< Setting zsh as default shell <<<
 
@@ -119,7 +118,6 @@ remove_and_relink $dotfile_dir/zsh/zshrc ~/.zshrc;
 remove_and_relink $dotfile_dir/kitty ~/.config/kitty;
 remove_and_relink $dotfile_dir/btop ~/.config/btop;
 remove_and_relink $dotfile_dir/bat ~/.config/bat;
-remove_and_relink $dotfile_dir/lazygit ~/Library/Application\ Support/lazygit
 
 # >>> Configure lazyvim >>>
 if prompt_user "Do you want to back up existing Neovim configuration files and reinstall?"; then
