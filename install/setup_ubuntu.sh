@@ -3,8 +3,12 @@ source utils.sh
 
 check_root
 
+dotfile_dir="$(dirname "$(dirname "$(realpath "$0")")")"
+
 # >>> Installation >>>
+hline
 echo "Updating programs..."
+hline
 apt update -y
 apt upgrade -y
 
@@ -13,7 +17,9 @@ apt upgrade -y
 # apt-get update
 
 # TODO: Debug this (make everything work)
-echo "Installing programs..."
+hline
+echo "Installing..."
+hline
 install "apt-get" g++                 # Neovim dependency
 # TODO: Check what name these have when installed
 # install apt build-essential     # Lua dependency
@@ -33,12 +39,14 @@ install apt-get xclip           # Neovim keybaord copying
 install apt-get ruby-full ruby
 install apt-get ripgrep rg
 install apt-get neovim nvim
+
 # TODO: Fix the curl commands
-# command_install "curl -L https://sw.kovidgoyal.net/kitty/installer.sh | sh /dev/stdin" kitty
-# command_install "curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh" rustup
+# install "curl -L https://sw.kovidgoyal.net/kitty/installer.sh | sh /dev/stdin" kitty
+# install "curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh" rustup
 # command_install "curl -LsSf https://astral.sh/uv/install.sh | sh" uv
+
 # TODO: Fix the cargo command somehow, too
-install cargo rnr
+# install cargo rnr
 install snap tldr
 install snap btop
 # install snap "obsidian --classic"
@@ -46,18 +54,26 @@ install snap btop
 # <<< Installation <<<
 
 # >>> Configuration >>>
+hline
+echo "Configuring..."
+hline
 # make_dir "$HOME/.local/bin"
 # TODO: Write a script that checks if these are installed
-npm install -g neovim
-gem install neovim
+# npm install -g neovim
+# gem install neovim
 # cpanm -n Neovim:Ext
 
-# TODO: Make this symlink work
-# ln -s /usr/bin/batcat ~/.local/bin/bat
 # if [[ "$SHELL" != "/bin/zsh" ]]; then
 #   echo "Changing shell to zsh..."
 #   chsh -s /bin/zsh
 # else
 #   echo "Shell is already zsh."
 # fi
+
+remove_and_relink $dotfile_dir/git/gitconfig $HOME/.gitconfig;
+remove_and_relink $dotfile_dir/zsh $HOME/zsh;
+remove_and_relink $dotfile_dir/zsh/zshrc $HOME/.zshrc;
+remove_and_relink $dotfile_dir/kitty $HOME/.config/kitty;
+remove_and_relink $dotfile_dir/btop $HOME/.config/btop;
+remove_and_relink $dotfile_dir/bat $HOME/.config/bat;
 # <<< Configuration <<<

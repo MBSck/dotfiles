@@ -5,8 +5,13 @@ YELLOW='\033[0;33m'
 BLUE='\033[0;34m'
 NC='\033[0m'        # No Color
 
+function hline() {
+length=${1:-40}
+printf "%${length}s\n" | tr " " "-"
+}
+
+# Check if the script is being run as root, if not exit
 function check_root() {
-  # Check if the script is being run as root, if not, ask for sudo
   if [ "$(id -u)" -ne 0 ]; then
       echo "This script requires sudo privileges. Please run it with sudo."
       exit 1
@@ -30,6 +35,8 @@ add_repository() {
 }
 
 
+# General install function with command or tool
+# Supported are apt, apt-get, snap, cargo, wget and curl
 function install() {
   local installer=$1
   local package=$2
@@ -46,11 +53,14 @@ function install() {
   fi
 
   case "$installer" in
-    apt|apt-get|snap|cargo)
-      installer="$installer install"
+    apt|apt-get|snap)
+      installer="$installer install $package -y"
       ;;
-    wget|curl)
-      echo "Not implemented."
+    cargo)
+      installer="$installer install $package"
+      ;;
+    curl*|wget*)
+      installer="$installer"
       ;;
     *)
       echo "Unsupported installer: $installer"
@@ -58,15 +68,16 @@ function install() {
       ;;
   esac
 
-  if $installer "$package" -y > /dev/null 2>&1; then
+  if $installer > /dev/null 2>&1; then
     echo -e "$package ${GREEN}installed successfully${NC}"
     return 0
   fi
 
-  echo -e "$package using $installer ${RED}failed to install${NC}" >&2
+  echo -e "$package ${RED}failed to install${NC}" >&2
   return 1
 }
 
+# Removes old symlinks and creates new ones
 remove_and_relink() {
   local new_target="$1"
   local old_path="$2"
@@ -77,28 +88,19 @@ remove_and_relink() {
   fi
 
   if [ -L "$old_path" ]; then
-    rm "$old_path" && echo "Removed symlink: $old_path" || echo "Failed to remove symlink: $old_path"
+    rm "$old_path" && echo -e "${GREEN}Removed symlink:${NC} $old_path" || echo -e "${RED}Failed to remove symlink:${NC} $old_path"
   elif [ -e "$old_path" ]; then
     if [ -f "$old_path" ]; then
-      rm "$path" && echo "Removed file: $old_path" || echo "Failed to remove file: $old_path"
+      rm "$path" && echo -e "${GREEN}Removed file:${RED} $old_path" || echo -e "${RED}Failed to remove file:${NC} $old_path"
     elif [ -d "$old_path" ]; then
-      rm -r "$old_path" && echo "Removed folder: $old_path" || echo "Failed to remove folder: $old_path"
+      rm -r "$old_path" && echo -e "${GREEN}Removed folder:${NC} $old_path" || echo -e "${RED}Failed to remove folder:${NC} $old_path"
     fi
   else
-    echo "Path does not exist: $old_path"
+    echo -e "${YELLOW}Path does not exist:${YELLOW} $old_path"
   fi
 
-  ln -s "$new_target" "$old_path" && echo "Created symlink: $new_target -> $old_path" || echo "Failed to create symlink: $new_target -> $old_path"
+  ln -s "$new_target" "$old_path" && echo -e "${GREEN}Created symlink:${NC} $new_target -> $old_path" || echo -e "${RED}Failed to create symlink:${NC} $new_target -> $old_path"
   return 0
-}
-
-prompt_user() {
-    read -p "$1 (y/n): " choice
-    case "$choice" in
-        y|Y ) return 0;;
-        n|N ) return 1;;
-        * ) echo "Invalid choice. Please enter 'y' or 'n'."; prompt_user "$1";;
-    esac
 }
 
 # if prompt_user "Do you want to install all nerdfonts?"; then
