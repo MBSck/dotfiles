@@ -1,4 +1,10 @@
 #!/bin/bash
+RED='\033[0;31m'
+GREEN='\033[0;32m'
+YELLOW='\033[0;33m'
+BLUE='\033[0;34m'
+NC='\033[0m'        # No Color
+
 function check_root() {
   # Check if the script is being run as root, if not, ask for sudo
   if [ "$(id -u)" -ne 0 ]; then
@@ -14,20 +20,6 @@ function make_dir() {
   fi
 }
 
-function check_install() {
-  printf -v line '%*s' 50 ''
-  line=${line// /-}
-  echo "$line"
-
-  if command -v $1 >/dev/null 2>&1; then
-    echo "$1 is already installed."
-    return 1
-  else
-    echo "Installing $1...";
-    return 0
-  fi
-}
-
 add_repository() {
   if ! grep -q "$1" /etc/apt/sources.list.d/*; then
     echo "Repository $1 not found. Adding it..."
@@ -38,53 +30,66 @@ add_repository() {
 }
 
 
-function command_install() {
-  check_install $2
-  if [ $? -eq 0 ]; then
-    $1
-  fi
-}
-
 function install() {
-  if [ -n  "$3" ]; then
-    check_install $3
-  else
-    check_install $2
-  fi
+  local installer=$1
+  local package=$2
+  local check_command=${3:-$package}
 
-  if [ $? -eq 1 ]; then
+  if [[ -z "$installer" || -z "$package" ]]; then
+    echo "Usage: install <installer> <package> or install <command> <package>"
     return 1
   fi
 
-  installer=$1
-  if [[ "$installer" == *"apt"* || "$installer" == *"snap"*  || "$installer" == *"cargo"* ]]; then
-    installer="$1 install"
+  if command -v "$check_command" >/dev/null 2>&1; then
+    echo -e "$package is ${GREEN}already installed${NC}"
+    return 0
   fi
 
-  additional_args="$*"
-  $installer "$2" -y
+  case "$installer" in
+    apt|apt-get|snap|cargo)
+      installer="$installer install"
+      ;;
+    wget|curl)
+      echo "Not implemented."
+      ;;
+    *)
+      echo "Unsupported installer: $installer"
+      exit 1
+      ;;
+  esac
+
+  if $installer "$package" -y > /dev/null 2>&1; then
+    echo -e "$package ${GREEN}installed successfully${NC}"
+    return 0
+  fi
+
+  echo -e "$package using $installer ${RED}failed to install${NC}" >&2
+  return 1
 }
 
 remove_and_relink() {
   local new_target="$1"
   local old_path="$2"
 
+  if [[ -z "$new_target" || -z "$old_path" ]]; then
+    echo "Usage: remove_and_relink <new_target> <old_path>"
+    return 1
+  fi
+
   if [ -L "$old_path" ]; then
-    rm "$old_path"
-    echo "Removed symlink: $old_path"
+    rm "$old_path" && echo "Removed symlink: $old_path" || echo "Failed to remove symlink: $old_path"
   elif [ -e "$old_path" ]; then
     if [ -f "$old_path" ]; then
-      rm "$path"
-      echo "Removed file: $old_path"
+      rm "$path" && echo "Removed file: $old_path" || echo "Failed to remove file: $old_path"
     elif [ -d "$old_path" ]; then
-      rm -r "$old_path"
-      echo "Removed folder: $old_path"
+      rm -r "$old_path" && echo "Removed folder: $old_path" || echo "Failed to remove folder: $old_path"
     fi
   else
     echo "Path does not exist: $old_path"
   fi
-  ln -s "$new_target" "$old_path"
-  echo "Created symlink: $new_target"
+
+  ln -s "$new_target" "$old_path" && echo "Created symlink: $new_target -> $old_path" || echo "Failed to create symlink: $new_target -> $old_path"
+  return 0
 }
 
 prompt_user() {

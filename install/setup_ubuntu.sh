@@ -4,21 +4,22 @@ source utils.sh
 check_root
 
 # >>> Installation >>>
-# apt update && apt upgrade
+echo "Updating programs..."
+apt update -y
+apt upgrade -y
 
 # echo "Adding repositories..."
 # add_repository ppa:neovim-ppa/unstable
 # apt-get update
 
-# TODO: Debug this -> Somewhere it doesn't work
+# TODO: Debug this (make everything work)
 echo "Installing programs..."
 install "apt-get" g++                 # Neovim dependency
 # TODO: Check what name these have when installed
-# install apt build-essential           # Lua dependency
-# install apt libreadline-dev           # Lua dependeny
-# install apt libssl-dev                # Lua dependency
-install apt unzip                     # Lua dependency
-install apt luarocks                  # Neovim dependency
+# install apt build-essential     # Lua dependency
+# install apt libreadline-dev     # Lua dependeny
+# install apt libssl-dev          # Lua dependency
+install apt unzip               # Lua dependency
 install apt curl
 install apt fd-find fdfind
 install apt fzf
@@ -27,9 +28,11 @@ install snap dust
 install apt nodejs
 install apt npm
 install apt perl
-install apt "rubygems -y"
-install "apt-get" ripgrep
-install "apt-get" neovim nvim
+install apt luarocks            # Neovim dependency
+install apt-get xclip           # Neovim keybaord copying
+install apt-get ruby-full ruby
+install apt-get ripgrep rg
+install apt-get neovim nvim
 # TODO: Fix the curl commands
 # command_install "curl -L https://sw.kovidgoyal.net/kitty/installer.sh | sh /dev/stdin" kitty
 # command_install "curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh" rustup
@@ -38,12 +41,17 @@ install "apt-get" neovim nvim
 install cargo rnr
 install snap tldr
 install snap btop
-install snap "obsidian --classic"
+# install snap "obsidian --classic"
 # get_nerdfont Iosevka
 # <<< Installation <<<
 
 # >>> Configuration >>>
 # make_dir "$HOME/.local/bin"
+# TODO: Write a script that checks if these are installed
+npm install -g neovim
+gem install neovim
+# cpanm -n Neovim:Ext
+
 # TODO: Make this symlink work
 # ln -s /usr/bin/batcat ~/.local/bin/bat
 # if [[ "$SHELL" != "/bin/zsh" ]]; then
