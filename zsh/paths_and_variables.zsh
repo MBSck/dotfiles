@@ -12,18 +12,18 @@ export PATH="/usr/local/opt/gnu-sed/libexec/gnubin:$PATH"
 export PATH="/opt/homebrew/bin:$PATH"
 
 # Set Important Path aliases
-DOWN="~/Downloads/"
-DESK="~/Desktop/"
-DOC="~/Documents/"
-PIC="~/Pictures/"
-BOOK="~/ReadingMaterial/Books/"
-PAPER="~/ReadingMaterial/Papers/"
-CODE="~/Code"
-DATA="~/Data"
+DOWN="$HOME/Downloads/"
+DESK="$HOME/Desktop/"
+DOC="$HOME/Documents/"
+BOOK="${DOC}/ReadingMaterial/Books/"
+PAPER="${DOC}/ReadingMaterial/Papers/"
+CODE="${DOC}/Code"
 DOT="${CODE}/dotfiles"
+PIC="$HOME/Pictures/"
+DATA="$HOME/Data"
 
 # Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
-export PATH="$PATH:~/.rvm/bin"
+export PATH="$PATH:$HOME/.rvm/bin"
 
 # >>> juliaup initialize >>>
 

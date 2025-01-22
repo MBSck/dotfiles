@@ -11,7 +11,6 @@ alias oiexp="javaws /Applications/JMMC\ OIFitsExplorer.app/OIFitsExplorer.jnlp &
 alias aspro="javaws /Applications/JMMC\ Aspro.app/aspro2.jnlp &"
 alias litpro="javaws /Applications/JMMC\ LITpro.app/LITpro.jnlp &"
 alias scal="javaws /Applications/JMMC\ SearchCal.app/SearchCal.jnlp &"
-alias update='sudo softwareupdate -i -a; brew update; brew upgrade --all; brew cleanup; npm install npm -g; npm update -g; sudo gem update'
 
 # Configuration path shortcuts
 alias dot="cd ${DOT}; kitty @ set-tab-title dotfiles"
@@ -20,10 +19,10 @@ alias zsh="cd ${DOT}/zsh/; kitty @ set-tab-title zsh"
 alias kittyrc="cd ${DOT}/kitty/; kitty @ set-tab-title kitty"
 
 # Directly edit configuration files
-alias zshrc="nvim ~/.zshrc"
+alias zshrc="nvim $HOME/.zshrc"
 
 # Source aliases
-alias loadzsh="source ~/.zshrc"
+alias loadzsh="source $HOME/.zshrc"
 
 # General Path shortcuts
 alias desk="cd ${DESK}; kitty @ set-tab-title desktop"
