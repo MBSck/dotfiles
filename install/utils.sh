@@ -110,6 +110,7 @@ remove_and_relink() {
 #   echo "Skipping installation of nerdfonts."
 # fi
 
+# TODO: Make sure this isn't accessing root
 function get_nerdfont() {
   make_dir "$HOME/.fonts"
   if [ -z "$(find "$HOME/.fonts" -iname "*$1*")" ]; then
