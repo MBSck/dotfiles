@@ -80,5 +80,6 @@ remove_and_relink $dotfile_dir/direnv $user_home/.config/direnv;
 remove_and_relink $dotfile_dir/kitty $user_home/.config/kitty;
 remove_and_relink $dotfile_dir/btop $user_home/.config/btop;
 remove_and_relink $dotfile_dir/bat $user_home/.config/bat;
+remove_and_relink $dotfile_dir/starship/starship.toml $user_home/.config/starship.toml;
 batcat cache -build > /dev/null 2>&1
 # <<< Configuration <<<
