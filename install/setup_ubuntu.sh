@@ -28,6 +28,7 @@ install "apt-get" g++                 # Neovim dependency
 # install apt libssl-dev          # Lua dependency
 install apt unzip               # Lua dependency
 install apt curl
+install apt direnv
 install apt fd-find fdfind
 install apt fzf
 install snap tldr
