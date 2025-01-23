@@ -31,11 +31,3 @@ function castro ()
         ssh -X -t "scheuck@astro-node${1}.mpia.de"
     fi
 }
-
-function _fzf_compgen_path() {
-  fd --hidden --exclude .git . "$1"
-}
-
-function _fzf_compgen_dir() {
-  fd --type d --hidden --exclude .git . "$1"
-}
