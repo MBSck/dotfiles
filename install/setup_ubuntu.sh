@@ -45,6 +45,7 @@ install apt-get neovim nvim
 # TODO: Fix the curl commands
 # install "curl -L https://sw.kovidgoyal.net/kitty/installer.sh | sh /dev/stdin" kitty
 # install "curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh" rustup
+# install "curl -sS https://starship.rs/install.sh | sh" starship
 # command_install "curl -LsSf https://astral.sh/uv/install.sh | sh" uv
 
 # TODO: Fix the cargo command somehow, too
@@ -75,6 +76,7 @@ hline
 remove_and_relink $dotfile_dir/git/gitconfig $user_home/.gitconfig;
 remove_and_relink $dotfile_dir/zsh $user_home/zsh;
 remove_and_relink $dotfile_dir/zsh/zshrc $user_home/.zshrc;
+remove_and_relink $dotfile_dir/direnv $user_home/.config/direnv;
 remove_and_relink $dotfile_dir/kitty $user_home/.config/kitty;
 remove_and_relink $dotfile_dir/btop $user_home/.config/btop;
 remove_and_relink $dotfile_dir/bat $user_home/.config/bat;

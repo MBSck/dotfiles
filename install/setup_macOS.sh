@@ -3,6 +3,8 @@ source utils.sh
 
 check_root
 
+dotfile_dir="$(dirname "$(dirname "$(realpath "$0")")")"
+
 # >>> Installation >>>
 # TODO: Rewrite this so it installs the right things
 # command_install "npm install neovim" nvim
@@ -23,17 +25,6 @@ install brew uv
 
 # >>> Configuration >>>
 # TODO: Finish this setup here and move it to the end
-# git clone --recursive https://github.com/sorin-ionescu/prezto.git "${ZDOTDIR:-$HOME}/.zprezto"
-
-# create a new Zsh configuration
-# setopt EXTENDED_GLOB
-# for rcfile in "${ZDOTDIR:-$HOME}"/.zprezto/runcoms/^README.md(.N); do
-#   ln -s "$rcfile" "${ZDOTDIR:-$HOME}/.${rcfile:t}"
-# done
-
-dotfile_dir=$(pwd);
-cd ~;
-
 if [[ "$SHELL" != "/bin/zsh" ]]; then
   echo "Changing shell to zsh..."
   chsh -s /bin/zsh
@@ -44,6 +35,7 @@ fi
 remove_and_relink $dotfile_dir/git/gitconfig $HOME/.gitconfig;
 remove_and_relink $dotfile_dir/zsh $HOME/zsh;
 remove_and_relink $dotfile_dir/zsh/zshrc $HOME/.zshrc;
+remove_and_relink $dotfile_dir/direnv $HOME/.config/direnv;
 remove_and_relink $dotfile_dir/kitty $HOME/.config/kitty;
 remove_and_relink $dotfile_dir/btop $HOME/.config/btop;
 remove_and_relink $dotfile_dir/bat $HOME/.config/bat;

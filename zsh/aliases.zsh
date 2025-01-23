@@ -44,6 +44,8 @@ alias fourim="cd ${CODE}/fourim; kitty @ set-tab-title fourim"
 alias tools="cd ${CODE}/ir-tools; kitty @ set-tab-title ir-tools"
 alias tidbits="cd ${CODE}/tidbits; kitty @ set-tab-title tidbits"
 
+# TODO: Write uv init that automatically creates a .envrc as well or something like that
+
 # Fast interactions
 alias c="clear"
 alias o="open"
