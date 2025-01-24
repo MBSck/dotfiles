@@ -2,9 +2,6 @@
 # Java
 export PATH="/usr/local/opt/openjdk/bin:$PATH"
 
-# Display variable
-export DISPLAY=:0
-
 # GNU
 export PATH="/usr/local/opt/gnu-sed/libexec/gnubin:$PATH"
 
@@ -30,3 +27,7 @@ export PATH="$PATH:$HOME/.rvm/bin"
 path=('/Users/scheuck/.juliaup/bin' $path)
 export PATH
 # <<< juliaup initialize <<<
+
+export XDG_CONFIG_HOME="${XDG_CONFIG_HOME:=$HOME/.config}"
+[[ -d $XDG_CONFIG_HOME/zsh ]] && export ZDOTDIR="$XDG_CONFIG_HOME/zsh"
+source "$ZDOTDIR/.zshenv"
