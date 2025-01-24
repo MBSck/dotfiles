@@ -7,11 +7,18 @@ return {
       ---@type lspconfig.options
       servers = {
         -- pyright will be automatically installed with mason and loaded with lspconfig
-        pyright = {},
+        pyright = {
+          -- settings = {
+          --   python = {
+          --     pythonPath = vim.fn.getcwd() .. '/.venv/bin/python',
+          --   }
+          -- }
+        },
         julials = {},
       },
     },
   },
+},
 
   -- add any tools you want to have installed below
   {
@@ -21,7 +28,7 @@ return {
         "stylua",
         "shellcheck",
         "shfmt",
-        "flake8",
+        "black",
         "julia-lsp",
       },
     },
