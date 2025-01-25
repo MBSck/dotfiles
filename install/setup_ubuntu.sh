@@ -73,6 +73,9 @@ hline
 #   echo "Shell is already zsh."
 # fi
 
+julia --project=~/.julia/environments/nvim-lspconfig -e 'using Pkg; Pkg.add("LanguageServer"); Pkg.add("SymbolServer")'
+julia --project=~/.julia/environments/nvim-lspconfig -e 'using Pkg; Pkg.update()'
+
 remove_and_relink $dotfile_dir/git/gitconfig $user_home/.gitconfig;
 remove_and_relink $dotfile_dir/zsh $user_home/zsh;
 remove_and_relink $dotfile_dir/zsh/zshrc $user_home/.zshrc;

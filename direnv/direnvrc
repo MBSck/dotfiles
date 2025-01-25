@@ -20,7 +20,7 @@ use_julia() {
 
 layout_julia() {
     export JULIA_PROJECT="$(pwd)"
-    export JULIA_LOAD_PATH=:$PWD/src
+    export JULIA_LOAD_PATH=:$JULIA_PROJECT/src
     PATH_add bin
 
     julia --project="${JULIA_PROJECT}" -e 'using Pkg; Pkg.instantiate()'
