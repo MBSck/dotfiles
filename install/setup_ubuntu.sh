@@ -81,6 +81,7 @@ remove_and_relink $dotfile_dir/zsh $user_home/zsh;
 remove_and_relink $dotfile_dir/zsh/zshrc $user_home/.zshrc;
 remove_and_relink $dotfile_dir/direnv $user_home/.config/direnv;
 remove_and_relink $dotfile_dir/kitty $user_home/.config/kitty;
+remove_and_relink $dotfile_dir/kitty/logo /usr/lib/kitty/logo;
 remove_and_relink $dotfile_dir/btop $user_home/.config/btop;
 remove_and_relink $dotfile_dir/bat $user_home/.config/bat;
 batcat cache -build > /dev/null 2>&1
