@@ -73,8 +73,9 @@ hline
 #   echo "Shell is already zsh."
 # fi
 
-julia --project=~/.julia/environments/nvim-lspconfig -e 'using Pkg; Pkg.add("LanguageServer"); Pkg.add("SymbolServer")'
-julia --project=~/.julia/environments/nvim-lspconfig -e 'using Pkg; Pkg.update()'
+# TODO: Fix this
+# julia --project=~/.julia/environments/nvim-lspconfig -e 'using Pkg; Pkg.add("LanguageServer"); Pkg.add("SymbolServer")'
+# julia --project=~/.julia/environments/nvim-lspconfig -e 'using Pkg; Pkg.update()'
 
 remove_and_relink $dotfile_dir/git/gitconfig $user_home/.gitconfig;
 remove_and_relink $dotfile_dir/zsh $user_home/zsh;
@@ -85,4 +86,7 @@ remove_and_relink $dotfile_dir/kitty/logo /usr/lib/kitty/logo;
 remove_and_relink $dotfile_dir/btop $user_home/.config/btop;
 remove_and_relink $dotfile_dir/bat $user_home/.config/bat;
 batcat cache -build > /dev/null 2>&1
+
+# NOTE: With this the default terminal of Ubuntu can be changed to kitty
+# sudo update-alternatives --config x-terminal-emulator
 # <<< Configuration <<<
