@@ -13,3 +13,15 @@ layout_uv() {
     export UV_ACTIVE=1  # or VENV_ACTIVE=1
     export VIRTUAL_ENV
 }
+
+use_julia() {
+  load_prefix $HOME/.julia_versions/julia-$1
+}
+
+layout_julia() {
+    export JULIA_PROJECT="$(pwd)"
+    export JULIA_LOAD_PATH=:$PWD/src
+    PATH_add bin
+
+    julia --project="${JULIA_PROJECT}" -e 'using Pkg; Pkg.instantiate()'
+}
