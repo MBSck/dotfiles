@@ -37,7 +37,7 @@ alias paper="cd ${PAPER}; kitty @ set-tab-title papers"
 # Code shortcuts
 alias calfind="cd ${CODE}/calfind; kitty @ set-tab-title calfind"
 alias matadrs="cd ${CODE}/matadrs; kitty @ set-tab-title matadrs"
-alias p2obp="cd ${CODE}/p2obp; kitty @ set-tab-title p2obp"
+alias p2obt="cd ${CODE}/p2obt; kitty @ set-tab-title p2obt"
 alias ppd="cd ${CODE}/ppdmod; kitty @ set-tab-title ppdmod"
 alias oimod="cd ${CODE}/oimodeler; kitty @ set-tab-title oimodeler"
 alias fourim="cd ${CODE}/fourim; kitty @ set-tab-title fourim"
