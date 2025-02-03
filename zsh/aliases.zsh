@@ -2,7 +2,9 @@
 # Make aliases for programs
 alias vi="nvim"
 alias vim="nvim"
+alias lg="lazygit"
 alias optool="/Users/scheuck/.local/bin/optool"
+alias idl="/Applications/NV5/idl90/bin/idl"
 alias ds9="/Applications/SAOImageDS9.app/Contents/MacOS/ds9"
 alias fv="/Applications/FV.app/Contents/MacOS/FV &"
 alias hip="java -jar /Applications/Hipparcos.app/jhip.jar &"
