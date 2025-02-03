@@ -18,7 +18,7 @@ alias scal="javaws /Applications/JMMC\ SearchCal.app/SearchCal.jnlp &"
 alias dot="cd ${DOT}; wezterm cli set-tab-title dotfiles"
 alias nvimrc="cd ${DOT}/lazyvim/; wezterm cli set-tab-title lazyvim"
 alias zsh="cd ${DOT}/zsh/; wezterm cli set-tab-title zsh"
-alias wez="cd ${DOT}/wez/; wezterm cli set-tab-title wez"
+alias wez="cd ${DOT}/wezterm/; wezterm cli set-tab-title wez"
 
 # Directly edit configuration files
 alias zshrc="nvim $HOME/.zshrc"
