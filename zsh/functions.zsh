@@ -24,7 +24,7 @@ function nhppy ()
 # Connects to an astro-node if none specified connects to a default one.
 function castro ()
 {
-    kitty @ set-tab-title castro
+    wezterm cli set-tab-title castro
     if [[ $# -eq 0 ]]; then
         ssh -X -t "scheuck@astro-node1.mpia.de"
     else

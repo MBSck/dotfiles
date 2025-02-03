@@ -13,10 +13,10 @@ alias litpro="javaws /Applications/JMMC\ LITpro.app/LITpro.jnlp &"
 alias scal="javaws /Applications/JMMC\ SearchCal.app/SearchCal.jnlp &"
 
 # Configuration path shortcuts
-alias dot="cd ${DOT}; kitty @ set-tab-title dotfiles"
-alias nvimrc="cd ${DOT}/lazyvim/; kitty @ set-tab-title lazyvim"
-alias zsh="cd ${DOT}/zsh/; kitty @ set-tab-title zsh"
-alias kittyrc="cd ${DOT}/kitty/; kitty @ set-tab-title kitty"
+alias dot="cd ${DOT}; wezterm cli set-tab-title dotfiles"
+alias nvimrc="cd ${DOT}/lazyvim/; wezterm cli set-tab-title lazyvim"
+alias zsh="cd ${DOT}/zsh/; wezterm cli set-tab-title zsh"
+alias wez="cd ${DOT}/wez/; wezterm cli set-tab-title wez"
 
 # Directly edit configuration files
 alias zshrc="nvim $HOME/.zshrc"
@@ -25,24 +25,24 @@ alias zshrc="nvim $HOME/.zshrc"
 alias loadzsh="source $HOME/.zshrc"
 
 # General Path shortcuts
-alias desk="cd ${DESK}; kitty @ set-tab-title desktop"
-alias data="cd ${DATA}; kitty @ set-tab-title data"
-alias code="cd ${CODE}; kitty @ set-tab-title code"
-alias down="cd ${DOWN}; kitty @ set-tab-title downloads"
-alias doc="cd ${DOC}; kitty @ set-tab-title documents"
-alias pic="cd ${PIC}; kitty @ set-tab-title pictures"
-alias book="cd  ${BOOK}; kitty @ set-tab-title books"
-alias paper="cd ${PAPER}; kitty @ set-tab-title papers"
+alias desk="cd ${DESK}; wezterm cli set-tab-title desktop"
+alias data="cd ${DATA}; wezterm cli set-tab-title data"
+alias code="cd ${CODE}; wezterm cli set-tab-title code"
+alias down="cd ${DOWN}; wezterm cli set-tab-title downloads"
+alias doc="cd ${DOC}; wezterm cli set-tab-title documents"
+alias pic="cd ${PIC}; wezterm cli set-tab-title pictures"
+alias book="cd  ${BOOK}; wezterm cli set-tab-title books"
+alias paper="cd ${PAPER}; wezterm cli set-tab-title papers"
 
 # Code shortcuts
-alias calfind="cd ${CODE}/calfind; kitty @ set-tab-title calfind"
-alias matadrs="cd ${CODE}/matadrs; kitty @ set-tab-title matadrs"
-alias p2obt="cd ${CODE}/p2obt; kitty @ set-tab-title p2obt"
-alias ppd="cd ${CODE}/ppdmod; kitty @ set-tab-title ppdmod"
-alias oimod="cd ${CODE}/oimodeler; kitty @ set-tab-title oimodeler"
-alias fourim="cd ${CODE}/fourim; kitty @ set-tab-title fourim"
-alias tools="cd ${CODE}/ir-tools; kitty @ set-tab-title ir-tools"
-alias tidbits="cd ${CODE}/tidbits; kitty @ set-tab-title tidbits"
+alias calfind="cd ${CODE}/calfind; wezterm cli set-tab-title calfind"
+alias matadrs="cd ${CODE}/matadrs; wezterm cli set-tab-title matadrs"
+alias p2obt="cd ${CODE}/p2obt; wezterm cli set-tab-title p2obt"
+alias ppd="cd ${CODE}/ppdmod; wezterm cli set-tab-title ppdmod"
+alias oimod="cd ${CODE}/oimodeler; wezterm cli set-tab-title oimodeler"
+alias fourim="cd ${CODE}/fourim; wezterm cli set-tab-title fourim"
+alias tools="cd ${CODE}/ir-tools; wezterm cli set-tab-title ir-tools"
+alias tidbits="cd ${CODE}/tidbits; wezterm cli set-tab-title tidbits"
 
 # TODO: Write uv init that automatically creates a .envrc as well or something like that
 
@@ -66,7 +66,3 @@ alias ..="cd .."
 alias ...="cd ..; cd .."
 alias ....="cd ..; cd ..; cd .."
 alias .....="cd ..; cd ..; cd ..; cd .."
-
-# Kitty integration
-# alias ikat="kitty +kitten icat"
-# alias s="kitty +kitten ssh"

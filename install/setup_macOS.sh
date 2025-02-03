@@ -10,7 +10,6 @@ dotfile_dir="$(dirname "$(dirname "$(realpath "$0")")")"
 # command_install "npm install neovim" nvim
 # command_install "gem install neovim" nvim
 # install "/bin/bash -c '$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)'" brew
-# install "curl -L https://sw.kovidgoyal.net/kitty/installer.sh | sh /dev/stdin" kitty
 install brew neovim nvim
 install brew fzf
 install brew fd
@@ -36,7 +35,7 @@ remove_and_relink $dotfile_dir/git/gitconfig $HOME/.gitconfig;
 remove_and_relink $dotfile_dir/zsh $HOME/zsh;
 remove_and_relink $dotfile_dir/zsh/zshrc $HOME/.zshrc;
 remove_and_relink $dotfile_dir/direnv $HOME/.config/direnv;
-remove_and_relink $dotfile_dir/kitty $HOME/.config/kitty;
+# TODO: Add wezterm here
 remove_and_relink $dotfile_dir/btop $HOME/.config/btop;
 remove_and_relink $dotfile_dir/bat $HOME/.config/bat;
 remove_and_relink $dotfile_dir/lazygit /Library/Application\ Support/lazygit
