@@ -15,3 +15,5 @@
 [core]
 	longpaths = true
 
+[init]
+	defaultBranch = master
