@@ -1,5 +1,5 @@
-# Startup
-source ~/zsh/startup.zsh
+# Pre-init
+source ~/zsh/pre_init.zsh
 
 # Paths
 source ~/zsh/paths_and_variables.zsh
@@ -9,3 +9,6 @@ source ~/zsh/aliases.zsh
 
 # Functions
 source ~/zsh/functions.zsh
+
+# Post-init
+source ~/zsh/post_init.zsh

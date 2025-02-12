@@ -42,7 +42,6 @@ alias matadrs="cd ${CODE}/matadrs; wezterm cli set-tab-title matadrs"
 alias p2obt="cd ${CODE}/p2obt; wezterm cli set-tab-title p2obt"
 alias ppd="cd ${CODE}/ppdmod; wezterm cli set-tab-title ppdmod"
 alias oimod="cd ${CODE}/oimodeler; wezterm cli set-tab-title oimodeler"
-alias fourim="cd ${CODE}/fourim; wezterm cli set-tab-title fourim"
 alias tools="cd ${CODE}/ir-tools; wezterm cli set-tab-title ir-tools"
 alias tidbits="cd ${CODE}/tidbits; wezterm cli set-tab-title tidbits"
 

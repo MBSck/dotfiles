@@ -7,4 +7,4 @@ fi
 eval "$(direnv hook zsh)"
 
 # Set up fzf key bindings and fuzzy completion
-source <(fzf --zsh)
+source /usr/share/doc/fzf/examples/completion.zsh
