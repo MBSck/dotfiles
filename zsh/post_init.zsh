@@ -7,4 +7,8 @@ fi
 eval "$(direnv hook zsh)"
 
 # Set up fzf key bindings and fuzzy completion
-source /usr/share/doc/fzf/examples/completion.zsh
+if [[ "$(checkOS)" == "linux" ]]; then
+  source /usr/share/doc/fzf/examples/completion.zsh
+elif [[ "$(checkOS)" == "mac" ]]; then
+  source <(fzf --zsh)
+fi

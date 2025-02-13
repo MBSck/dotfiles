@@ -31,3 +31,15 @@ function castro ()
         ssh -X -t "scheuck@astro-node${1}.mpia.de"
     fi
 }
+
+# Check what OS is being used.
+function checkOS ()
+{
+  if [[ "$(uname)" == "Linux" ]]; then
+    echo "linux"
+  elif [[ "$(uname)" == "Darwin" ]]; then
+    echo "mac"
+  else
+    echo "other"
+  fi
+}
