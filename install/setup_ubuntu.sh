@@ -42,6 +42,7 @@ install apt-get xclip           # Neovim keybaord copying
 install apt-get ruby-full ruby
 install apt-get ripgrep rg
 install apt-get neovim nvim
+install apt-get latexmk         # Latex backend
 
 # TODO: Fix the curl commands
 # install "curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh" rustup
