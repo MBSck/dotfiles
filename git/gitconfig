@@ -1,7 +1,7 @@
 # This is Git's per-user configuration file.
 [user]
-	name = Marten B. Scheuck
-	email = martenscheuck@gmail.com
+	name = M. B. Scheuck
+	email = programming.mbsck@mailbox.org
 # Please adapt and uncomment the following lines:
 #	name = Marten Scheuck
 #	email = martenscheuck@gmail.com 
