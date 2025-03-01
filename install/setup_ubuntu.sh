@@ -44,6 +44,8 @@ install apt-get ripgrep rg
 install apt-get neovim nvim
 install apt-get latexmk         # Latex backend
 
+# TODO: Add libre wolf install here
+
 # TODO: Fix the curl commands
 # install "curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh" rustup
 # install "curl -LsSf https://astral.sh/uv/install.sh | sh" uv
