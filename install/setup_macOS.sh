@@ -10,6 +10,7 @@ dotfile_dir="$(dirname "$(dirname "$(realpath "$0")")")"
 # command_install "npm install neovim" nvim
 # command_install "gem install neovim" nvim
 # install "/bin/bash -c '$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)'" brew
+# install brew librewolf --cask
 install brew neovim nvim
 install brew fzf
 install brew fd
