@@ -50,7 +50,21 @@ alias tidbits="cd ${CODE}/tidbits; wezterm cli set-tab-title tidbits"
 # Fast interactions
 alias c="clear"
 alias o="open"
-alias p="cat"
+
+if [[ "$(checkOS)" == "linux" ]]; then
+  if command -v "batcat" >/dev/null 2>&1; then
+    alias p="batcat"
+  else if
+    alias p="cat"
+  fi
+elif [[ "$(checkOS)" == "mac" ]]; then
+  if command -v "bat" >/dev/null 2>&1; then
+    alias p="bat"
+  else if
+    alias p="cat"
+  fi
+fi
+
 alias t="time"
 alias k="kill"
 alias h="history"

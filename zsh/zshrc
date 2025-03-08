@@ -4,11 +4,11 @@ source ~/zsh/pre_init.zsh
 # Paths
 source ~/zsh/paths_and_variables.zsh
 
-# Aliases
-source ~/zsh/aliases.zsh
-
 # Functions
 source ~/zsh/functions.zsh
+
+# Aliases
+source ~/zsh/aliases.zsh
 
 # Post-init
 source ~/zsh/post_init.zsh
